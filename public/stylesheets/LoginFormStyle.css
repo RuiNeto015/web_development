@@ -6,6 +6,7 @@
     padding: 3%;
     background-color: #15172b;
     color: white;
+    margin-top: 10em;
   }
   
   .Input > input[type="text"], input[type="password"] {

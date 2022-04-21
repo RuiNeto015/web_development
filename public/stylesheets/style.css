@@ -1,8 +1,25 @@
 body {
-  padding: 50px;
+  padding: 0;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
 }
 
 a {
   color: #00B7FF;
 }
+
+#bodyLayout{
+  background-color: #e9ebee;
+}
+
+#bodyContainer {
+background-color: #ffffff;
+min-width: 50em;
+height: 100em;
+}
+
+.textNavbar{
+  color: white;
+  font: 1.3em "Lucida Grande", Helvetica, Arial, sans-serif;
+}
+
+
