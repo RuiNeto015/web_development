@@ -1,9 +1,9 @@
 var express = require('express');
 var router = express.Router();
 
-/* GET clients page. */
+/* GET Clients Index page. */
 router.get('/', function(req, res, next) {
-  res.render('clientsManagement');
+  res.render('clients/index');
 });
 
 module.exports = router;
