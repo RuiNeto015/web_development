@@ -1,12 +1,13 @@
 .centerDiv {
     border: 10%;
-    width: 50%;
+    width: 40%;
     height: 70%;
     border-radius: 2em;
     padding: 3%;
     background-color: #15172b;
     color: white;
-    margin-top: 10em;
+    margin-top: 7%;
+    text-align: center;
   }
   
   .Input > input[type="text"], input[type="password"] {
@@ -15,11 +16,11 @@
     border: 0;
     box-sizing: border-box;
     color: #eee;
-    font-size: .8em;
+    font-size: 15px;
     font-family: Arial, Helvetica, sans-serif;
     outline: 0;
     padding: 2%;
-    width: 100%;
+    width: 50%;
     height: 5%;
   }
   
@@ -52,14 +53,14 @@
   
   .submit{
     margin-top: 5%;
-    width: 100%;
+    width: 50%;
     height: 3em;
     background-color: #08d;
     border-radius: .5em;
     border: 0;
     box-sizing: border-box;
     color: #eee;
-    font-size: 1em;
+    font-size: 15px;
     font-family: Arial, Helvetica, sans-serif;
     cursor: pointer;
     
@@ -70,6 +71,6 @@
     background-color: lightblue;
     display: flex;
     justify-content: center;
-    height: 35em;
+    height: 100%;
   }
   
