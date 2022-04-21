@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+    <%- include("../static/layout.ejs") %>
+  <h1>Funcionários</h1>
+  <br>
+
+  <script src=''></script>
+  <button type="button" id="createEmployee" class="btn btn-success">Registar Funcionário</button>
+
+</div>
+    <script>
+    document.getElementById("createEmployee").onclick = function() {
+        location.href = "employees/create";
+    }
+    </script>
+</body>
+</html>

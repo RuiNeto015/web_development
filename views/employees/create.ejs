@@ -1,0 +1,26 @@
+
+<!DOCTYPE html>
+<html>
+    <%- include("../static/layout.ejs") %>
+  
+    <br>
+  <center><h1>Criar Funcionário</h1></center>
+  <br>
+
+  <form action="/employees" method="POST">
+    <div class="mb-3">
+        <label for="employeeName" class="form-label">Nome</label>
+        <input type="text" class="form-control" id="userNameInput" name="userName">
+        <label for="emailInput" class="form-label">Email</label>
+        <input type="email" class="form-control" id="emailInput" name="email">
+        <label for="bookInput" class="form-label">Book</label>
+        <input type="text" class="form-control" id="bookInput" name="book">
+        <label for="DescriptionInput" class="form-label">Description</label>
+        <input type="text" class="form-control" id="DescriptionInput" name="description">
+        <button type="submit" class="btn btn-dark">Submit</button>
+    </div>
+</form>
+
+</div>
+</body>
+</html>
