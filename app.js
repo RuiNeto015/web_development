@@ -8,6 +8,7 @@ var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 var loginRouter = require('./routes/login');
 var clientsIndexRouter = require('./routes/clients/index');
+var booksIndexRouter = require('./routes/books/index');
 var employeesIndexRouter = require('./routes/employees/index');
 var employeesCreateRouter = require('./routes/employees/create');
 
@@ -27,6 +28,7 @@ app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/login', loginRouter);
 app.use('/clients', clientsIndexRouter);
+app.use('/books', booksIndexRouter);
 app.use('/employees', employeesIndexRouter);
 app.use('/employees/create', employeesCreateRouter);
 

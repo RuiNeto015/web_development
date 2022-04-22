@@ -1,25 +1,27 @@
 body {
-  padding: 0;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  font-family: Arial, Helvetica, sans-serif;
 }
 
 a {
-  color: #00B7FF;
+  color: #00b7ff;
 }
 
-#bodyLayout{
+#bodyLayout {
   background-color: #e9ebee;
 }
 
 #bodyContainer {
-background-color: #ffffff;
-min-width: 50em;
-height: 100em;
+  background-color: #ffffff;
+  min-width: 50em;
+  height: 100vh;
+  padding: 2em 8em 0em 8em;
 }
 
-.textNavbar{
+.tableMargins{
+  padding-top: 5em;
+}
+
+.textNavbar {
   color: white;
-  font: 1.3em "Lucida Grande", Helvetica, Arial, sans-serif;
+  font-size: 1em;
 }
-
-
