@@ -1,26 +1,38 @@
 
 <!DOCTYPE html>
 <html>
-    <%- include("../static/layout.ejs") %>
+  <%- include("../static/layout.ejs") %>
   
-    <br>
-  <center><h1>Criar Funcionário</h1></center>
+  <br>
+  <center><h1>Registar Funcionário</h1></center>
   <br>
 
-  <form action="/employees" method="POST">
+  <form method="POST">
     <div class="mb-3">
-        <label for="employeeName" class="form-label">Nome</label>
-        <input type="text" class="form-control" id="userNameInput" name="userName">
-        <label for="emailInput" class="form-label">Email</label>
-        <input type="email" class="form-control" id="emailInput" name="email">
-        <label for="bookInput" class="form-label">Book</label>
-        <input type="text" class="form-control" id="bookInput" name="book">
-        <label for="DescriptionInput" class="form-label">Description</label>
-        <input type="text" class="form-control" id="DescriptionInput" name="description">
-        <button type="submit" class="btn btn-dark">Submit</button>
+        <h5>Nome:</h5>
+          <input type="text" placeholder="Insira o nome" class="form-control" id="nameInput" name="name" maxlength="75">
+          <br>
+        <h5>Email:</h5>
+          <input type="email" placeholder="Insira o email" class="form-control" id="emailInput" name="email" maxlength="75">
+          <br>
+        <h5>Palavra-passe:</h5>
+          <input type="text" placeholder="Insira a palavra-passe" class="form-control" id="passwordInput" name="password" maxlength="15">
+          <br>
+        <h5>Idade:</h5>
+          <input type="number" placeholder="Insira a idade" class="form-control" id="ageInput" name="age">
+          <br>
+        <h5>Morada:</h5>
+          <input type="text" placeholder="Insira a morada" class="form-control" id="addressInput" name="address" maxlength="100">
+          <br>
+        <h5>Número de telefone:</h5>
+          <input type="number" placeholder="Insira o número de telefone" class="form-control" id="phoneNumberInput" name="phoneNumber">
+          <br>
+        <h5>NIF:</h5>
+          <input type="number" placeholder="Insira o NIF" class="form-control" id="nifInput" name="nif">
+          <br>
+        <div style="text-align: center;"><button type="submit" class="btn btn-dark">Registar Funcionário</button></div>
     </div>
-</form>
+  </form>
 
-</div>
-</body>
+<%- include("../static/footer.ejs") %>
 </html>

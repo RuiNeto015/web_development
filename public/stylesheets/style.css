@@ -12,9 +12,9 @@ a {
 
 #bodyContainer {
   background-color: #ffffff;
-  min-width: 50em;
-  height: 100vh;
-  padding: 2em 8em 0em 8em;
+  min-width: 50%;
+  height: 100%;
+  padding: 2em 8em 2em 8em;
 }
 
 .tableMargins{

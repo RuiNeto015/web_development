@@ -4,9 +4,10 @@
   <h1>Funcionários</h1>
   <br>
 
-  <button type="button" id="createEmployee" class="btn btn-success">Registar Funcionário</button>
+  <form action="employees/create">  
+    <input type="submit" value="Registar Funcionário" class="btn btn-success"/>  
+  </form>
 
-</div>
-</body>
+  <%- include("../static/footer.ejs") %>
 
 </html>
