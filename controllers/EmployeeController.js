@@ -3,7 +3,7 @@ var Employee = require("../models/EmployeeModel");
 
 var EmployeeController = {};
 
-EmployeeController.save = function(req, res){
+const addEmployee = function(req, res){
     var employee = Employee(req.body);
 
     employee.save((err) => {
@@ -17,4 +17,6 @@ EmployeeController.save = function(req, res){
     })
 }
 
-module.exports.save;
+module.exports= {
+    addEmployee
+}
