@@ -1,10 +1,12 @@
 <!DOCTYPE html>
 <html>
-    <%- include("../static/layout.ejs") %>
+
+  <%- include("../static/layout.ejs") %>
+  
   <h1>Funcionários</h1>
   <br>
 
-  <form action="employees/create">  
+  <form action="/employees/create" method="GET">  
     <input type="submit" value="Registar Funcionário" class="btn btn-success"/>  
   </form>
 
