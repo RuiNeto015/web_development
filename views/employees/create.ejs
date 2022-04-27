@@ -11,11 +11,14 @@
     <div class="mb-3">
         <div class="mb-3 row"><h5>Nome:</h5>
           <input type="text" placeholder="Insira o nome" class="form-control" id="nameInput" name="name" maxlength="75" required></div>
+        
         <div class="mb-3 row"><h5>Email:</h5>
           <input type="email" placeholder="Insira o email" class="form-control" id="emailInput" name="email" maxlength="75" required></div>
+        
         <div class="mb-3 row"><h5>Palavra-passe:</h5>
           <input type="password" placeholder="Insira a palavra-passe" class="form-control" id="passwordInput" name="password" minlength="5" maxlength="15" required>
           <small class="form-text text-muted">Até 15 caracteres.</small></div>
+        
         <div class="mb-3 row"><h5>Género:</h5>
           <select class="form-control" id="gender" name="gender" required>
             <option value="" selected disabled hidden>Selecione o género</option>
@@ -23,18 +26,22 @@
             <option value="F">Feminino</option>
             <option value="O">Outro</option>
           </select></div>
+        
         <div class="mb-3 row"><h5>Data de Nascimento:</h5>
           <input type="date" class="form-control" id="birthDateInput" name="birth_date" required></div>
+        
         <div class="mb-3 row"><h5>Morada:</h5>
           <input type="text" placeholder="Insira a morada" class="form-control" id="addressInput" name="address" maxlength="100" required></div>
+        
         <div class="mb-3 row"><h5>Número de telefone:</h5>
           <input type="tel" placeholder="Insira o número de telefone" class="form-control" id="phoneNumberInput" name="phoneNumber" pattern="[0-9]{9}" minlength="9" maxlength="9" required></div>
+       
         <div class="mb-3 row"><h5>NIF:</h5>
           <input type="text" placeholder="Insira o NIF" class="form-control" id="nifInput" name="nif" pattern="[0-9]{9}" minlength="9" maxlength="9" required></div>
-          <br>
+        <br>
         <div style="text-align: center;"><button type="submit" class="btn btn-dark">Registar Funcionário</button></div>
     </div>
   </form>
 
-<%- include("../static/footer.ejs") %>
+  <%- include("../static/footer.ejs") %>
 </html>

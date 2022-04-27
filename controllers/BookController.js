@@ -15,7 +15,7 @@ const addBook = function(req, res){
 
     book.save((err) => {
         if(err){res.status(400)}
-        console.log("Successfully created an client.");
+        console.log("Successfully created a book.");
         res.redirect('/books');
     })
 }
