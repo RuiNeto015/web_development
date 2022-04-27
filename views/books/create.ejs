@@ -9,20 +9,21 @@
 
   <form method="POST">
     <div class="mb-3 row">
-        <div class="mb-3 row"><h5>Titulo:</h5>
-          <input type="text" placeholder="Insira o Titulo" class="form-control" id="nameInput" name="title" maxlength="75"></div>
+        <div class="mb-3 row"><h5>Título:</h5>
+          <input type="text" placeholder="Insira o Título" class="form-control" id="titleInput" name="title" maxlength="75" required></div>
         <div class="mb-3 row"><h5>Autor:</h5>
-            <input type="text" placeholder="Insira o autor" class="form-control" id="autorInput" name="author" maxlength="75"></div>
+            <input type="text" placeholder="Insira o Autor" class="form-control" id="authorInput" name="author" maxlength="75" required></div>
         <div class="mb-3 row"><h5>ISBN:</h5>
-          <input type="text" placeholder="Insira o ISBN" class="form-control" id="emailInput" name="isbn" maxlength="15"></div>
+          <input type="text" placeholder="Insira o ISBN" class="form-control" id="isbnInput" name="isbn" minlength="10" maxlength="13" required></div>
         <div class="mb-3 row"><h5>Edição:</h5>
-            <input type="date" placeholder="Insira a data de edição" class="form-control" id="edicaoInput" name="edition"></div>
-        <div class="mb-3 row"><h5>Editor:</h5>
-            <input type="text" placeholder="Insira o editor" class="form-control" id="editorInput" name="editor" maxlength="75"></div>
+            <input type="date" placeholder="Insira a data de edição" class="form-control" id="editionInput" name="edition" required></div>
+        <div class="mb-3 row"><h5>Editor/a:</h5>
+            <input type="text" placeholder="Insira o editor/a" class="form-control" id="bookMakerInput" name="bookMaker" maxlength="75" required></div>
         <div class="mb-3 row"><h5>Idioma:</h5>
-            <input type="text" placeholder="Insira o idioma" class="form-control" id="idiomaInput" name="language" maxlength="25"></div>
-        <div class="mb-3 row"><h5>Paginas:</h5>
-            <input type="number" placeholder="Insira o numero de paginas" class="form-control" id="paginasInput" name="pages" min="0" ></div>
+            <input type="text" placeholder="Insira o idioma" class="form-control" id="languageInput" name="language" maxlength="25" required></div>
+        <div class="mb-3 row"><h5>Número de páginas:</h5>
+            <input type="number" placeholder="Insira o número de páginas" class="form-control" id="pagesInput" name="pages" min="0" required></div>
+            <br>
         <div style="text-align: center;"><button type="submit" class="btn btn-dark mb-3 row">Registar Livro</button></div>
     </div>
   </form>

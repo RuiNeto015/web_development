@@ -13,7 +13,7 @@ router.get('/employees', function(req, res, next) {
 
 /* GET Employees Create page. */
 router.get('/employees/create', function(req, res, next) {
-    res.render('employees/create', {title:"Registar Funcionário"});
+    res.render('employees/create', {title:"Funcionários"});
 });
   
 router.post('/employees/create', addEmployee);
