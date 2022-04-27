@@ -7,30 +7,31 @@
     <table class="table table-dark table-striped table-hover">
       <thead>
       <tr>
-        <th scope="col">#</th>
-        <th scope="col">First</th>
-        <th scope="col">Last</th>
-        <th scope="col">Handle</th>
+        <th scope="col">Nome</th>
+        <th scope="col">Email</th>
+        <th scope="col">Genero</th>
+        <th scope="col">Data Nascimento</th>
+        <th scope="col">Morada</th>
+        <th scope="col">Telefone</th>
       </tr>
     </thead>
     <tbody>
-      <tr>
-        <th scope="row">1</th>
-        <td>Mark</td>
-        <td>Otto</td>
-        <td>@mdo</td>
-      </tr>
-      <tr>
-        <th scope="row">2</th>
-        <td>Jacob</td>
-        <td>Thornton</td>
-        <td>@fat</td>
-      </tr>
-      <tr>
-        <th scope="row">3</th>
-        <td colspan="2">Larry the Bird</td>
-        <td>@twitter</td>
-      </tr>
+      <%if(clients.length > 0){%>
+        <% for(let client of clients) { %>
+          <tr>
+            <td scope="row"><%= client.name %></th>
+            <td><%= client.email %></td>
+            <td><%= client.gender %></td>
+            <td><%= client.birth_date.getDate() %>-<%= client.birth_date.getMonth() %>-<%= client.birth_date.getFullYear() %></td>
+            <td><%= client.address %></td>
+            <td><%= client.phoneNumber %></td>
+          </tr>
+        <% } %>
+      <% } else { %>
+          <tr>
+            <td scope="row" colspan="6" class="text-center">Não foram encontrados dados!</td>
+          </tr>
+        <% } %>
     </tbody>
   </table>
 </div>

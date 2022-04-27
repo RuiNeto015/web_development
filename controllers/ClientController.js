@@ -1,5 +1,15 @@
 var Client = require("../models/ClientModel");
 
+const getAllClients = function(req, res){
+    Client.find().exec(function(err, result){
+        if(err) res.status(400);
+        res.render('clients/index', {
+            clients: result,
+            title: "Clientes"
+        });
+    });
+}
+
 const addClient = function(req, res){
     var client = Client(req.body);
 
@@ -11,5 +21,6 @@ const addClient = function(req, res){
 }
 
 module.exports = {
+    getAllClients,
     addClient
 }

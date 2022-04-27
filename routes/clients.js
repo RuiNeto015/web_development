@@ -1,13 +1,11 @@
 var express = require('express');
 var router = express.Router();
-const {addClient} = require("../controllers/ClientController");
+const {getAllClients,addClient} = require("../controllers/ClientController");
 
 //CLIENTS INDEX
 
 /* GET Clients Index page. */
-router.get('/clients', function(req, res, next) {
-  res.render('clients/index', {title: "Clientes"});
-});
+router.get('/clients', getAllClients);
 
 //CLIENTS CREATE
 
