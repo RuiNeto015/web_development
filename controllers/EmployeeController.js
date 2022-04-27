@@ -4,6 +4,8 @@ var Employee = require("../models/EmployeeModel");
 const addEmployee = function (req, res){
     var employee = Employee(req.body);
 
+    //chamar validate
+
     employee.save((err) => {
         if(err){
             res.status(400)
@@ -11,6 +13,7 @@ const addEmployee = function (req, res){
         res.redirect('/employees');
     })
 }
+
 
 module.exports= {
     addEmployee
