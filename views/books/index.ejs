@@ -9,21 +9,33 @@
       <tr>
         <th scope="col">Titulo</th>
         <th scope="col">Autor</th>
-        <th scope="col">Edição</th>
+        <th scope="col">ISBN</th>
         <th scope="col">Editor</th>
-        <th scope="col">Linguagem</th>
+        <th scope="col">Idioma</th>
+        <th scope="col">Quantidade</th>
+        <th scope="col">Estado</th>
         <th scope="col">Paginas</th>
       </tr>
     </thead>
     <tbody>
-      <tr>
-        <th scope="row">1</th>
-        <td>2</td>
-        <td>3</td>
-        <td>4</td>
-        <td>5</td>
-        <td>6</td>
-      </tr>
+      <%if(books.length > 0){%>
+        <% for(let book of books) { %>
+          <tr>
+            <td scope="row"><%= book.title %></th>
+            <td><%= book.author %></td>
+            <td><%= book.isbn %></td>
+            <td><%= book.editor %></td>
+            <td><%= book.language %></td>
+            <td><%= book.quantity %></td>
+            <td><%= book.state %></td>
+            <td><%= book.pages %></td>
+          </tr>
+        <% } %>
+      <% } else { %>
+          <tr>
+            <td scope="row" colspan="8" class="text-center">Não foram encontrados dados!</td>
+          </tr>
+        <% } %>
     </tbody>
   </table>
 </div>

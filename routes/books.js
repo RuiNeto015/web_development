@@ -1,14 +1,11 @@
 var express = require('express');
 var router = express.Router();
-const {addBook} = require("../controllers/BookController");
+const {getAllBooks,addBook} = require("../controllers/BookController");
 
 //BOOKS INDEX
 
 /* GET Books Index page. */
-router.get('/books', function(req, res, next) {
-  res.render('books/index', {title: "Livros"});
-});
-
+router.get('/books', getAllBooks);
 //BOOKS CREATE
 
 /* GET Books Create page. */

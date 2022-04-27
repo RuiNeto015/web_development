@@ -1,5 +1,15 @@
 var Book = require("../models/BookModel");
 
+const getAllBooks = function(req, res){
+    Book.find().exec(function(err, result){
+        if(err) res.status(400);
+        res.render('books/index', {
+            books: result,
+            title: "Livros"
+        });
+    });
+}
+
 const addBook = function(req, res){
     var book = Book(req.body);
 
@@ -11,5 +21,6 @@ const addBook = function(req, res){
 }
 
 module.exports = {
+    getAllBooks,
     addBook
 }
