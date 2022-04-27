@@ -1,0 +1,34 @@
+
+<!DOCTYPE html>
+<html>
+  <%- include("../static/layout.ejs") %>
+  
+  <br>
+  <h1 class="text-center">Registar Cliente</h1>
+  <br>
+
+  <form method="POST">
+    <div class="mb-3 row">
+        <div class="mb-3 row"><h5>Nome:</h5>
+          <input type="text" placeholder="Insira o nome" class="form-control" id="nameInput" name="name" maxlength="75"></div>
+        <div class="mb-3 row"><h5>Email:</h5>
+          <input type="email" placeholder="Insira o email" class="form-control" id="emailInput" name="email" maxlength="75"></div>
+        <div class="mb-3 row"><h5>Género:</h5>
+          <select class="form-control" id="gender" name="gender">
+            <option value="" selected disabled hidden>Insira o género</option>
+            <option value="M">Masculino</option>
+            <option value="F">Feminino</option>
+            <option value="O">Outro</option>
+          </select></div>
+        <div class="mb-3 row"><h5>Data Nascimento:</h5>
+          <input type="date" placeholder="Insira a idade" class="form-control" id="birthdateInput" name="birth_date"></div>
+        <div class="mb-3 row"><h5>Morada:</h5>
+          <input type="text" placeholder="Insira a morada" class="form-control" id="addressInput" name="address" maxlength="100"></div>
+        <div class="mb-3 row"><h5>Número de telefone:</h5>
+          <input type="tel" placeholder="Insira o número de telefone" class="form-control" id="phoneNumberInput" name="phoneNumber" maxlength="9"></div>
+        <div style="text-align: center;"><button type="submit" class="btn btn-dark mb-3 row">Registar Cliente</button></div>
+    </div>
+  </form>
+
+<%- include("../static/footer.ejs") %>
+</html>

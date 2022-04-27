@@ -1,0 +1,31 @@
+
+<!DOCTYPE html>
+<html>
+  <%- include("../static/layout.ejs") %>
+  
+  <br>
+  <h1 class="text-center">Registar Livro</h1>
+  <br>
+
+  <form method="POST">
+    <div class="mb-3 row">
+        <div class="mb-3 row"><h5>Titulo:</h5>
+          <input type="text" placeholder="Insira o Titulo" class="form-control" id="nameInput" name="title" maxlength="75"></div>
+        <div class="mb-3 row"><h5>Autor:</h5>
+            <input type="text" placeholder="Insira o autor" class="form-control" id="autorInput" name="author" maxlength="75"></div>
+        <div class="mb-3 row"><h5>ISBN:</h5>
+          <input type="text" placeholder="Insira o ISBN" class="form-control" id="emailInput" name="isbn" maxlength="15"></div>
+        <div class="mb-3 row"><h5>Edição:</h5>
+            <input type="date" placeholder="Insira a data de edição" class="form-control" id="edicaoInput" name="edition"></div>
+        <div class="mb-3 row"><h5>Editor:</h5>
+            <input type="text" placeholder="Insira o editor" class="form-control" id="editorInput" name="editor" maxlength="75"></div>
+        <div class="mb-3 row"><h5>Idioma:</h5>
+            <input type="text" placeholder="Insira o idioma" class="form-control" id="idiomaInput" name="language" maxlength="25"></div>
+        <div class="mb-3 row"><h5>Paginas:</h5>
+            <input type="number" placeholder="Insira o numero de paginas" class="form-control" id="paginasInput" name="pages" min="0" ></div>
+        <div style="text-align: center;"><button type="submit" class="btn btn-dark mb-3 row">Registar Livro</button></div>
+    </div>
+  </form>
+
+<%- include("../static/footer.ejs") %>
+</html>
