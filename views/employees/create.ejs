@@ -20,14 +20,14 @@
           <br>
         <h5>Género:</h5>
           <select class="form-control" id="gender" name="gender">
-            <option value="" selected disabled hidden>Insira o género</option>
+            <option value="" selected disabled hidden>Selecione o género</option>
             <option value="M">Masculino</option>
             <option value="F">Feminino</option>
             <option value="O">Outro</option>
           </select>
           <br>
         <h5>Idade:</h5>
-          <input type="number" placeholder="Insira a idade" class="form-control" id="ageInput" name="age" min=0 max=99>
+          <input type="text" placeholder="Insira a idade" class="form-control" id="ageInput" name="age" pattern="[0-9]{2}">
           <br>
         <h5>Morada:</h5>
           <input type="text" placeholder="Insira a morada" class="form-control" id="addressInput" name="address" maxlength="100">

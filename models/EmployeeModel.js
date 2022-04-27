@@ -9,7 +9,10 @@ mongoose.connect('mongodb+srv://pawgrupo10:pawgrupo10@cluster0.e5a7n.mongodb.net
         console.error(err));
 
 var EmployeeSchema = new mongoose.Schema({
-    name: String,
+    name: {
+        type: String,
+        min: [6, 'Must be at least 6, got {VALUE}'] //EXAMPLE
+    },
     email: String,
     password: String,
     gender: String,
