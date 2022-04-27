@@ -1,5 +1,4 @@
 var mongoose = require('mongoose');
-const { required } = require('nodemon/lib/config');
 
 mongoose.Promise = global.Promise;
 
@@ -8,7 +7,6 @@ mongoose.connect('mongodb+srv://pawgrupo10:pawgrupo10@cluster0.e5a7n.mongodb.net
         console.log('Connection Successful!'))
     .catch((err) => 
         console.error(err));
-
 
 var EmployeeSchema = new mongoose.Schema({
     name: {

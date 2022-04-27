@@ -9,16 +9,14 @@ const addEmployee = function (req, res){
         employee.save((err) => {
             if(err){
                 res.status(400)
-                res.render('/employees/create');
             }
             res.redirect('/employees');
         })
-    }catch(e){
+    } catch(e){
         throw(e);
     }
 }
 
-
-module.exports= {
+module.exports = {
     addEmployee
 }
