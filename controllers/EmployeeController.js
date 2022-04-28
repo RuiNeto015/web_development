@@ -1,6 +1,16 @@
 var mongoose = require("mongoose");
 var Employee = require("../models/EmployeeModel");
 
+const getAllEmployees = function(req, res){
+    Employee.find().exec(function(err, result){
+        if(err) res.status(400);
+        res.render('employees/index', {
+            employees: result,
+            title: "Funcionários"
+        });
+    });
+}
+
 const addEmployee = function (req, res){
     var employee = Employee(req.body);
 
@@ -18,5 +28,6 @@ const addEmployee = function (req, res){
 }
 
 module.exports = {
+    getAllEmployees,
     addEmployee
 }

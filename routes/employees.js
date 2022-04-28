@@ -1,13 +1,11 @@
 var express = require('express');
 var router = express.Router();
-const {addEmployee} = require("../controllers/EmployeeController");
+const {getAllEmployees, addEmployee} = require("../controllers/EmployeeController");
 
 //EMPLOYEES INDEX
 
 /* GET Employees Index page. */
-router.get('/employees', function(req, res, next) {
-    res.render('employees/index', {title:"Funcionários"});
-});
+router.get('/employees', getAllEmployees);
 
 //EMPLOYEES CREATE
 
