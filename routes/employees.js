@@ -1,6 +1,6 @@
 var express = require('express');
 var router = express.Router();
-const {getAllEmployees, addEmployee, getDetailsView} = require("../controllers/EmployeeController");
+const {getAllEmployees, getCreateView, addEmployee, getDetailsView} = require("../controllers/EmployeeController");
 
 //EMPLOYEES INDEX
 
@@ -10,9 +10,7 @@ router.get('/employees', getAllEmployees);
 //EMPLOYEES CREATE
 
 /* GET Employees Create page. */
-router.get('/employees/create', function(req, res, next) {
-    res.render('employees/create', {title:"Funcionários"});
-});
+router.get('/employees/create', getCreateView);
   
 router.post('/employees/create', addEmployee);
 

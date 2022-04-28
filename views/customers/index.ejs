@@ -15,12 +15,12 @@
       </tr>
     </thead>
     <tbody>
-      <%if(clients.length > 0){%>
-        <% for(let client of clients) { %>
+      <%if(customers.length > 0){%>
+        <% for(let customer of customers) { %>
           <tr>
-            <td scope="row"><%= client.name %></th>
-            <td><%= client.email %></td>
-            <td><i class="fa-solid fa-circle-plus icons"></i></td>
+            <td scope="row"><%= customer.name %></th>
+            <td><%= customer.email %></td>
+            <td><i class="fa-solid fa-circle-plus icons" onclick="location.href=window.location.href+'/details/<%= customer._id %>'"></i></td>
             <td><i class="fa-solid fa-pen icons"></i></td>
             <td><i class="fa-solid fa-trash-can icons"></i></i></td>
           </tr>

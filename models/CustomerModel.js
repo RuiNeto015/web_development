@@ -1,6 +1,6 @@
 var mongoose = require('mongoose');
 
-var ClientSchema = new mongoose.Schema({
+var CustomerSchema = new mongoose.Schema({
     name: {
         type: String,
         maxlength: [10, 'Número máximo de caracteres é 75, foi inserido: {VALUE}'],
@@ -44,4 +44,4 @@ var ClientSchema = new mongoose.Schema({
     }
 });
 
-module.exports = mongoose.model('Client', ClientSchema);
+module.exports = mongoose.model('Customer', CustomerSchema);

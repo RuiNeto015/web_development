@@ -10,6 +10,10 @@ const getAllEmployees = function(req, res){
     });
 }
 
+const getCreateView = function(req, res, next) {
+    res.render('employees/create', {title: "Funcionários"});
+}
+
 const addEmployee = function(req, res){
     var employee = Employee(req.body);
 
@@ -34,6 +38,7 @@ const getDetailsView = function(req, res){
 
 module.exports = {
     getAllEmployees,
+    getCreateView,
     addEmployee,
     getDetailsView
 }
