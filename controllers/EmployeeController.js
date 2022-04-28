@@ -1,9 +1,8 @@
-var mongoose = require("mongoose");
 var Employee = require("../models/EmployeeModel");
 
 const getAllEmployees = function(req, res){
     Employee.find().exec(function(err, result){
-        if(err) res.status(400);
+        if(err){res.status(400)}
         res.render('employees/index', {
             employees: result,
             title: "Funcionários"
@@ -11,20 +10,14 @@ const getAllEmployees = function(req, res){
     });
 }
 
-const addEmployee = function (req, res){
+const addEmployee = function(req, res){
     var employee = Employee(req.body);
 
-    try{
-        employee.validate();
-        employee.save((err) => {
-            if(err){
-                res.status(400)
-            }
-            res.redirect('/employees');
-        })
-    } catch(e){
-        throw(e);
-    }
+    employee.save((err) => {
+        if(err){res.status(400)}
+        console.log("Successfully created an employee.");
+        res.redirect('/employees');
+    })
 }
 
 module.exports = {
