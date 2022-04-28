@@ -20,9 +20,9 @@
           <tr>
             <td scope="row"><%= employee.name %></th>
             <td><%= employee.email %></td>
-            <td><i class="fa-solid fa-circle-plus icons"></i></td>
+            <td><i class="fa-solid fa-circle-plus icons" onclick="location.href=window.location.href+'/details/<%= employee._id %>'"></i></td>
             <td><i class="fa-solid fa-pen icons"></i></td>
-            <td><i class="fa-solid fa-trash-can icons"></i></i></td>
+            <td><i class="fa-solid fa-trash-can icons"></i></td>
           </tr>
         <% } %>
       <% } else { %>
