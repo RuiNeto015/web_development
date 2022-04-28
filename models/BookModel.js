@@ -9,7 +9,7 @@ mongoose.connect('mongodb+srv://pawgrupo10:pawgrupo10@cluster0.e5a7n.mongodb.net
         console.error(err));
 
 var BookSchema = new mongoose.Schema({
-    name: {
+    title: {
         type: String,
         maxlength: [75, 'Número máximo de caracteres é 75, foram inseridos {VALUE}'],
         required: true
@@ -25,7 +25,7 @@ var BookSchema = new mongoose.Schema({
         minlength: [10, 'Número mínimo de caracteres é 10, foram inseridos {VALUE}'],
         required: true
     },
-    bookMaker: {
+    editor: {
         type: String,
         maxlength: [75, 'Número máximo de caracteres é 75, foram inseridos {VALUE}'],
         required: true
