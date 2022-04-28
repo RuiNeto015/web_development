@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+  <%- include("../static/layout.ejs") %>
+  
+  <br>
+  <h1 class="text-center">Editar Livro</h1>
+  <br>
+
+  <form method="post">
+    <div class="mb-3 row">
+        <div class="mb-3 row"><h5>Título:</h5>
+          <input type="text" placeholder="Insira o Título" class="form-control" id="titleInput" name="title" maxlength="75" value="<%= book.title %>" required></div>
+        
+        <div class="mb-3 row"><h5>Autor:</h5>
+          <input type="text" placeholder="Insira o Autor" class="form-control" id="authorInput" name="author" maxlength="75" value="<%= book.author %>" required></div>
+        
+        <div class="mb-3 row"><h5>ISBN:</h5>
+          <input type="text" placeholder="Insira o ISBN" class="form-control" id="isbnInput" name="isbn" pattern="[0-9]+" minlength="10" maxlength="13" value="<%= book.isbn %>" required></div>
+        
+        <div class="mb-3 row"><h5>Editor/a:</h5>
+          <input type="text" placeholder="Insira o editor/a" class="form-control" id="editorInput" name="editor" maxlength="75" value="<%= book.editor %>" required></div>
+        
+        <div class="mb-3 row"><h5>Idioma:</h5>
+          <input type="text" placeholder="Insira o idioma" class="form-control" id="languageInput" name="language" maxlength="25" value="<%= book.language %>" required></div>
+        
+        <div class="mb-3 row"><h5>Quantidade:</h5>
+          <input type="number" placeholder="Insira a quantidade" class="form-control" id="quantityInput" name="quantity" min="0" value="<%= book.quantity %>" required></div>
+        
+        <div class="mb-3 row"><h5>Estado:</h5>
+            <select class="form-control" id="conditionInput" name="condition" required>
+              <option value="Novo" <% if(book.condition =="Novo"){ %> selected <% } %>> Novo</option>
+              <option value="Usado" <% if(book.condition =="Usado"){ %> selected <% } %>> Usado</option>
+            </select></div>
+        
+        <div class="mb-3 row"><h5>Número de páginas:</h5>
+          <input type="number" placeholder="Insira o número de páginas" class="form-control" id="pagesInput" name="pages" min="0" value="<%= book.pages %>" required></div>
+        
+        <div class="text-center"><button type="submit" class="btn btn-dark mb-3 row">Guardar alterações</button></div>
+    </div>
+  </form>
+
+<%- include("../static/footer.ejs") %>
+</html>
