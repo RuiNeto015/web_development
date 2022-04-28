@@ -39,18 +39,7 @@ const getBookEditPage = function(req, res){
 }
 
 const updateBook = function(req, res){
-    Book.findByIdAndUpdate(req.params.id, {
-        $set: {
-            title: req.body.title,
-            author: req.body.author,
-            isbn: req.body.isbn,
-            editor: req.body.editor,
-            language: req.body.language,
-            quantity: req.body.quantity,
-            condition: req.body.condition,
-            pages: req.body.pages
-        }
-    }, {new: true}, function(err, book){
+    Book.findByIdAndUpdate(req.params.id, req.body, {runValidators:true},  function(err, book){
         if(err){
             console.log(err);
             res.render('../views/books/edit', {book: req.body});
