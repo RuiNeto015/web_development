@@ -11,6 +11,15 @@ var clientsRouter = require('./routes/clients');
 var booksRouter = require('./routes/books');
 var employeesRouter = require('./routes/employees');
 
+var mongoose = require("mongoose")
+mongoose.Promise = global.Promise;
+
+mongoose.connect('mongodb+srv://pawgrupo10:pawgrupo10@cluster0.e5a7n.mongodb.net/myFirstDatabase?retryWrites=true&w=majority;')
+    .then(() =>
+        console.log('Connection Successful!'))
+    .catch((err) => 
+        console.error(err));
+
 var app = express();
 
 // view engine setup
