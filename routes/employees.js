@@ -1,6 +1,6 @@
 var express = require('express');
 var router = express.Router();
-const {getAllEmployees, addEmployee} = require("../controllers/EmployeeController");
+const {getAllEmployees, addEmployee, getDetailsView} = require("../controllers/EmployeeController");
 
 //EMPLOYEES INDEX
 
@@ -15,6 +15,8 @@ router.get('/employees/create', function(req, res, next) {
 });
   
 router.post('/employees/create', addEmployee);
+
+router.get('/employees/details/:id', getDetailsView);
 
 module.exports = {
     routes: router

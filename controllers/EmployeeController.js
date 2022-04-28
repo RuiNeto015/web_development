@@ -20,7 +20,20 @@ const addEmployee = function(req, res){
     })
 }
 
+
+const getDetailsView = function(req, res){
+    Employee.findById(req.params.id).exec(function(err, result){
+        if(err){res.status(400)}
+        res.render('employees/details', {
+            employee: result,
+            title: "Funcionários"
+        });
+    });
+}
+
+
 module.exports = {
     getAllEmployees,
-    addEmployee
+    addEmployee,
+    getDetailsView
 }
