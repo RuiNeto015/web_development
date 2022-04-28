@@ -25,3 +25,8 @@ a {
   color: white;
   font-size: 1em;
 }
+
+.icons{
+  cursor: pointer;
+  color: #1051ac;
+}

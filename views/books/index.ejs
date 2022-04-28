@@ -10,11 +10,9 @@
         <th scope="col">Titulo</th>
         <th scope="col">Autor</th>
         <th scope="col">ISBN</th>
-        <th scope="col">Editor/a</th>
-        <th scope="col">Idioma</th>
-        <th scope="col">Quantidade</th>
-        <th scope="col">Estado</th>
-        <th scope="col">Páginas</th>
+        <th scope="col">Detalhes</th>
+        <th scope="col">Editar</th>
+        <th scope="col">Apagar</th>
       </tr>
     </thead>
     <tbody>
@@ -24,11 +22,9 @@
             <td scope="row"><%= book.title %></th>
             <td><%= book.author %></td>
             <td><%= book.isbn %></td>
-            <td><%= book.editor %></td>
-            <td><%= book.language %></td>
-            <td><%= book.quantity %></td>
-            <td><%= book.condition %></td>
-            <td><%= book.pages %></td>
+            <td><i class="fa-solid fa-circle-plus icons"></i></td>
+            <td><i class="fa-solid fa-pen icons"></i></td>
+            <td><i class="fa-solid fa-trash-can icons"></i></i></td>
           </tr>
         <% } %>
       <% } else { %>

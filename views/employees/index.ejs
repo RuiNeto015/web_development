@@ -9,6 +9,7 @@
       <tr>
         <th scope="col">Nome</th>
         <th scope="col">Email</th>
+        <th scope="col">Detalhes</th>
         <th scope="col">Editar</th>
         <th scope="col">Apagar</th>
       </tr>
@@ -19,8 +20,9 @@
           <tr>
             <td scope="row"><%= employee.name %></th>
             <td><%= employee.email %></td>
-            <td>+</td>
-            <td>-</td>
+            <td><i class="fa-solid fa-circle-plus icons"></i></td>
+            <td><i class="fa-solid fa-pen icons"></i></td>
+            <td><i class="fa-solid fa-trash-can icons"></i></i></td>
           </tr>
         <% } %>
       <% } else { %>

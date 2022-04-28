@@ -9,10 +9,9 @@
       <tr>
         <th scope="col">Nome</th>
         <th scope="col">Email</th>
-        <th scope="col">Genero</th>
-        <th scope="col">Data Nascimento</th>
-        <th scope="col">Morada</th>
-        <th scope="col">Telefone</th>
+        <th scope="col">Detalhes</th>
+        <th scope="col">Editar</th>
+        <th scope="col">Apagar</th>
       </tr>
     </thead>
     <tbody>
@@ -21,10 +20,9 @@
           <tr>
             <td scope="row"><%= client.name %></th>
             <td><%= client.email %></td>
-            <td><%= client.gender %></td>
-            <td><%= client.birth_date.getDate() %>-<%= client.birth_date.getMonth() %>-<%= client.birth_date.getFullYear() %></td>
-            <td><%= client.address %></td>
-            <td><%= client.phoneNumber %></td>
+            <td><i class="fa-solid fa-circle-plus icons"></i></td>
+            <td><i class="fa-solid fa-pen icons"></i></td>
+            <td><i class="fa-solid fa-trash-can icons"></i></i></td>
           </tr>
         <% } %>
       <% } else { %>
