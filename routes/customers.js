@@ -18,7 +18,7 @@ router.get('/customers/details/:id', getDetailsView);
 
 //Customer DELETE
 
-router.delete('/customers/delete/:id', deleteCustomer);
+router.get('/customers/delete/:id', deleteCustomer);
 
 module.exports = {
   routes: router

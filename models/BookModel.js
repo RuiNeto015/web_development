@@ -41,6 +41,11 @@ var BookSchema = new mongoose.Schema({
         min: [0, 'Número mínimo é 0, foi inserido: {VALUE}'],
         required: true
     },
+    price: {
+        type: String,
+        min: [0, 'Número mínimo é 0, foi inserido: {VALUE}'],
+        required: true
+    },
     created_at: {
         type: Date, 
         default: Date.now

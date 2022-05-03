@@ -34,8 +34,11 @@
             </select></div>
         
         <div class="mb-3 row"><h5>Número de páginas:</h5>
-          <input type="number" placeholder="Insira o número de páginas" class="form-control" id="pagesInput" name="pages" min="0" required></div>
+          <input type="number" placeholder="Insira o número de páginas" class="form-control" id="pagesInput" name="pages" min="0" pattern="[0-9]+" required></div>
         
+        <div class="mb-3 row"><h5>Preço por unidade:</h5>
+          <input type="text" placeholder="Insira o preço" class="form-control" id="priceInput" name="price" required></div>
+
         <div class="text-center"><button type="submit" class="btn btn-dark mb-3 row">Registar Livro</button></div>
     </div>
   </form>

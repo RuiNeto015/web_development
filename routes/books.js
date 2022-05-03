@@ -25,7 +25,7 @@ router.post('/books/edit/:id', updateBook);
 
 //BOOKS DELETE
 
-router.delete('/books/delete/:id', deleteBook);
+router.get('/books/delete/:id', deleteBook);
 
 
 module.exports = {

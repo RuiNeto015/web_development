@@ -18,7 +18,7 @@ router.get('/employees/details/:id', getDetailsView);
 
 //Employees DELETE
 
-router.delete('/employees/delete/:id', deleteEmployee);
+router.get('/employees/delete/:id', deleteEmployee);
 
 module.exports = {
     routes: router

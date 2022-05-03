@@ -46,7 +46,6 @@ const updateBook = function(req, res){
 const deleteBook = function(req, res){
     Book.remove({_id: req.params.id}, function(err){
         if(err){res.status(400)}
-        console.log(err);
         console.log("Successfully deleted a book.");
         res.redirect('/books');
     })
