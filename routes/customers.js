@@ -1,6 +1,6 @@
 var express = require('express');
 var router = express.Router();
-const {getAllCustomers, getCreateView, addCustomer, getDetailsView, deleteCustomer} = require("../controllers/CustomerController");
+const {getAllCustomers, getCreateView, addCustomer, getDetailsView, getCustomerEditPage, updateCustomer, deleteCustomer} = require("../controllers/CustomerController");
 
 //Customer INDEX
 
@@ -15,6 +15,12 @@ router.get('/customers/create', getCreateView);
 router.post('/customers/create', addCustomer);
 
 router.get('/customers/details/:id', getDetailsView);
+
+//Customer EDIT
+
+router.get('/customers/edit/:id', getCustomerEditPage);
+
+router.post('/customers/edit/:id', updateCustomer);
 
 //Customer DELETE
 

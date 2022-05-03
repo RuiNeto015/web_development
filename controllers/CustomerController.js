@@ -34,6 +34,25 @@ const addCustomer = function(req, res){
     })
 }
 
+const getCustomerEditPage = function(req, res){
+    Customer.findOne({_id: req.params.id}).exec(function(err, customer){
+        if(err){res.status(400)}
+        res.render('customers/edit', {
+            customer: customer,
+            title: "Clientes"
+        })
+    });
+}
+
+const updateCustomer = function(req, res){
+    Customer.findByIdAndUpdate(req.params.id, req.body, {runValidators:true},  function(err, customer){
+        if(err){
+            console.log(err);
+        }
+        res.redirect("/customers")
+    });
+}
+
 const deleteCustomer = function(req, res){
     Customer.remove({_id: req.params.id}, function(err){
         if(err){res.status(400)}
@@ -48,5 +67,7 @@ module.exports = {
     getCreateView,
     addCustomer,
     getDetailsView,
+    getCustomerEditPage,
+    updateCustomer,
     deleteCustomer
 }

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+  <%- include("../static/layout.ejs") %>
+  
+  <br>
+  <h1 class="text-center">Editar Cliente</h1>
+  <br>
+
+  <form method="POST">
+    <div class="mb-3 row">
+        <div class="mb-3 row"><h5>Nome:</h5>
+          <input type="text" placeholder="Insira o nome" class="form-control" id="nameInput" name="name" maxlength="75" value="<%= customer.name %>" required></div>
+        
+        <div class="mb-3 row"><h5>Email:</h5>
+          <input type="email" placeholder="Insira o email" class="form-control" id="emailInput" name="email" maxlength="75" value="<%= customer.email %>" required></div>
+        
+        <div class="mb-3 row"><h5>Género:</h5>
+          <select class="form-control" id="gender" name="gender" required>
+            <option value="M" <% if(customer.condition =="M"){ %> selected <% } %>> Masculino</option>
+            <option value="F" <% if(customer.condition =="F"){ %> selected <% } %>> Feminino</option>
+            <option value="O" <% if(customer.condition =="O"){ %> selected <% } %>> Outro</option>
+          </select></div>
+        
+        <div class="mb-3 row"><h5>Data de Nascimento:</h5>
+          <input type="date" class="form-control" id="birthDateInput" name="birth_date" required></div>
+        
+        <div class="mb-3 row"><h5>Morada:</h5>
+          <input type="text" placeholder="Insira a morada" class="form-control" id="addressInput" name="address" maxlength="100" value="<%= customer.address %>" required></div>
+        
+        <div class="mb-3 row"><h5>Número de telefone:</h5>
+          <input type="tel" placeholder="Insira o número de telefone" class="form-control" id="phoneNumberInput" name="phoneNumber" pattern="[0-9]{9}" minlength="9" maxlength="9" value="<%= customer.phoneNumber %>" required></div>
+        
+        <div class="mb-3 row"><h5>NIF:</h5>
+          <input type="text" placeholder="Insira o NIF" class="form-control" id="nifInput" name="nif" pattern="[0-9]{9}" minlength="9" maxlength="9" value="<%= customer.nif %>" required></div>
+        <br>
+        <div style="text-align: center;"><button type="submit" class="btn btn-dark mb-3 row">Guardar alterações</button></div>
+    </div>
+  </form>
+
+<%- include("../static/footer.ejs") %>
+</html>

@@ -21,7 +21,7 @@
             <td scope="row"><%= customer.name %></th>
             <td><%= customer.email %></td>
             <td><i class="fa-solid fa-circle-plus icons" onclick="location.href=window.location.href+'/details/<%= customer._id %>'"></i></td>
-            <td><i class="fa-solid fa-pen icons"></i></td>
+            <td><i class="fa-solid fa-pen icons" onclick="location.href=window.location.href+'/edit/<%= customer._id %>'"></i></td>
             <td><i class="fa-solid fa-trash-can icons" onclick="location.href=window.location.href+'/delete/<%= customer._id %>'"></i></i></td>
           </tr>
         <% } %>
