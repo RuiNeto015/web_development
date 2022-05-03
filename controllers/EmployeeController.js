@@ -41,7 +41,7 @@ const deleteEmployee = function(req, res){
         if(err){res.status(400)}
         console.log(err);
         console.log("Successfully deleted a employee.");
-        res.redirect('/customers');
+        res.redirect('/employees');
     })
 }
 
