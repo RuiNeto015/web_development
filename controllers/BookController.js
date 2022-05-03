@@ -10,6 +10,16 @@ const getAllBooks = function(req, res){
     });
 }
 
+const getDetailsView = function(req, res){
+    Book.findById(req.params.id).exec(function(err, result){
+        if(err){res.status(400)}
+        res.render('books/details', {
+            book: result,
+            title: "Livros"
+        });
+    });
+}
+
 const getCreateView = function(req, res, next) {
     res.render('books/create', {title: "Livros"});
 }
@@ -52,6 +62,7 @@ const deleteBook = function(req, res){
 
 module.exports = {
     getAllBooks,
+    getDetailsView,
     getCreateView,
     addBook,
     deleteBook,

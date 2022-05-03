@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+  <%- include("../static/layout.ejs") %>
+
+    <div class="divDetails">
+      <h5>Id: <%= book._id %></h5>
+      <h5>Título: <%= book.title %></h5>
+      <h5>Autor: <%= book.author %></h5>
+      <h5>Isbn: <%= book.isbn %></h5>
+      <h5>Editor/a: <%= book.editor %></h5>
+      <h5>Idioma: <%= book.language %></h5>
+      <h5>Quantidade: <%= book.quantity %></h5>
+      <h5>Condição: <%= book.condition %></h5>
+      <h5>Páginas: <%= book.pages %></h5>
+      <h5>Preço por unidade: <%= book.price %> €</h5>
+    </div>
+
+  <%- include("../static/footer.ejs") %>
+</html>

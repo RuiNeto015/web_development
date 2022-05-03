@@ -1,7 +1,7 @@
 var express = require('express');
 const req = require('express/lib/request');
 var router = express.Router();
-const {getAllBooks, getCreateView,addBook, deleteBook, getBookEditPage, updateBook} = require("../controllers/BookController");
+const {getAllBooks, getDetailsView, getCreateView, addBook, deleteBook, getBookEditPage, updateBook} = require("../controllers/BookController");
 
 //BOOKS INDEX
 
@@ -15,6 +15,7 @@ router.get('/books/create', getCreateView);
 
 router.post('/books/create', addBook);
 
+router.get('/books/details/:id', getDetailsView);
 
 //BOOKS EDIT
 
