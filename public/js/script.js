@@ -13,8 +13,9 @@ function currentPage(){
 }
 window.onload = currentPage();
 
-function loadModal(id){
+function loadModal(id, name){
     document.getElementById('deleteModal').style.display='block';
+    document.getElementById('modalName').textContent = name;
     document.getElementById('deletebtn').setAttribute( "onclick", "location.href=window.location.href+'/delete/"+id+"';" );
 }
 

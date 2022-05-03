@@ -24,7 +24,7 @@
             <td><%= book.isbn %></td>
             <td><i class="fa-solid fa-circle-plus icons"></i></td>
             <td><i class="fa-solid fa-pen icons" onclick="location.href=window.location.href+'/edit/'+'<%= book._id %>'"></i></td>
-            <td><i class="fa-solid fa-trash-can icons" onclick="location.href=window.location.href+'/delete/'+'<%= book._id %>'"></i></td>
+            <td><i class="fa-solid fa-trash-can icons" onclick="loadModal('<%= book._id %>','<%= book.title %>')"></i></td>
           </tr>
         <% } %>
       <% } else { %>
@@ -34,6 +34,21 @@
         <% } %>
     </tbody>
   </table>
+</div>
+
+<div id="deleteModal" class="modal">
+  <span onclick="closeModal()" class="close" title="Close Modal">&times;</span>
+  <form class="modal-content">
+    <div class="containerModal">
+      <h1>Apagar Funcionário</h1>
+      <p>Tem a certeza que deseja apagar o livro <a id="modalName"></a>?</p>
+
+      <div class="clearfix">
+        <button type="button" class="buttonModal cancelbtn" onclick="closeModal()">Cancelar</button>
+        <button id="deletebtn" type="button" class="buttonModal deletebtn">Apagar</button>
+      </div>
+    </div>
+  </form>
 </div>
 
 <%- include("../static/footer.ejs") %>
