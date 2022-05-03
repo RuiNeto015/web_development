@@ -26,7 +26,7 @@
           </select></div>
         
         <div class="mb-3 row"><h5>Data de Nascimento:</h5>
-          <input type="date" class="form-control" id="birthDateInput" name="birth_date" required></div>
+          <input type="date" class="form-control" id="birthDateInput" name="birth_date" value="<%= employee.birth_date.getFullYear() %>-<%= String(employee.birth_date.getMonth()+1).padStart(2,'0') %>-<%= String(employee.birth_date.getDate()).padStart(2,'0') %>" required></div>
         
         <div class="mb-3 row"><h5>Morada:</h5>
           <input type="text" placeholder="Insira a morada" class="form-control" id="addressInput" name="address" maxlength="100" value="<%= employee.address %>" required></div>
