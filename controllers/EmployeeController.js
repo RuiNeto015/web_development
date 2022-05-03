@@ -24,6 +24,24 @@ const addEmployee = function(req, res){
     })
 }
 
+const getEmployeeEditPage = function(req, res){
+    Employee.findOne({_id: req.params.id}).exec(function(err, employee){
+        if(err){res.status(400)}
+        res.render('employees/edit', {
+            employee: employee,
+            title: "Funcionários"
+        })
+    });
+}
+
+const updateEmployee = function(req, res){
+    Employee.findByIdAndUpdate(req.params.id, req.body, {runValidators:true},  function(err, employee){
+        if(err){
+            console.log(err);
+        }
+        res.redirect("/employees")
+    });
+}
 
 const getDetailsView = function(req, res){
     Employee.findById(req.params.id).exec(function(err, result){
@@ -51,5 +69,7 @@ module.exports = {
     getCreateView,
     addEmployee,
     getDetailsView,
+    getEmployeeEditPage,
+    updateEmployee,
     deleteEmployee
 }

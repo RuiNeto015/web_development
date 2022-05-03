@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+  <%- include("../static/layout.ejs") %>
+  
+  <br>
+  <h1 class="text-center">Editar Funcionário</h1>
+  <br>
+
+  <form method="POST">
+    <div class="mb-3">
+        <div class="mb-3 row"><h5>Nome:</h5>
+          <input type="text" placeholder="Insira o nome" class="form-control" id="nameInput" name="name" maxlength="75" value="<%= employee.name %>" required></div>
+        
+        <div class="mb-3 row"><h5>Email:</h5>
+          <input type="email" placeholder="Insira o email" class="form-control" id="emailInput" name="email" maxlength="75" value="<%= employee.email %>" required></div>
+        
+        <div class="mb-3 row"><h5>Palavra-passe:</h5>
+          <input type="password" placeholder="Insira a palavra-passe" class="form-control" id="passwordInput" name="password" minlength="5" maxlength="15" value="<%= employee.password %>" required>
+          <small class="form-text text-muted">De 5 a 15 caracteres.</small></div>
+        
+        <div class="mb-3 row"><h5>Género:</h5>
+          <select class="form-control" id="genderInput" name="gender" required>
+            <option value="M" <% if(employee.gender =="M"){ %> selected <% } %>> Masculino</option>
+            <option value="F" <% if(employee.gender =="F"){ %> selected <% } %>> Feminino</option>
+            <option value="O" <% if(employee.gender =="O"){ %> selected <% } %>> Outro</option>
+          </select></div>
+        
+        <div class="mb-3 row"><h5>Data de Nascimento:</h5>
+          <input type="date" class="form-control" id="birthDateInput" name="birth_date" required></div>
+        
+        <div class="mb-3 row"><h5>Morada:</h5>
+          <input type="text" placeholder="Insira a morada" class="form-control" id="addressInput" name="address" maxlength="100" value="<%= employee.address %>" required></div>
+        
+        <div class="mb-3 row"><h5>Número de telefone:</h5>
+          <input type="tel" placeholder="Insira o número de telefone" class="form-control" id="phoneNumberInput" name="phoneNumber" pattern="[0-9]{9}" minlength="9" maxlength="9" value="<%= employee.phoneNumber %>" required></div>
+       
+        <div class="mb-3 row"><h5>NIF:</h5>
+          <input type="text" placeholder="Insira o NIF" class="form-control" id="nifInput" name="nif" pattern="[0-9]{9}" minlength="9" maxlength="9" value="<%= employee.nif %>" required></div>
+        <br>
+        <div style="text-align: center;"><button type="submit" class="btn btn-dark">Gurdar alterações</button></div>
+    </div>
+  </form>
+
+<%- include("../static/footer.ejs") %>
+</html>
