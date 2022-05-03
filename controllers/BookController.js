@@ -37,7 +37,6 @@ const updateBook = function(req, res){
     Book.findByIdAndUpdate(req.params.id, req.body, {runValidators:true},  function(err, book){
         if(err){
             console.log(err);
-            res.render('../views/books/edit', {book: req.body});
         }
         res.redirect("/books")
     });
