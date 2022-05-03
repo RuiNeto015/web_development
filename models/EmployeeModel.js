@@ -42,7 +42,7 @@ var EmployeeSchema = new mongoose.Schema({
         minlength: [9, 'Número mínimo de dígitos é 9, foi inserido: {VALUE}'],
         required: true
     },
-    updated_at: {
+    created_at: {
         type: Date, 
         default: Date.now
     }

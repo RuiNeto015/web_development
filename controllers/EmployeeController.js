@@ -35,10 +35,21 @@ const getDetailsView = function(req, res){
     });
 }
 
+const deleteEmployee = function(req, res){
+    
+    Employee.remove({_id: req.params.id}, function(err){
+        if(err){res.status(400)}
+        console.log(err);
+        console.log("Successfully deleted a employee.");
+        res.redirect('/customers');
+    })
+}
+
 
 module.exports = {
     getAllEmployees,
     getCreateView,
     addEmployee,
-    getDetailsView
+    getDetailsView,
+    deleteEmployee
 }

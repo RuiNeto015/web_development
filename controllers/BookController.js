@@ -10,20 +10,15 @@ const getAllBooks = function(req, res){
     });
 }
 
+const getCreateView = function(req, res, next) {
+    res.render('books/create', {title: "Livros"});
+}
+
 const addBook = function(req, res){
     var book = Book(req.body);
     book.save((err) => {
         if(err){res.status(400)}
         console.log("Successfully created a book.");
-        res.redirect('/books');
-    })
-}
-
-const deleteBook = function(req, res){
-    Book.remove({_id: req.params.id}, function(err){
-        if(err){res.status(400)}
-        console.log(err);
-        console.log("Successfully deleted a book.");
         res.redirect('/books');
     })
 }
@@ -48,8 +43,18 @@ const updateBook = function(req, res){
     });
 }
 
+const deleteBook = function(req, res){
+    Book.remove({_id: req.params.id}, function(err){
+        if(err){res.status(400)}
+        console.log(err);
+        console.log("Successfully deleted a book.");
+        res.redirect('/books');
+    })
+}
+
 module.exports = {
     getAllBooks,
+    getCreateView,
     addBook,
     deleteBook,
     getBookEditPage,

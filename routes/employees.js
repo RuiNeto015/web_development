@@ -1,6 +1,6 @@
 var express = require('express');
 var router = express.Router();
-const {getAllEmployees, getCreateView, addEmployee, getDetailsView} = require("../controllers/EmployeeController");
+const {getAllEmployees, getCreateView, addEmployee, getDetailsView,deleteEmployee} = require("../controllers/EmployeeController");
 
 //EMPLOYEES INDEX
 
@@ -15,6 +15,10 @@ router.get('/employees/create', getCreateView);
 router.post('/employees/create', addEmployee);
 
 router.get('/employees/details/:id', getDetailsView);
+
+//Employees DELETE
+
+router.delete('/employees/delete/:id', deleteEmployee);
 
 module.exports = {
     routes: router
