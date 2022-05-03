@@ -22,7 +22,7 @@
             <td><%= employee.email %></td>
             <td><i class="fa-solid fa-circle-plus icons" onclick="location.href=window.location.href+'/details/<%= employee._id %>'"></i></td>
             <td><i class="fa-solid fa-pen icons"></i></td>
-            <td><i class="fa-solid fa-trash-can icons" onclick="loadModal('<%= employee._id %>')"></i></td>
+            <td><i class="fa-solid fa-trash-can icons" onclick="loadModal('<%= employee._id %>','<%= employee.name %>')"></i></td>
           </tr>
         <% } %>
       <% } else { %>
@@ -36,14 +36,14 @@
 
 <div id="deleteModal" class="modal">
   <span onclick="closeModal()" class="close" title="Close Modal">&times;</span>
-  <form class="modal-content" action="/action_page.php">
+  <form class="modal-content">
     <div class="containerModal">
-      <h1>Delete Account</h1>
-      <p>Are you sure you want to delete your account?</p>
+      <h1>Apagar Funcionário</h1>
+      <p>Tem a certeza que deseja apagar o funcionário <a id="modalName"></a>?</p>
 
       <div class="clearfix">
-        <button type="button" class="buttonModal cancelbtn" onclick="closeModal()">Cancel</button>
-        <button id="deletebtn" type="button" class="buttonModal deletebtn">Delete</button>
+        <button type="button" class="buttonModal cancelbtn" onclick="closeModal()">Cancelar</button>
+        <button id="deletebtn" type="button" class="buttonModal deletebtn">Apagar</button>
       </div>
     </div>
   </form>
