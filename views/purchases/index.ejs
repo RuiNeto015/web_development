@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+  <%- include("../static/layout.ejs") %>
+  <h1 class="text-center">Histórico de Compras</h1>
+  <div class="tableMargins">
+    <button type="button" class="btn btn-secondary float-end" onclick="location.href=window.location.href+'/create'">Adicionar Compra</button>
+    <table class="table table-dark table-striped table-hover">
+      <thead>
+      <tr>
+        <th scope="col">Número</th>
+        <th scope="col">Cliente</th>
+        <th scope="col">Data</th>
+        <th scope="col">Detalhes</th>
+        <th scope="col">Editar</th>
+        <th scope="col">Apagar</th>
+      </tr>
+    </thead>
+    <tbody>
+      <%if(purchases.length > 0){%>
+        <% for(let purchase of purchases) { %>
+          <tr>
+            <td scope="row"><%= purchase.number %></th>
+            <td><%= book.nif %></td>
+            <td><%= book.created_at %></td>
+            <td><i class="fa-solid fa-circle-plus icons" onclick="location.href=window.location.href+'/details/'+'<%= purchase._id %>'"></i></td>
+            <td><i class="fa-solid fa-pen icons" onclick="location.href=window.location.href+'/edit/'+'<%= purchase._id %>'"></i></td>
+            <td><i class="fa-solid fa-trash-can icons" onclick="loadModal('<%= purchase._id %>','<%= purchase.number %>')"></i></td>
+          </tr>
+        <% } %>
+      <% } else { %>
+          <tr>
+            <td scope="row" colspan="8" class="text-center">Não foram encontrados dados!</td>
+          </tr>
+        <% } %>
+    </tbody>
+  </table>
+</div>
+
+<div id="deleteModal" class="modal">
+  <span onclick="closeModal()" class="close" title="Close Modal">&times;</span>
+  <form class="modal-content">
+    <div class="containerModal">
+      <h1>Apagar Funcionário</h1>
+      <p>Tem a certeza que deseja apagar o livro <a id="modalName"></a>?</p>
+
+      <div class="clearfix">
+        <button type="button" class="buttonModal cancelbtn" onclick="closeModal()">Cancelar</button>
+        <button id="deletebtn" type="button" class="buttonModal deletebtn">Apagar</button>
+      </div>
+    </div>
+  </form>
+</div>
+
+<%- include("../static/footer.ejs") %>
+</html>

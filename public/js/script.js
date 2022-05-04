@@ -1,7 +1,10 @@
 function currentPage(){
     switch (document.title){
         case "Clientes":
-            document.getElementById("navClients").classList.add("active");
+            document.getElementById("navCustomers").classList.add("active");
+            break;
+        case "Histórico de Compras":
+            document.getElementById("navPurchases").classList.add("active");
             break;
         case "Livros":
             document.getElementById("navBooks").classList.add("active");
