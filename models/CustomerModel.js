@@ -3,7 +3,7 @@ var mongoose = require('mongoose');
 var CustomerSchema = new mongoose.Schema({
     name: {
         type: String,
-        maxlength: [10, 'Número máximo de caracteres é 75, foi inserido: {VALUE}'],
+        maxlength: [75, 'Número máximo de caracteres é 75, foi inserido: {VALUE}'],
         required: true
     },
     email: {
