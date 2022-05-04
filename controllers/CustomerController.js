@@ -26,11 +26,19 @@ const getCreateView = function(req, res, next) {
 
 const addCustomer = function(req, res){
     var customer = Customer(req.body);
+    var query = req.body.nif;
 
-    customer.save((err) => {
-        if(err){res.status(400)}
-        console.log("Successfully created a customer.");
-        res.redirect('/customers');
+    Customer.findOne({nif:query}, function(err, example){
+        if(err) console.log(err);
+        if(example){
+            console.log("Este NIF já existe na base de dados!");
+        }else{
+            customer.save((err) => {
+                if(err){res.status(400)}
+                console.log("Successfully created a customer.");
+                res.redirect('/customers');
+            })
+        }
     })
 }
 
