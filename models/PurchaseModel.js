@@ -31,10 +31,10 @@ var PurchaseSchema = new mongoose.Schema({
   price: {
     type: [String],
   },
-  __v: {
-    type: Number,
-  },
+  created_at: {
+    type: Date,
+    default: Date.now,
+  }
 });
 
 module.exports = mongoose.model("Purchase", PurchaseSchema);
-

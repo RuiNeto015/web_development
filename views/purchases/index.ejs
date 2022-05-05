@@ -7,7 +7,7 @@
     <table class="table table-dark table-striped table-hover">
       <thead>
       <tr>
-        <th scope="col">Número</th>
+        <th scope="col">NIF</th>
         <th scope="col">Cliente</th>
         <th scope="col">Data</th>
         <th scope="col">Detalhes</th>
@@ -19,17 +19,17 @@
       <%if(purchases.length > 0){%>
         <% for(let purchase of purchases) { %>
           <tr>
-            <td scope="row"><%= purchase.number %></th>
-            <td><%= book.nif %></td>
-            <td><%= book.created_at %></td>
+            <td scope="row"><%= purchase.nif %></th>
+            <td><%= purchase.name %></td>
+            <td><%= purchase.created_at.getDate() %>/<%= purchase.created_at.getMonth()+1 %>/<%= purchase.created_at.getFullYear() %></td>
             <td><i class="fa-solid fa-circle-plus icons" onclick="location.href=window.location.href+'/details/'+'<%= purchase._id %>'"></i></td>
             <td><i class="fa-solid fa-pen icons" onclick="location.href=window.location.href+'/edit/'+'<%= purchase._id %>'"></i></td>
-            <td><i class="fa-solid fa-trash-can icons" onclick="loadModal('<%= purchase._id %>','<%= purchase.number %>')"></i></td>
+            <td><i class="fa-solid fa-trash-can icons" onclick="loadModal('<%= purchase._id %>','<%= purchase.name %>')"></i></td>
           </tr>
         <% } %>
       <% } else { %>
           <tr>
-            <td scope="row" colspan="8" class="text-center">Não foram encontrados dados!</td>
+            <td scope="row" colspan="6" class="text-center">Não foram encontrados dados!</td>
           </tr>
         <% } %>
     </tbody>
@@ -41,7 +41,7 @@
   <form class="modal-content">
     <div class="containerModal">
       <h1>Apagar Funcionário</h1>
-      <p>Tem a certeza que deseja apagar o livro <a id="modalName"></a>?</p>
+      <p>Tem a certeza que deseja apagar a compra de <a id="modalName"></a>?</p>
 
       <div class="clearfix">
         <button type="button" class="buttonModal cancelbtn" onclick="closeModal()">Cancelar</button>
