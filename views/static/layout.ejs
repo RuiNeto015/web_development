@@ -27,13 +27,16 @@
 
       <div class="container" id="bodyContainer">
 
-        <% if(typeof msg != 'undefined') { %>
+        <% if(typeof success != 'undefined') { %>
+          <div class="alert alert-success alert-dismissible fade show" role="alert" id="alertMessage">
+          <%- success %>
+          <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close" onclick="closeAlert()"></button>
+        </div><% } %>
 
-
-
-      <div class="alert alert-secondary" role="alert">
-        <%- msg %>
-      </div>
-      <% } %>
+        <% if(typeof error != 'undefined') { %>
+          <div class="alert alert-danger alert-dismissible fade show" role="alert" id="alertMessage">
+          <%- error %>
+          <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close" onclick="closeAlert()"></button>
+        </div><% } %>
         
 

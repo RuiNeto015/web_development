@@ -16,6 +16,27 @@ function currentPage(){
 }
 window.onload = currentPage();
 
+function closeAlert() {
+    var fade= document.getElementById("alertMessage");
+      
+    var intervalID = setInterval(function () {
+          
+        if (!fade.style.opacity) {
+            fade.style.opacity = 1;
+        }
+          
+          
+        if (fade.style.opacity > 0) {
+            fade.style.opacity -= 0.25;
+        } 
+          
+        else {
+            clearInterval(intervalID);
+        }
+          
+    }, 200);
+}
+
 function loadModal(id, name){
     document.getElementById('deleteModal').style.display='block';
     document.getElementById('modalName').textContent = name;

@@ -15,7 +15,7 @@ const getDetailsView = function(req, res){
         if(err){res.status(400)}
         res.render('customers/details', {
             customer: result,
-            title: "Clientes"
+            title: "Clientes",
         });
     });
 }
@@ -32,7 +32,7 @@ const addCustomer = function(req, res){
         if(err) console.log(err);
         if(dup){
             console.log("Este NIF já existe na base de dados!");
-            res.render('customers/create', {title: "Clientes", msg: "Este NIF já existe na base de dados!"});
+            res.render('customers/create', {title: "Clientes", error: "Este NIF já existe na base de dados!"});
             
         }else{
             customer.save((err) => {
