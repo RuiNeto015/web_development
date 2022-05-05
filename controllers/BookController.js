@@ -60,6 +60,20 @@ const deleteBook = function(req, res){
     })
 }
 
+const bookSearchByISBN = function(req, res){
+    Book.find({isbn: req.params.ISBN}).exec(function(err, result){
+        if(err){res.status(400)}
+        res.send(result);
+    });
+}
+
+const bookSearchByISBNandCondition = function(req, res){
+    Book.findOne({isbn: req.params.ISBN, condition: req.params.condition}).exec(function(err, result){
+        if(err){res.status(400)}
+        res.send(result);
+    });
+}
+
 module.exports = {
     getAllBooks,
     getDetailsView,
@@ -67,5 +81,7 @@ module.exports = {
     addBook,
     deleteBook,
     getBookEditPage,
-    updateBook
+    updateBook,
+    bookSearchByISBN,
+    bookSearchByISBNandCondition
 }

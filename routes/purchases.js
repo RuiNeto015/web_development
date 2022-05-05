@@ -1,14 +1,19 @@
 var express = require('express');
 const req = require('express/lib/request');
 var router = express.Router();
-const {getAllPurchases} = require("../controllers/PurchaseController");
+const {getAllPurchases, getCreateView, addPurchase} = require("../controllers/PurchaseController");
 
-//BOOKS INDEX
+//Purchases INDEX
 
-/* GET Books Index page. */
+/* GET Purchases Index page. */
 router.get('/purchases', getAllPurchases);
 
+//Purchases CREATE
 
+/* GET Purchases Create page. */
+router.get('/purchases/create', getCreateView);
+
+router.post('/purchases/create', addPurchase);
 
 
 module.exports = {

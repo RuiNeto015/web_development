@@ -5,6 +5,7 @@
     <div class="divDetails">
       <h5>Id: <%= customer._id %></h5>
       <h5>Nome: <%= customer.name %></h5>
+      <h5>NIF: <%= customer.nif %></h5>
       <h5>Email: <%= customer.email %></h5>
       <h5>Género: <%if (customer.gender == 'M') {%>Masculino <%} else{%> Feminino<%}%></h5>
       <h5>Data de nascimento: <%= customer.birth_date.getDate() %>/<%= customer.birth_date.getMonth()+1 %>/<%= customer.birth_date.getFullYear() %></h5>

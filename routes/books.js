@@ -1,7 +1,7 @@
 var express = require('express');
 const req = require('express/lib/request');
 var router = express.Router();
-const {getAllBooks, getDetailsView, getCreateView, addBook, deleteBook, getBookEditPage, updateBook} = require("../controllers/BookController");
+const {getAllBooks, getDetailsView, getCreateView, addBook, deleteBook, getBookEditPage, updateBook, bookSearchByISBN, bookSearchByISBNandCondition} = require("../controllers/BookController");
 
 //BOOKS INDEX
 
@@ -28,6 +28,11 @@ router.post('/books/edit/:id', updateBook);
 
 router.get('/books/delete/:id', deleteBook);
 
+
+//Books SearchByISBN
+
+router.get('/books/searchByISBN/:ISBN', bookSearchByISBN);
+router.get('/books/searchByISBN/:ISBN/:condition', bookSearchByISBNandCondition);
 
 module.exports = {
   routes: router

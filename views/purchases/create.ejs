@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+  <%- include("../static/layout.ejs") %>
+  
+  <br>
+  <h1 class="text-center">Registar Compra</h1>
+  <br>
+
+  <form method="POST" class="row g-3">
+    <div class="col-md-6">
+        <label for="inputNIF" class="form-label">NIF:</label>
+        <div class="input-group mb-3">
+            <input type="text" class="form-control" placeholder="NIF" id="inputNIF" name="nif">
+            <button class="btn btn-outline-secondary" type="button" id="buttonSearchNIF" onclick="searchNIF()">Adicionar</button>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <label for="customerName" class="form-label">Nome:</label>
+        <input type="text" class="form-control" id="customerName" name="name" readonly>
+      </div>
+      <div class="col-md-6">
+        <label for="customerEmail" class="form-label">Email:</label>
+        <input type="text" class="form-control" id="customerEmail" name="email" readonly>
+      </div>
+      <div class="col-md-6">
+        <label for="customerPhone" class="form-label">Telémovel:</label>
+        <input type="text" class="form-control" id="customerPhone" name="phoneNumber" readonly>
+      </div>
+      <div class="col-12">
+        <label for="customerAddress" class="form-label">Morada</label>
+        <input type="text" class="form-control" id="customerAddress" readonly>
+      </div>
+      <div class="col-md-6">
+        <label for="inputSearchISBN" class="form-label">ISBN:</label>
+        <div class="input-group mb-3">
+            <input type="text" class="form-control" placeholder="ISBN" id="inputSearchISBN">
+            <button class="btn btn-outline-secondary" type="button" id="buttonSearchISBN" onclick="searchISBN()">Adicionar</button>
+        </div>
+      </div>
+      <table class="table" id="bookList">
+        <thead>
+          <tr>
+            <th scope="col" class="col-md-2">ISBN</th>
+            <th scope="col" class="col-md-3">Título</th>
+            <th scope="col" class="col-md-2">Condição</th>
+            <th scope="col" class="col-md-2">Preço Uni.</th>
+            <th scope="col" class="col-md-1">Remover</th>
+          </tr>
+        </thead>
+      </table>
+      <div class="col-12">
+        <div style="text-align: center;"><button type="submit" class="btn btn-dark">Registar Compra</button></div>
+      </div>
+  </form>
+
+<%- include("../static/footer.ejs") %>
+</html>

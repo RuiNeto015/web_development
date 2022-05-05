@@ -70,6 +70,13 @@ const deleteCustomer = function(req, res){
     })
 }
 
+const customerSearchByNIF = function(req, res){
+    Customer.findOne({nif: req.params.NIF}).exec(function(err, result){
+        if(err){res.status(400)}
+        res.send(result);
+    });
+}
+
 module.exports = {
     getAllCustomers,
     getCreateView,
@@ -77,5 +84,6 @@ module.exports = {
     getDetailsView,
     getCustomerEditPage,
     updateCustomer,
-    deleteCustomer
+    deleteCustomer,
+    customerSearchByNIF
 }
