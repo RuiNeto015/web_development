@@ -26,5 +26,14 @@
       </nav>
 
       <div class="container" id="bodyContainer">
+
+        <% if(typeof msg != 'undefined') { %>
+
+
+
+      <div class="alert alert-secondary" role="alert">
+        <%- msg %>
+      </div>
+      <% } %>
         
 

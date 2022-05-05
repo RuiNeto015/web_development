@@ -28,10 +28,12 @@ const addCustomer = function(req, res){
     var customer = Customer(req.body);
     var query = req.body.nif;
 
-    Customer.findOne({nif:query}, function(err, example){
+    Customer.findOne({nif:query}, function(err, dup){
         if(err) console.log(err);
-        if(example){
+        if(dup){
             console.log("Este NIF já existe na base de dados!");
+            res.render('customers/create', {title: "Clientes", msg: "Este NIF já existe na base de dados!"});
+            
         }else{
             customer.save((err) => {
                 if(err){res.status(400)}
