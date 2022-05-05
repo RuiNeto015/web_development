@@ -1,4 +1,5 @@
 var Purchase = require("../models/PurchaseModel");
+var util = require("util");
 
 const getAllPurchases = function(req, res){
     Purchase.find().exec(function(err, result){
