@@ -4,17 +4,17 @@ const {getAllEmployees, getCreateView, addEmployee, getDetailsView, deleteEmploy
 
 //EMPLOYEES INDEX
 
-/* GET Employees Index page. */
 router.get('/employees', getAllEmployees);
+
+//EMPLOYEES DETAILS
+
+router.get('/employees/details/:id', getDetailsView);
 
 //EMPLOYEES CREATE
 
-/* GET Employees Create page. */
 router.get('/employees/create', getCreateView);
   
 router.post('/employees/create', addEmployee);
-
-router.get('/employees/details/:id', getDetailsView);
 
 //EMPLOYEES EDIT
 
@@ -22,7 +22,7 @@ router.get('/employees/edit/:id', getEmployeeEditPage);
 
 router.post('/employees/edit/:id', updateEmployee);
 
-//Employees DELETE
+//EMPLOYEES DELETE
 
 router.get('/employees/delete/:id', deleteEmployee);
 

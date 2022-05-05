@@ -2,31 +2,31 @@ var express = require('express');
 var router = express.Router();
 const {getAllCustomers, getCreateView, addCustomer, getDetailsView, getCustomerEditPage, updateCustomer, deleteCustomer, customerSearchByNIF} = require("../controllers/CustomerController");
 
-//Customer INDEX
+//CUSTOMERS INDEX
 
-/* GET Customer Index page. */
 router.get('/customers', getAllCustomers);
 
-//Customer CREATE
+//CUSTOMERS DETAILS
 
-/* GET Customer Create page. */
+router.get('/customers/details/:id', getDetailsView);
+
+//CUSTOMERS CREATE
+
 router.get('/customers/create', getCreateView);
 
 router.post('/customers/create', addCustomer);
 
-router.get('/customers/details/:id', getDetailsView);
-
-//Customer EDIT
+//CUSTOMERS EDIT
 
 router.get('/customers/edit/:id', getCustomerEditPage);
 
 router.post('/customers/edit/:id', updateCustomer);
 
-//Customer DELETE
+//CUSTOMERS DELETE
 
 router.get('/customers/delete/:id', deleteCustomer);
 
-//Customer SearchByNIF
+//CUSTOMERS SEARCH BY
 
 router.get('/customers/searchByNIF/:NIF', customerSearchByNIF);
 
