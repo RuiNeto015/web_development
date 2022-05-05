@@ -59,41 +59,50 @@ function searchISBN(){
             books = JSON.parse(request.responseText);
             
             table = document.getElementById('bookList');
+            tableLength = table.rows.length;
+
             var row = table.insertRow(-1);
+
+            lastId = Number(table.rows[tableLength-1].id.split("row")[1])+1;
+            row.id = 'row'+lastId;
+
+
             var cell1 = row.insertCell(0);
             var cell2 = row.insertCell(1);
             var cell3 = row.insertCell(2);
             var cell4 = row.insertCell(3);
             var cell5 = row.insertCell(4);
+            var cell6 = row.insertCell(5);
 
-            cell1.insertAdjacentHTML('beforeend','<input type="text" class="form-control" placeholder="ISBN" id="inputISBN" name="isbn" value="'+books[0].isbn+'" readonly>');
-            cell2.insertAdjacentHTML('beforeend', '<input type="text" class="form-control" placeholder="Titulo" id="inputTitle" name="title" value="'+books[0].title+'" readonly>');
+            cell1.insertAdjacentHTML('beforeend','<input type="text" class="form-control" placeholder="ISBN" id="inputISBN'+lastId+'" name="isbn" value="'+books[0].isbn+'" readonly>');
+            cell2.insertAdjacentHTML('beforeend', '<input type="text" class="form-control" placeholder="Titulo" id="inputTitle'+lastId+'" name="title" value="'+books[0].title+'" readonly>');
             if (books.length>1)
-                cell3.insertAdjacentHTML('beforeend', '<select class="form-control" id="conditionInput" name="condition" onchange="getPriceByCondition()"><option value="" selected disabled hidden>Insira o estado</option><option value="'+books[0].condition+'">'+books[0].condition+'</option><option value="'+books[1].condition+'">'+books[1].condition+'</option></select>');
+                cell3.insertAdjacentHTML('beforeend', '<select class="form-control" id="conditionInput'+lastId+'" name="condition" onchange="getPriceByCondition(this)"><option value="" selected disabled hidden>Insira o estado</option><option value="'+books[0].condition+'">'+books[0].condition+'</option><option value="'+books[1].condition+'">'+books[1].condition+'</option></select>');
             else
-                cell3.insertAdjacentHTML('beforeend', '<select class="form-control" id="conditionInput" name="condition" onchange="getPriceByCondition()"><option value="" selected disabled hidden>Insira o estado</option><option value="'+books[0].condition+'">'+books[0].condition+'</option>');
-            cell4.insertAdjacentHTML('beforeend', '<input type="text" class="form-control" placeholder="Preço" id="inputPrice" name="Price" readonly>');
-            cell5.insertAdjacentHTML('beforeend', '<i class="fa-solid fa-trash-can icons" onclick="removeItem(this)">');
+                cell3.insertAdjacentHTML('beforeend', '<select class="form-control" id="conditionInput'+lastId+'" name="condition" onchange="getPriceByCondition(this)"><option value="" selected disabled hidden>Insira o estado</option><option value="'+books[0].condition+'">'+books[0].condition+'</option>');
+            cell4.insertAdjacentHTML('beforeend', '<input type="number" class="form-control" placeholder="Quantidade" id="inputQuantidade'+lastId+'" min="1" name="Quantity">');
+            cell5.insertAdjacentHTML('beforeend', '<input type="text" class="form-control" placeholder="Preço" id="inputPrice'+lastId+'" name="Price" readonly>');
+            cell6.insertAdjacentHTML('beforeend', '<i class="fa-solid fa-trash-can icons" onclick="removeItem(this)">');
         }
     }
 
     request.send();
 }
 
-function getPriceByCondition(){
-    var element = document.getElementById('conditionInput');
+function getPriceByCondition(element){
     var condition = element.options[element.selectedIndex].value;
-
-    var isbn = document.getElementById('inputISBN').value;
+    id = element.id.split("conditionInput")[1];
+    
+    var isbn = document.getElementById('inputISBN'+id).value;
     var url = window.location.origin+'/books/searchbyISBN/'+isbn+'/'+condition;
-    console.log(url)
+    
     var request = new XMLHttpRequest();
     request.open('get', url, true);
-
+    
     request.onreadystatechange = function(){
         if (this.readyState == 4 && this.status){
             book = JSON.parse(request.responseText);
-            document.getElementById('inputPrice').value = book.price;
+            document.getElementById('inputPrice'+id).value = book.price;
 
         }
     }
