@@ -5,17 +5,17 @@ const {getAllBooks, getDetailsView, getCreateView, addBook, deleteBook, getBookE
 
 //BOOKS INDEX
 
-/* GET Books Index page. */
 router.get('/books', getAllBooks);
+
+//BOOKS DETAILS
+
+router.get('/books/details/:id', getDetailsView);
 
 //BOOKS CREATE
 
-/* GET Books Create page. */
 router.get('/books/create', getCreateView);
 
 router.post('/books/create', addBook);
-
-router.get('/books/details/:id', getDetailsView);
 
 //BOOKS EDIT
 
@@ -23,15 +23,14 @@ router.get('/books/edit/:id', getBookEditPage);
 
 router.post('/books/edit/:id', updateBook);
 
-
 //BOOKS DELETE
 
 router.get('/books/delete/:id', deleteBook);
 
-
-//Books SearchByISBN
+//BOOKS SEARCH BY
 
 router.get('/books/searchByISBN/:ISBN', bookSearchByISBN);
+
 router.get('/books/searchByISBN/:ISBN/:condition', bookSearchByISBNandCondition);
 
 module.exports = {

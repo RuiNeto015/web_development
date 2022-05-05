@@ -1,5 +1,7 @@
 var Employee = require("../models/EmployeeModel");
 
+//EMPLOYEES INDEX
+
 const getAllEmployees = function(req, res){
     Employee.find().exec(function(err, result){
         if(err){res.status(400)}
@@ -10,19 +12,45 @@ const getAllEmployees = function(req, res){
     });
 }
 
+//EMPLOYEES DETAILS
+
+const getDetailsView = function(req, res){
+    Employee.findById(req.params.id).exec(function(err, result){
+        if(err){res.status(400)}
+        res.render('employees/details', {
+            employee: result,
+            title: "Funcionários"
+        });
+    });
+}
+
+//EMPLOYEES CREATE
+
 const getCreateView = function(req, res, next) {
     res.render('employees/create', {title: "Funcionários"});
 }
 
 const addEmployee = function(req, res){
     var employee = Employee(req.body);
+    var query = req.body.nif;
 
-    employee.save((err) => {
-        if(err){res.status(400)}
-        console.log("Successfully created an employee.");
-        res.redirect('/employees');
+    Employee.findOne({nif:query}, function(err, dup){
+        if(err) console.log(err);
+        if(dup){
+            console.log("Este NIF já existe na base de dados!");
+            res.render('employees/create', {title: "Funcionários", error: "Este NIF já existe na base de dados!"});
+            
+        }else{
+            employee.save((err) => {
+                if(err){res.status(400)}
+                console.log("Successfully created an employee.");
+                res.redirect('/employees');
+            })
+        }
     })
 }
+
+//EMPLOYEES EDIT
 
 const getEmployeeEditPage = function(req, res){
     Employee.findOne({_id: req.params.id}).exec(function(err, employee){
@@ -43,18 +71,9 @@ const updateEmployee = function(req, res){
     });
 }
 
-const getDetailsView = function(req, res){
-    Employee.findById(req.params.id).exec(function(err, result){
-        if(err){res.status(400)}
-        res.render('employees/details', {
-            employee: result,
-            title: "Funcionários"
-        });
-    });
-}
+//EMPLOYEES DELETE
 
 const deleteEmployee = function(req, res){
-    
     Employee.remove({_id: req.params.id}, function(err){
         if(err){res.status(400)}
         console.log(err);
@@ -62,7 +81,6 @@ const deleteEmployee = function(req, res){
         res.redirect('/employees');
     })
 }
-
 
 module.exports = {
     getAllEmployees,

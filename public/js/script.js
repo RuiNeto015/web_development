@@ -1,3 +1,4 @@
+// Função para realçar a página atual na navbar
 function currentPage(){
     switch (document.title){
         case "Clientes":
@@ -16,27 +17,24 @@ function currentPage(){
 }
 window.onload = currentPage();
 
+// Função para fechar o alerta (fade)
 function closeAlert() {
     var fade= document.getElementById("alertMessage");
       
     var intervalID = setInterval(function () {
-          
         if (!fade.style.opacity) {
             fade.style.opacity = 1;
         }
-          
-          
+            
         if (fade.style.opacity > 0) {
             fade.style.opacity -= 0.25;
-        } 
-          
-        else {
+        }else {
             clearInterval(intervalID);
-        }
-          
+        }        
     }, 200);
 }
 
+// Funções MODAL
 function loadModal(id, name){
     document.getElementById('deleteModal').style.display='block';
     document.getElementById('modalName').textContent = name;
@@ -110,6 +108,7 @@ function searchISBN(){
     request.send();
 }
 
+// Função para mostrar o preco de acordo com a condição do livro
 function getPriceByCondition(element){
     var condition = element.options[element.selectedIndex].value;
     id = element.id.split("conditionInput")[1];
@@ -131,6 +130,7 @@ function getPriceByCondition(element){
     request.send();
 }
 
+// Função para remover livro da lista de compras
 function removeItem(btn){
     var row = btn.parentNode.parentNode;
     row.parentNode.removeChild(row);

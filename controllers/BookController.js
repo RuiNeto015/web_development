@@ -1,5 +1,7 @@
 var Book = require("../models/BookModel");
 
+//BOOKS INDEX
+
 const getAllBooks = function(req, res){
     Book.find().exec(function(err, result){
         if(err){res.status(400)}
@@ -9,6 +11,8 @@ const getAllBooks = function(req, res){
         });
     });
 }
+
+//BOOKS DETAILS
 
 const getDetailsView = function(req, res){
     Book.findById(req.params.id).exec(function(err, result){
@@ -20,18 +24,34 @@ const getDetailsView = function(req, res){
     });
 }
 
+//BOOKS CREATE
+
 const getCreateView = function(req, res, next) {
     res.render('books/create', {title: "Livros"});
 }
 
 const addBook = function(req, res){
     var book = Book(req.body);
-    book.save((err) => {
-        if(err){res.status(400)}
-        console.log("Successfully created a book.");
-        res.redirect('/books');
+    var query = req.body.isbn;
+    var query1 = req.body.condition;
+
+    Book.findOne({isbn:query, condition:query1}, function(err, dup){
+        if(err) console.log(err);
+        if(dup){
+            console.log("Este ISBN com este estado já existe na base de dados!");
+            res.render('books/create', {title: "Livros", error: "Já existe um livro com este ISBN e com este estado"});
+            
+        }else{
+            book.save((err) => {
+                if(err){res.status(400)}
+                console.log("Successfully created a book.");
+                res.redirect('/books');
+            })
+        }
     })
 }
+
+//BOOKS EDIT
 
 const getBookEditPage = function(req, res){
     Book.findOne({_id: req.params.id}).exec(function(err, book){
@@ -52,6 +72,8 @@ const updateBook = function(req, res){
     });
 }
 
+//BOOKS DELETE
+
 const deleteBook = function(req, res){
     Book.remove({_id: req.params.id}, function(err){
         if(err){res.status(400)}
@@ -59,6 +81,8 @@ const deleteBook = function(req, res){
         res.redirect('/books');
     })
 }
+
+//BOOKS SEARCH BY
 
 const bookSearchByISBN = function(req, res){
     Book.find({isbn: req.params.ISBN}).exec(function(err, result){

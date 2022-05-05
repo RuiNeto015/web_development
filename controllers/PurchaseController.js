@@ -1,6 +1,8 @@
 var Purchase = require("../models/PurchaseModel");
 var util = require("util");
 
+//PURSHASES INDEX
+
 const getAllPurchases = function(req, res){
     Purchase.find().exec(function(err, result){
         if(err){res.status(400)}
@@ -10,6 +12,8 @@ const getAllPurchases = function(req, res){
         });
     });
 }
+
+//PURSHASES CREATE
 
 const getCreateView = function(req, res, next) {
     res.render('purchases/create', {title: "Histórico de Compras"});
