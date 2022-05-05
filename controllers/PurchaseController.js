@@ -17,7 +17,6 @@ const getCreateView = function(req, res, next) {
 
 const addPurchase = function(req, res){
     var purchase = Purchase(req.body);
-    // res.end(util.inspect(req.body));
     purchase.save((err) => {
         if(err){res.status(400)}
         console.log("Successfully created a purchase.");
