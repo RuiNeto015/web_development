@@ -41,7 +41,7 @@ a {
 }
 
 .dashboardButton{
-  margin-top: .1;
+  margin-top: 1em;
   background-color: #dadde0;
   padding-bottom: 1em;
   margin-right: 1em;
@@ -49,7 +49,7 @@ a {
 }
 
 .dashboardIcons{
-  margin-top: .2em;
+  margin-top: .3em;
   color: #333764;
 }
 
