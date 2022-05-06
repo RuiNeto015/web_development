@@ -31,6 +31,7 @@ const getCreateView = function(req, res, next) {
 }
 
 const addBook = function(req, res){
+
     var book = Book(req.body);
     var query = req.body.isbn;
     var query1 = req.body.condition;

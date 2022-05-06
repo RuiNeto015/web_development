@@ -3,11 +3,15 @@
   <%- include("../static/layout.ejs") %>
 
     <div class="divDetails">
-      <h5>Id: <%= purchase._id %></h5>
-      <h5>NIF: <%= purchase.nif %></h5>
-      <h5>Data: <%= purchase.date.getDate() %>/<%= purchase.date.getMonth()+1 %>/<%= purchase.date.getFullYear() %></h5>
-      <h5>Cliente: <%= purchase.name %></h5>
+      <h3 class="text-center">Compra feita por <%= purchase.name %></h3>
+      <br>
+      <h5><b>NIF:</b> <%= purchase.nif %></h5>
+      <br>
+      <h5><b>ID da Compra:</b> <%= purchase._id %></h5>
+      <h5><b>Data da Compra:</b> <%= purchase.date.getDate() %>/<%= purchase.date.getMonth()+1 %>/<%= purchase.date.getFullYear() %></h5>
     </div>
+    <br>
+    <h4 class="text-center">Livros</h4>
       <table class="table" id="bookList">
         <thead>
           <tr id="row0">

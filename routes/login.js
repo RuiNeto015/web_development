@@ -1,10 +1,11 @@
 var express = require('express');
 var router = express.Router();
+const {getLoginPage, verifyUser} = require("../controllers/LoginController");
 
 //LOGIN 
 
-router.get('/', function(req, res, next) {
-  res.render('login', { title: 'Login' });
-});
+router.get('/', getLoginPage);
+
+router.post('/', verifyUser);
 
 module.exports = router;

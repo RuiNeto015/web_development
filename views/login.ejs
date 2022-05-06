@@ -1,20 +1,35 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <link rel='stylesheet' href='/stylesheets/LoginFormStyle.css' />
-    <title>Login</title>
+    <head>
+      <meta charset="UTF-8">
+      <title><%= title %></title>
+      <link rel='stylesheet' href="/stylesheets/bootstrap.min.css"/>
+      <link rel='stylesheet' href='/stylesheets/style.css' />
+      <link rel='stylesheet' href='/stylesheets/all.css' />
+      <link rel='stylesheet' href='/stylesheets/LoginFormStyle.css' />
+      <script type="text/js" src="/js/bootstrap.min.js"></script>
+      <script src="/js/all.js"></script>
+      <script src="/js/script.js"></script>
   </head>
+
   <body class="simpleBG">
     <div class="centerDiv">
+
+      <% if(typeof error != 'undefined') { %>
+        <div class="alert alert-danger alert-dismissible fade show" role="alert" id="alertMessage">
+        <%- error %>
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close" onclick="closeAlert()"></button>
+      </div><% } %>
+
       <div class="title">Login</div>
-      <form id="Form1" method="post">
+      <form id="Form1" method="POST">
         <div class="Input c1">
-          <input type="text" id="TextBoxUser" placeholder="Username" />
+          <input type="text" id="email" name="email" placeholder="Email" />
         </div>
         <div class="Input c2">
-          <input type="password" id="TextBoxPassword" placeholder="Password" />
+          <input type="password" id="password" name="password" placeholder="Palavra-passe" />
         </div>
-        <input type="submit" id="btnSubmit" class="submit" value="Submit"/>
+        <input type="submit" id="btnSubmit" class="submit" value="Entrar"/>
       </form>
     </div>
   </body>
