@@ -1,7 +1,8 @@
 var Purchase = require("../models/PurchaseModel");
+var Customer = require("../models/CustomerModel");
 var util = require("util");
 
-//PURSHASES INDEX
+//PURCHASES INDEX
 
 const getAllPurchases = function(req, res){
     Purchase.find().exec(function(err, result){
@@ -13,7 +14,7 @@ const getAllPurchases = function(req, res){
     });
 }
 
-//PURSHASES DETAILS
+//PURCHASES DETAILS
 
 const getDetailsView = function(req, res){
     Purchase.findById(req.params.id).exec(function(err, result){
@@ -25,7 +26,7 @@ const getDetailsView = function(req, res){
     });
 }
 
-//PURSHASES CREATE
+//PURCHASES CREATE
 
 const getCreateView = function(req, res, next) {
     res.render('purchases/create', {title: "Histórico de Compras"});
@@ -35,12 +36,23 @@ const addPurchase = function(req, res){
     var purchase = Purchase(req.body);
     purchase.save((err) => {
         if(err){res.status(400)}
-        console.log("Successfully created a purchase.");
-        res.redirect('/purchases');
+        var points = 0
+        if (Array.isArray(req.body.price)){
+            for(let i=0; i<req.body.price.length;i++)
+            points = points + Number(req.body.price[i]) * req.body.quantity[i];
+        }
+        else
+            points = req.body.price
+        
+        points = Math.floor(points/10)*200;
+        Customer.findOneAndUpdate({nif:req.body.nif}, {$inc:{ points: points }},function(err){
+            console.log("Successfully created a purchase.");
+            res.redirect('/purchases');
+        })
     })
 }
 
-//PURSHASES DELETE
+//PURCHASES DELETE
 
 const deletePurchase = function(req, res){
     Purchase.remove({_id: req.params.id}, function(err){

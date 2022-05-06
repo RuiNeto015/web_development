@@ -3,21 +3,21 @@ const req = require('express/lib/request');
 var router = express.Router();
 const {getAllPurchases, getDetailsView, getCreateView, addPurchase, deletePurchase} = require("../controllers/PurchaseController");
 
-//PURSHASES INDEX
+//PURCHASES INDEX
 
 router.get('/purchases', getAllPurchases);
 
-//PURSHASES DETAILS
+//PURCHASES DETAILS
 
 router.get('/purchases/details/:id', getDetailsView);
 
-//PURSHASES CREATE
+//PURCHASES CREATE
 
 router.get('/purchases/create', getCreateView);
 
 router.post('/purchases/create', addPurchase);
 
-//BOOKS DELETE
+//PURCHASES DELETE
 
 router.get('/purchases/delete/:id', deletePurchase);
 
