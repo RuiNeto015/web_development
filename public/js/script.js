@@ -135,3 +135,14 @@ function removeItem(btn){
     var row = btn.parentNode.parentNode;
     row.parentNode.removeChild(row);
 }
+
+// Função para mostrar e esconder palavra-passe no editar dos funcionários
+function myFunction() {
+    var x = document.getElementById("passwordInput");
+    
+    if (x.type === "password") {
+        x.type = "text";
+    } else {
+        x.type = "password";
+    }
+}

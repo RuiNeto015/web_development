@@ -3,16 +3,17 @@
   <%- include("../static/layout.ejs") %>
 
     <div class="divDetails">
-      <h5>Id: <%= book._id %></h5>
-      <h5>Título: <%= book.title %></h5>
-      <h5>Autor: <%= book.author %></h5>
-      <h5>Isbn: <%= book.isbn %></h5>
-      <h5>Editor/a: <%= book.editor %></h5>
-      <h5>Idioma: <%= book.language %></h5>
-      <h5>Quantidade: <%= book.quantity %></h5>
-      <h5>Condição: <%= book.condition %></h5>
-      <h5>Páginas: <%= book.pages %></h5>
-      <h5>Preço por unidade: <%= book.price %> €</h5>
+      <h3 class="text-center"><%= book.title %></h5>
+      <br>
+      <h5><b>ID:</b> <%= book._id %></h5>
+      <h5><b>ISBN:</b> <%= book.isbn %></h5>
+      <h5><b>Autor:</b> <%= book.author %></h5>
+      <h5><b>Editor/a:</b> <%= book.editor %></h5>
+      <h5><b>Idioma:</b> <%= book.language %></h5>
+      <h5><b>Condição:</b> <%= book.condition %></h5>
+      <h5><b>Quantidade:</b> <%= book.quantity %></h5>
+      <h5><b>Páginas:</b> <%= book.pages %></h5>
+      <h5><b>Preço por unidade:</b> <%= book.price %> €</h5>
     </div>
 
   <%- include("../static/footer.ejs") %>

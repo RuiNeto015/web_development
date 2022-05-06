@@ -3,15 +3,16 @@
   <%- include("../static/layout.ejs") %>
 
     <div class="divDetails">
-      <h5>Id: <%= employee._id %></h5>
-      <h5>Nome: <%= employee.name %></h5>
-      <h5>NIF: <%= employee.nif %></h5>
-      <h5>Email: <%= employee.email %></h5>
-      <h5>Password: <%= employee.password %></h5>
-      <h5>Género: <%if (employee.gender == 'M') {%>Masculino <%} else{%> Feminino<%}%></h5>
-      <h5>Data de nascimento: <%= employee.birth_date.getDate() %>/<%= employee.birth_date.getMonth()+1 %>/<%= employee.birth_date.getFullYear() %></h5>
-      <h5>Morada: <%= employee.address %></h5>
-      <h5>Telefone: <%= employee.phoneNumber %></h5>
+      <h3 class="text-center"><%= employee.name %></h5>
+      <br>
+      <h5><b>ID:</b> <%= employee._id %></h5>
+      <h5><b>NIF:</b> <%= employee.nif %></h5>
+      <h5><b>Email:</b> <%= employee.email %></h5>
+      <h5><b>Password:</b> <%= employee.password %></h5>
+      <h5><b>Género:</b> <%if (employee.gender == 'M') {%>Masculino <%} else{%> Feminino<%}%></h5>
+      <h5><b>Data de nascimento:</b> <%= employee.birth_date.getDate() %>/<%= employee.birth_date.getMonth()+1 %>/<%= employee.birth_date.getFullYear() %></h5>
+      <h5><b>Morada:</b> <%= employee.address %></h5>
+      <h5><b>Telefone:</b> <%= employee.phoneNumber %></h5>
     </div>
 
   <%- include("../static/footer.ejs") %>
