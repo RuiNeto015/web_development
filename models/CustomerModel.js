@@ -38,6 +38,10 @@ var CustomerSchema = new mongoose.Schema({
         pattern: "[0-9]{9}",
         required: true
     },
+    points: {
+        type: Number,
+        default: 100
+    },
     created_at: {
         type: Date, 
         default: Date.now
