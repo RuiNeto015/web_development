@@ -14,10 +14,16 @@
         <div class="mb-3 row"><h5>Email:</h5>
           <input type="email" placeholder="Insira o email" class="form-control" id="emailInput" name="email" maxlength="75" value="<%= employee.email %>" required></div>
         
-        <div class="mb-3 row"><h5>Palavra-passe:</h5>
-          <input type="password" placeholder="Insira a palavra-passe" class="form-control" id="passwordInput" name="password" minlength="5" maxlength="15" value="<%= employee.password %>" required>
-          <small class="form-text text-muted">De 5 a 15 caracteres.</small></div>
-        
+        <div class="mb-3 row"><h5>Password:</h5>
+          <div class="input-group mb-3">
+            <input type="password" placeholder="Insira a palavra-passe" class="form-control" id="passwordInput" name="password" minlength="5" maxlength="15" value="<%= employee.password %>" required>
+            <div class="input-group-append">
+              <button class="btn btn-outline-secondary" type="button" onclick="myFunction()">Mostrar</button>
+            </div>
+          </div>
+          <div><small class="form-text text-muted">De 5 a 15 caracteres.</small></div>
+        </div>
+
         <div class="mb-3 row"><h5>Género:</h5>
           <select class="form-control" id="genderInput" name="gender" required>
             <option value="M" <% if(employee.gender =="M"){ %> selected <% } %>> Masculino</option>
@@ -33,9 +39,6 @@
         
         <div class="mb-3 row"><h5>Número de telefone:</h5>
           <input type="tel" placeholder="Insira o número de telefone" class="form-control" id="phoneNumberInput" name="phoneNumber" pattern="[0-9]{9}" minlength="9" maxlength="9" value="<%= employee.phoneNumber %>" required></div>
-       
-        <div class="mb-3 row"><h5>NIF:</h5>
-          <input type="text" placeholder="Insira o NIF" class="form-control" id="nifInput" name="nif" pattern="[0-9]{9}" minlength="9" maxlength="9" value="<%= employee.nif %>" required></div>
         <br>
         <div style="text-align: center;"><button type="submit" class="btn btn-dark">Gurdar alterações</button></div>
     </div>
