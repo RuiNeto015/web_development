@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+  <%- include("../static/layout.ejs") %>
+
+    <div class="divDetails">
+      <h5>Id: <%= purchase._id %></h5>
+      <h5>NIF: <%= purchase.nif %></h5>
+      <h5>Data: <%= purchase.date.getDate() %>/<%= purchase.date.getMonth()+1 %>/<%= purchase.date.getFullYear() %></h5>
+      <h5>Cliente: <%= purchase.name %></h5>
+    </div>
+      <table class="table" id="bookList">
+        <thead>
+          <tr id="row0">
+            <th scope="col" class="col-md-2">ISBN</th>
+            <th scope="col" class="col-md-3">Título</th>
+            <th scope="col" class="col-md-2">Condição</th>
+            <th scope="col" class="col-md-1">Quantidade</th>
+            <th scope="col" class="col-md-1">Preço Uni.</th>
+          </tr>
+        </thead>
+          <% for(let i = 0; i < purchase.isbn.length; i++) { %>
+            <tr>
+                <th scope="row"><%= purchase.isbn[i] %></th>
+                <td><%= purchase.title[i] %></td>
+                <td><%= purchase.condition[i]%></td>
+                <td><%= purchase.quantity[i]%></td>
+                <td><%= purchase.price[i]%></td>
+              </tr>
+            <% } %>
+        </table>
+            
+
+  <%- include("../static/footer.ejs") %>
+</html>

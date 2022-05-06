@@ -11,7 +11,6 @@
         <th scope="col">Cliente</th>
         <th scope="col">Data</th>
         <th scope="col">Detalhes</th>
-        <th scope="col">Editar</th>
         <th scope="col">Apagar</th>
       </tr>
     </thead>
@@ -21,15 +20,14 @@
           <tr>
             <td scope="row"><%= purchase.nif %></th>
             <td><%= purchase.name %></td>
-            <td><%= purchase.created_at.getDate() %>/<%= purchase.created_at.getMonth()+1 %>/<%= purchase.created_at.getFullYear() %></td>
+            <td><%= purchase.date.getDate() %>/<%= purchase.date.getMonth()+1 %>/<%= purchase.date.getFullYear() %></td>
             <td><i class="fa-solid fa-circle-plus icons" onclick="location.href=window.location.href+'/details/'+'<%= purchase._id %>'"></i></td>
-            <td><i class="fa-solid fa-pen icons" onclick="location.href=window.location.href+'/edit/'+'<%= purchase._id %>'"></i></td>
             <td><i class="fa-solid fa-trash-can icons" onclick="loadModal('<%= purchase._id %>','<%= purchase.name %>')"></i></td>
           </tr>
         <% } %>
       <% } else { %>
           <tr>
-            <td scope="row" colspan="6" class="text-center">Não foram encontrados dados!</td>
+            <td scope="row" colspan="5" class="text-center">Não foram encontrados dados!</td>
           </tr>
         <% } %>
     </tbody>
