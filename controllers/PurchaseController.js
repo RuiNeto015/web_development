@@ -40,10 +40,20 @@ const addPurchase = function(req, res){
     })
 }
 
+//PURSHASES DELETE
+
+const deletePurchase = function(req, res){
+    Purchase.remove({_id: req.params.id}, function(err){
+        if(err){res.status(400)}
+        console.log("Successfully deleted a purchase.");
+        res.redirect('/purchases');
+    })
+}
+
 module.exports = {
     getAllPurchases,
     getDetailsView,
     getCreateView,
-    addPurchase
-
+    addPurchase,
+    deletePurchase
 }
