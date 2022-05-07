@@ -99,6 +99,20 @@ const bookSearchByISBNandCondition = function(req, res){
     });
 }
 
+const bookFilterByTitle = function(req, res){
+    Book.find({ title: { $regex: req.params.title, $options: "i" } }).exec(function(err, result){
+        if(err){res.status(400)}
+        res.send(result);
+    });
+}
+
+const bookFilterByAuthor = function(req, res){
+    Book.find({ author: { $regex: req.params.author, $options: "i" } }).exec(function(err, result){
+        if(err){res.status(400)}
+        res.send(result);
+    });
+}
+
 module.exports = {
     getAllBooks,
     getDetailsView,
@@ -108,5 +122,7 @@ module.exports = {
     getBookEditPage,
     updateBook,
     bookSearchByISBN,
-    bookSearchByISBNandCondition
+    bookSearchByISBNandCondition,
+    bookFilterByTitle,
+    bookFilterByAuthor,
 }

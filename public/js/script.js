@@ -158,3 +158,59 @@ function myFunction() {
         x.type = "password";
     }
 }
+
+function filterBooksBy(){
+    searchBy = document.getElementById('filterBy');
+    searchBy = searchBy.options[searchBy.selectedIndex].value;
+    if (searchBy=="") return;
+    switch(searchBy){
+        case "title":
+            var title = document.getElementById('inputFilter').value;
+            if (title=="") title=".*";
+            var url = window.location.origin+'/books/filterByTitle/'+title;
+        break;
+        case "author":
+            var author = document.getElementById('inputFilter').value;
+            if (author=="") author=".*";
+            var url = window.location.origin+'/books/filterByAuthor/'+author;
+        break;
+        case "isbn":
+            var isbn = document.getElementById('inputFilter').value;
+            if (isbn=="") isbn=".*";
+            var url = window.location.origin+'/books/searchByISBN/'+isbn;
+        break;
+    }
+    var request = new XMLHttpRequest();
+    request.open('get', url, true);
+        
+    request.onreadystatechange = function(){
+        if (this.readyState == 4 && this.status == 200){
+            var books = JSON.parse(request.responseText);
+            console.log(books);
+
+            var table = document.getElementById("booksTable");
+            while(table.rows.length > 1) table.deleteRow(1);
+
+            for(let book of books){
+                var row = table.insertRow(-1);
+                var cell1 = row.insertCell(0);
+                var cell2 = row.insertCell(1);
+                var cell3 = row.insertCell(2);
+                var cell4 = row.insertCell(3);
+                var cell5 = row.insertCell(4);
+                var cell6 = row.insertCell(5);
+                var cell7 = row.insertCell(6);
+                    
+                cell1.insertAdjacentHTML('beforeend', book.title);
+                cell2.insertAdjacentHTML('beforeend', book.author);
+                cell3.insertAdjacentHTML('beforeend', book.isbn);
+                cell4.insertAdjacentHTML('beforeend', book.condition);
+                cell5.insertAdjacentHTML('beforeend', '<i class="fa-solid fa-circle-plus icons" onclick="location.href='+window.location.href+'/details/'+book._id+'">');
+                cell6.insertAdjacentHTML('beforeend', '<i class="fa-solid fa-pen icons" onclick="location.href='+window.location.href+'/edit/'+book._id+'">');
+                cell7.insertAdjacentHTML('beforeend', '<i class="fa-solid fa-trash-can icons" onclick="loadModal('+book._id+','+book.title+')">');
+            }
+        }
+    }
+            
+    request.send();
+}

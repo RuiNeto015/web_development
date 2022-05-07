@@ -1,15 +1,8 @@
 var express = require('express');
 const req = require('express/lib/request');
 var router = express.Router();
-const {getAllBooks, 
-  getDetailsView, 
-  getCreateView, 
-  addBook, 
-  deleteBook, 
-  getBookEditPage, 
-  updateBook, 
-  bookSearchByISBN, 
-  bookSearchByISBNandCondition} = require("../controllers/BookController");
+const {getAllBooks, getDetailsView, getCreateView, addBook, deleteBook, getBookEditPage, updateBook,
+   bookSearchByISBN, bookSearchByISBNandCondition, bookFilterByTitle, bookFilterByAuthor, bookFilterByISBN} = require("../controllers/BookController");
 
 //BOOKS INDEX
 
@@ -40,6 +33,13 @@ router.get('/books/delete/:id', deleteBook);
 router.get('/books/searchByISBN/:ISBN', bookSearchByISBN);
 
 router.get('/books/searchByISBN/:ISBN/:condition', bookSearchByISBNandCondition);
+
+//BOOKS FILTER BY
+
+router.get('/books/filterByTitle/:title', bookFilterByTitle);
+
+router.get('/books/filterByAuthor/:author', bookFilterByAuthor);
+
 
 module.exports = {
   routes: router

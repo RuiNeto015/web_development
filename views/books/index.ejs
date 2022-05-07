@@ -3,8 +3,24 @@
   <%- include("../static/layout.ejs") %>
   <h1 class="text-center">Livros</h1>
   <div class="tableMargins">
-    <button type="button" class="btn btn-secondary float-end" onclick="location.href=window.location.href+'/create'">Criar Livro</button>
-    <table class="table table-dark table-striped table-hover">
+    <div class="row g-3">
+    <div class="col-md-4">
+      <div class="input-group mb-3">
+        <input type="text" class="form-control" placeholder="Filtros" id="inputFilter">
+        <select class="btn btn-outline-secondary dropdown-toggle float-end text-start" id="filterBy">
+          <option value="" selected disabled hidden>Pesquisar por</option>
+          <option value="title">Titulo</option>
+          <option value="author">Autor</option>
+          <option value="isbn">ISBN</option>
+        </select>
+        <button class="btn btn-outline-secondary" type="button" onclick="filterBooksBy()"><i class="fa-solid fa-magnifying-glass"></i></button>
+      </div>
+    </div>
+    <div class="col-md-8">
+      <button type="button" class="btn btn-secondary float-end" onclick="location.href=window.location.href+'/create'">Criar Livro</button>
+    </div>
+    </div>
+    <table class="table table-dark table-striped table-hover" id="booksTable">
       <thead>
       <tr>
         <th scope="col">Titulo</th>
