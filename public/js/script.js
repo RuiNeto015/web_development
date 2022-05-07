@@ -29,6 +29,7 @@ function closeAlert() {
         if (fade.style.opacity > 0) {
             fade.style.opacity -= 0.25;
         }else {
+            fade.style.display = "none";
             clearInterval(intervalID);
         }        
     }, 200);
@@ -53,13 +54,18 @@ function searchNIF(){
     request.open('get', url, true);
     
     request.onreadystatechange = function(){
-        if (this.readyState == 4 && this.status){
-            customer = JSON.parse(request.responseText);
-            
-            document.getElementById('customerName').value = customer.name;
-            document.getElementById('customerEmail').value = customer.email;
-            document.getElementById('customerPhone').value = customer.phoneNumber;
-            document.getElementById('customerAddress').value = customer.address;
+        if (this.readyState == 4 && this.status == 200){
+            if (request.responseText != ""){
+                customer = JSON.parse(request.responseText);
+                
+                document.getElementById('customerName').value = customer.name;
+                document.getElementById('customerEmail').value = customer.email;
+                document.getElementById('customerPhone').value = customer.phoneNumber;
+                document.getElementById('customerAddress').value = customer.address;
+            } else{
+                document.getElementById("errorMessage").innerHTML = "NIF não existe!";
+                document.getElementById("alertMessage").style = "block";
+            }
         }
     }
     
@@ -74,34 +80,40 @@ function searchISBN(){
     request.open('get', url, true);
 
     request.onreadystatechange = function(){
-        if (this.readyState == 4 && this.status){
-            books = JSON.parse(request.responseText);
-            
-            table = document.getElementById('bookList');
-            tableLength = table.rows.length;
+        if (this.readyState == 4 && this.status == 200){
+            console.log(request)
+            if (request.responseText != "[]"){
+                books = JSON.parse(request.responseText);
+                
+                table = document.getElementById('bookList');
+                tableLength = table.rows.length;
 
-            var row = table.insertRow(-1);
+                var row = table.insertRow(-1);
 
-            lastId = Number(table.rows[tableLength-1].id.split("row")[1])+1;
-            row.id = 'row'+lastId;
+                lastId = Number(table.rows[tableLength-1].id.split("row")[1])+1;
+                row.id = 'row'+lastId;
 
 
-            var cell1 = row.insertCell(0);
-            var cell2 = row.insertCell(1);
-            var cell3 = row.insertCell(2);
-            var cell4 = row.insertCell(3);
-            var cell5 = row.insertCell(4);
-            var cell6 = row.insertCell(5);
+                var cell1 = row.insertCell(0);
+                var cell2 = row.insertCell(1);
+                var cell3 = row.insertCell(2);
+                var cell4 = row.insertCell(3);
+                var cell5 = row.insertCell(4);
+                var cell6 = row.insertCell(5);
 
-            cell1.insertAdjacentHTML('beforeend','<input type="text" class="form-control" placeholder="ISBN" id="inputISBN'+lastId+'" name="isbn" value="'+books[0].isbn+'" readonly>');
-            cell2.insertAdjacentHTML('beforeend', '<input type="text" class="form-control" placeholder="Titulo" id="inputTitle'+lastId+'" name="title" value="'+books[0].title+'" readonly>');
-            if (books.length>1)
-                cell3.insertAdjacentHTML('beforeend', '<select class="form-control" id="conditionInput'+lastId+'" name="condition" onchange="getPriceByCondition(this)"><option value="" selected disabled hidden>Insira o estado</option><option value="'+books[0].condition+'">'+books[0].condition+'</option><option value="'+books[1].condition+'">'+books[1].condition+'</option></select>');
-            else
-                cell3.insertAdjacentHTML('beforeend', '<select class="form-control" id="conditionInput'+lastId+'" name="condition" onchange="getPriceByCondition(this)" required><option value="" selected disabled hidden>Insira o estado</option><option value="'+books[0].condition+'">'+books[0].condition+'</option>');
-            cell4.insertAdjacentHTML('beforeend', '<input type="number" class="form-control" placeholder="Quantidade" id="inputQuantidade'+lastId+'" min="1" name="quantity" required>');
-            cell5.insertAdjacentHTML('beforeend', '<input type="text" class="form-control" placeholder="Preço" id="inputPrice'+lastId+'" name="price"  readonly>');
-            cell6.insertAdjacentHTML('beforeend', '<i class="fa-solid fa-trash-can icons" onclick="removeItem(this)">');
+                cell1.insertAdjacentHTML('beforeend','<input type="text" class="form-control" placeholder="ISBN" id="inputISBN'+lastId+'" name="isbn" value="'+books[0].isbn+'" readonly>');
+                cell2.insertAdjacentHTML('beforeend', '<input type="text" class="form-control" placeholder="Titulo" id="inputTitle'+lastId+'" name="title" value="'+books[0].title+'" readonly>');
+                if (books.length>1)
+                    cell3.insertAdjacentHTML('beforeend', '<select class="form-control" id="conditionInput'+lastId+'" name="condition" onchange="getPriceByCondition(this)"><option value="" selected disabled hidden>Insira o estado</option><option value="'+books[0].condition+'">'+books[0].condition+'</option><option value="'+books[1].condition+'">'+books[1].condition+'</option></select>');
+                else
+                    cell3.insertAdjacentHTML('beforeend', '<select class="form-control" id="conditionInput'+lastId+'" name="condition" onchange="getPriceByCondition(this)" required><option value="" selected disabled hidden>Insira o estado</option><option value="'+books[0].condition+'">'+books[0].condition+'</option>');
+                cell4.insertAdjacentHTML('beforeend', '<input type="number" class="form-control" placeholder="Quantidade" id="inputQuantidade'+lastId+'" min="1" name="quantity" required>');
+                cell5.insertAdjacentHTML('beforeend', '<input type="text" class="form-control" placeholder="Preço" id="inputPrice'+lastId+'" name="price"  readonly>');
+                cell6.insertAdjacentHTML('beforeend', '<i class="fa-solid fa-trash-can icons" onclick="removeItem(this)">');
+            } else{
+                document.getElementById("errorMessage").innerHTML = "ISBN não existe!";
+                document.getElementById("alertMessage").style = "block";
+            }
         }
     }
 
@@ -120,7 +132,7 @@ function getPriceByCondition(element){
     request.open('get', url, true);
     
     request.onreadystatechange = function(){
-        if (this.readyState == 4 && this.status){
+        if (this.readyState == 4 && this.status == 200){
             book = JSON.parse(request.responseText);
             document.getElementById('inputPrice'+id).value = book.price;
 
@@ -146,3 +158,8 @@ function myFunction() {
         x.type = "password";
     }
 }
+
+var popoverTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="popover"]'))
+var popoverList = popoverTriggerList.map(function (popoverTriggerEl) {
+  return new bootstrap.Popover(popoverTriggerEl)
+})

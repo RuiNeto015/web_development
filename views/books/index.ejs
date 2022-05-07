@@ -10,6 +10,7 @@
         <th scope="col">Titulo</th>
         <th scope="col">Autor</th>
         <th scope="col">ISBN</th>
+        <th scope="col">Condição</th>
         <th scope="col">Detalhes</th>
         <th scope="col">Editar</th>
         <th scope="col">Apagar</th>
@@ -22,6 +23,7 @@
             <td scope="row"><%= book.title %></th>
             <td><%= book.author %></td>
             <td><%= book.isbn %></td>
+            <td><%= book.condition %></td>
             <td><i class="fa-solid fa-circle-plus icons" onclick="location.href=window.location.href+'/details/'+'<%= book._id %>'"></i></td>
             <td><i class="fa-solid fa-pen icons" onclick="location.href=window.location.href+'/edit/'+'<%= book._id %>'"></i></td>
             <td><i class="fa-solid fa-trash-can icons" onclick="loadModal('<%= book._id %>','<%= book.title %>')"></i></td>

@@ -5,7 +5,10 @@
   <br>
   <h1 class="text-center">Registar Compra</h1>
   <br>
-
+  <div class="alert alert-danger alert-dismissible fade show" role="alert" id="alertMessage" style="display: none;">
+    <a id="errorMessage"></a>
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close" onclick="closeAlert()"></button>
+  </div>
   <form method="POST" class="row g-3">
     <div class="col-md-6">
         <label for="inputNIF" class="form-label">NIF:</label>
