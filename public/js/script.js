@@ -47,7 +47,7 @@ function closeModal(){
 }
 
 // Função para procurar um cliente pelo NIF e preencher automaticamente os campos da compra
-function searchNIF(){
+function getCustomerByNIF(){
     var NIF = document.getElementById('inputNIF').value;
     var url = window.location.origin+'/customers/searchbyNIF/'+NIF;
     var request = new XMLHttpRequest();
@@ -73,7 +73,7 @@ function searchNIF(){
 }
 
 // Função para procurar um livro pelo ISBN e preencher automaticamente os campos da compra
-function searchISBN(){
+function getBookByISBN(){
     var isbn = document.getElementById('inputSearchISBN').value;
     var url = window.location.origin+'/books/searchbyISBN/'+isbn;
     var request = new XMLHttpRequest();
@@ -158,8 +158,3 @@ function myFunction() {
         x.type = "password";
     }
 }
-
-var popoverTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="popover"]'))
-var popoverList = popoverTriggerList.map(function (popoverTriggerEl) {
-  return new bootstrap.Popover(popoverTriggerEl)
-})
