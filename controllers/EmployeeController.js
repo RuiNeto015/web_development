@@ -82,6 +82,30 @@ const deleteEmployee = function(req, res){
     })
 }
 
+//EMPLOYEES FILTER BY
+
+const employeeFilterByName = function(req, res){
+    Employee.find({ name: { $regex: req.params.name, $options: "i" } }).exec(function(err, result){
+        if(err){res.status(400)}
+        res.send(result);
+    });
+}
+
+const employeeFilterByNIF = function(req, res){
+    Employee.find({nif: req.params.NIF}).exec(function(err, result){
+        if(err){res.status(400)}
+        res.send(result);
+    });
+}
+
+const employeeFilterByEmail = function(req, res){
+    Employee.find({ email: { $regex: req.params.email, $options: "i" } }).exec(function(err, result){
+        if(err){res.status(400)}
+        res.send(result);
+    });
+}
+
+
 module.exports = {
     getAllEmployees,
     getCreateView,
@@ -89,5 +113,8 @@ module.exports = {
     getDetailsView,
     getEmployeeEditPage,
     updateEmployee,
-    deleteEmployee
+    deleteEmployee,
+    employeeFilterByName,
+    employeeFilterByNIF,
+    employeeFilterByEmail
 }

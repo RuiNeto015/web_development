@@ -1,6 +1,7 @@
 var express = require('express');
 var router = express.Router();
-const {getAllEmployees, getCreateView, addEmployee, getDetailsView, deleteEmployee, getEmployeeEditPage, updateEmployee} = require("../controllers/EmployeeController");
+const {getAllEmployees, getCreateView, addEmployee, getDetailsView, deleteEmployee, getEmployeeEditPage, updateEmployee
+    ,employeeFilterByName,employeeFilterByNIF,employeeFilterByEmail} = require("../controllers/EmployeeController");
 
 //EMPLOYEES INDEX
 
@@ -25,6 +26,14 @@ router.post('/employees/edit/:id', updateEmployee);
 //EMPLOYEES DELETE
 
 router.get('/employees/delete/:id', deleteEmployee);
+
+//EMPLOYEES FILTER BY
+
+router.get('/employees/filterByName/:name', employeeFilterByName);
+
+router.get('/employees/filterByNIF/:NIF', employeeFilterByNIF);
+
+router.get('/employees/filterByEmail/:email', employeeFilterByEmail);
 
 module.exports = {
     routes: router

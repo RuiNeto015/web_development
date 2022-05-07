@@ -266,3 +266,56 @@ function filterCustomersBy(){
             
     request.send();
 }
+
+function filterEmployeesBy(){
+    searchBy = document.getElementById('filterBy');
+    searchBy = searchBy.options[searchBy.selectedIndex].value;
+    if (searchBy=="") return;
+    switch(searchBy){
+        case "name":
+            var name = document.getElementById('inputFilter').value;
+            if (name=="") name=".*";
+            var url = window.location.origin+'/employees/filterByName/'+name;
+        break;
+        case "nif":
+            var nif = document.getElementById('inputFilter').value;
+            if (nif=="") nif=0;
+            var url = window.location.origin+'/employees/filterByNIF/'+nif;
+        break;
+        case "email":
+            var email = document.getElementById('inputFilter').value;
+            if (email=="") email=".*";
+            var url = window.location.origin+'/employees/filterByEmail/'+email;
+        break;
+    }
+    var request = new XMLHttpRequest();
+    request.open('get', url, true);
+        
+    request.onreadystatechange = function(){
+        if (this.readyState == 4 && this.status == 200){
+            var employees = JSON.parse(request.responseText);
+
+            var table = document.getElementById("employeesTable");
+            while(table.rows.length > 1) table.deleteRow(1);
+
+            for(let employee of employees){
+                var row = table.insertRow(-1);
+                var cell1 = row.insertCell(0);
+                var cell2 = row.insertCell(1);
+                var cell3 = row.insertCell(2);
+                var cell4 = row.insertCell(3);
+                var cell5 = row.insertCell(4);
+                var cell6 = row.insertCell(5);
+                    
+                cell1.insertAdjacentHTML('beforeend', employee.name);
+                cell2.insertAdjacentHTML('beforeend', employee.nif);
+                cell3.insertAdjacentHTML('beforeend', employee.email);
+                cell4.insertAdjacentHTML('beforeend', '<i class="fa-solid fa-circle-plus icons" onclick="location.href=window.location.href+\'/details/\'+\''+ employee._id+'\'">');
+                cell5.insertAdjacentHTML('beforeend', '<i class="fa-solid fa-pen icons" onclick="location.href=window.location.href+\'/edit/\'+\''+ employee._id+'\'">');
+                cell6.insertAdjacentHTML('beforeend', '<i class="fa-solid fa-trash-can icons" onclick="loadModal(\''+employee._id+'\',\''+employee.name+'\')">');
+            }
+        }
+    }
+            
+    request.send();
+}
