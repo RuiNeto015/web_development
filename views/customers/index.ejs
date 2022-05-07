@@ -3,11 +3,28 @@
   <%- include("../static/layout.ejs") %>
   <h1 class="text-center">Clientes</h1>
   <div class="tableMargins">
-    <button type="button" class="btn btn-secondary float-end" onclick="location.href=window.location.href+'/create'">Criar Cliente</button>
-    <table class="table table-dark table-striped table-hover">
+    <div class="row g-3">
+      <div class="col-md-4">
+        <div class="input-group mb-3">
+          <input type="text" class="form-control" placeholder="Filtros" id="inputFilter">
+          <select class="btn btn-outline-secondary dropdown-toggle text-start" id="filterBy">
+            <option value="" selected disabled hidden>Pesquisar por</option>
+            <option value="name">Nome</option>
+            <option value="nif">NIF</option>
+            <option value="email">Email</option>
+          </select>
+          <button class="btn btn-outline-secondary" type="button" onclick="filterCustomersBy()"><i class="fa-solid fa-magnifying-glass"></i></button>
+        </div>
+      </div>
+    <div class="col-md-8">
+      <button type="button" class="btn btn-secondary float-end" onclick="location.href=window.location.href+'/create'">Criar Cliente</button>
+    </div>
+    </div>
+    <table class="table table-dark table-striped table-hover" id="customersTable">
       <thead>
       <tr>
         <th scope="col">Nome</th>
+        <th scope="col">NIF</th>
         <th scope="col">Email</th>
         <th scope="col">Detalhes</th>
         <th scope="col">Editar</th>
@@ -19,6 +36,7 @@
         <% for(let customer of customers) { %>
           <tr>
             <td scope="row"><%= customer.name %></th>
+            <td scope="row"><%= customer.nif %></th>
             <td><%= customer.email %></td>
             <td><i class="fa-solid fa-circle-plus icons" onclick="location.href=window.location.href+'/details/<%= customer._id %>'"></i></td>
             <td><i class="fa-solid fa-pen icons" onclick="location.href=window.location.href+'/edit/<%= customer._id %>'"></i></td>

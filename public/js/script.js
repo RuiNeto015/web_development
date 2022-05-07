@@ -176,7 +176,7 @@ function filterBooksBy(){
         break;
         case "isbn":
             var isbn = document.getElementById('inputFilter').value;
-            if (isbn=="") isbn=".*";
+            if (isbn=="") isbn=0;
             var url = window.location.origin+'/books/searchByISBN/'+isbn;
         break;
     }
@@ -186,7 +186,6 @@ function filterBooksBy(){
     request.onreadystatechange = function(){
         if (this.readyState == 4 && this.status == 200){
             var books = JSON.parse(request.responseText);
-            console.log(books);
 
             var table = document.getElementById("booksTable");
             while(table.rows.length > 1) table.deleteRow(1);
@@ -205,9 +204,62 @@ function filterBooksBy(){
                 cell2.insertAdjacentHTML('beforeend', book.author);
                 cell3.insertAdjacentHTML('beforeend', book.isbn);
                 cell4.insertAdjacentHTML('beforeend', book.condition);
-                cell5.insertAdjacentHTML('beforeend', '<i class="fa-solid fa-circle-plus icons" onclick="location.href='+window.location.href+'/details/'+book._id+'">');
-                cell6.insertAdjacentHTML('beforeend', '<i class="fa-solid fa-pen icons" onclick="location.href='+window.location.href+'/edit/'+book._id+'">');
-                cell7.insertAdjacentHTML('beforeend', '<i class="fa-solid fa-trash-can icons" onclick="loadModal('+book._id+','+book.title+')">');
+                cell5.insertAdjacentHTML('beforeend', '<i class="fa-solid fa-circle-plus icons" onclick="location.href=window.location.href+\'/details/\'+\''+ book._id+'\'">');
+                cell6.insertAdjacentHTML('beforeend', '<i class="fa-solid fa-pen icons" onclick="location.href=window.location.href+\'/edit/\'+\''+ book._id+'\'">');
+                cell7.insertAdjacentHTML('beforeend', '<i class="fa-solid fa-trash-can icons" onclick="loadModal(\''+book._id+'\',\''+book.title+'\')">');
+            }
+        }
+    }
+            
+    request.send();
+}
+
+function filterCustomersBy(){
+    searchBy = document.getElementById('filterBy');
+    searchBy = searchBy.options[searchBy.selectedIndex].value;
+    if (searchBy=="") return;
+    switch(searchBy){
+        case "name":
+            var name = document.getElementById('inputFilter').value;
+            if (name=="") name=".*";
+            var url = window.location.origin+'/customers/filterByName/'+name;
+        break;
+        case "nif":
+            var nif = document.getElementById('inputFilter').value;
+            if (nif=="") nif=0;
+            var url = window.location.origin+'/customers/filterByNIF/'+nif;
+        break;
+        case "email":
+            var email = document.getElementById('inputFilter').value;
+            if (email=="") email=".*";
+            var url = window.location.origin+'/customers/filterByEmail/'+email;
+        break;
+    }
+    var request = new XMLHttpRequest();
+    request.open('get', url, true);
+        
+    request.onreadystatechange = function(){
+        if (this.readyState == 4 && this.status == 200){
+            var customers = JSON.parse(request.responseText);
+
+            var table = document.getElementById("customersTable");
+            while(table.rows.length > 1) table.deleteRow(1);
+
+            for(let customer of customers){
+                var row = table.insertRow(-1);
+                var cell1 = row.insertCell(0);
+                var cell2 = row.insertCell(1);
+                var cell3 = row.insertCell(2);
+                var cell4 = row.insertCell(3);
+                var cell5 = row.insertCell(4);
+                var cell6 = row.insertCell(5);
+                    
+                cell1.insertAdjacentHTML('beforeend', customer.name);
+                cell2.insertAdjacentHTML('beforeend', customer.nif);
+                cell3.insertAdjacentHTML('beforeend', customer.email);
+                cell4.insertAdjacentHTML('beforeend', '<i class="fa-solid fa-circle-plus icons" onclick="location.href=window.location.href+\'/details/\'+\''+ customer._id+'\'">');
+                cell5.insertAdjacentHTML('beforeend', '<i class="fa-solid fa-pen icons" onclick="location.href=window.location.href+\'/edit/\'+\''+ customer._id+'\'">');
+                cell6.insertAdjacentHTML('beforeend', '<i class="fa-solid fa-trash-can icons" onclick="loadModal(\''+customer._id+'\',\''+customer.name+'\')">');
             }
         }
     }

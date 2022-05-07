@@ -99,6 +99,8 @@ const bookSearchByISBNandCondition = function(req, res){
     });
 }
 
+//BOOKS FILTER BY
+
 const bookFilterByTitle = function(req, res){
     Book.find({ title: { $regex: req.params.title, $options: "i" } }).exec(function(err, result){
         if(err){res.status(400)}

@@ -91,6 +91,29 @@ const customerSearchByNIF = function(req, res){
     });
 }
 
+//CUSTOMERS FILTER BY
+
+const customerFilterByName = function(req, res){
+    Customer.find({ name: { $regex: req.params.name, $options: "i" } }).exec(function(err, result){
+        if(err){res.status(400)}
+        res.send(result);
+    });
+}
+
+const customerFilterByNIF = function(req, res){
+    Customer.find({nif: req.params.NIF}).exec(function(err, result){
+        if(err){res.status(400)}
+        res.send(result);
+    });
+}
+
+const customerFilterByEmail = function(req, res){
+    Customer.find({ email: { $regex: req.params.email, $options: "i" } }).exec(function(err, result){
+        if(err){res.status(400)}
+        res.send(result);
+    });
+}
+
 module.exports = {
     getAllCustomers,
     getCreateView,
@@ -99,5 +122,8 @@ module.exports = {
     getCustomerEditPage,
     updateCustomer,
     deleteCustomer,
-    customerSearchByNIF
+    customerSearchByNIF,
+    customerFilterByName,
+    customerFilterByNIF,
+    customerFilterByEmail
 }
