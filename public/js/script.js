@@ -81,7 +81,6 @@ function getBookByISBN(){
 
     request.onreadystatechange = function(){
         if (this.readyState == 4 && this.status == 200){
-            console.log(request)
             if (request.responseText != "[]"){
                 books = JSON.parse(request.responseText);
                 
@@ -313,6 +312,57 @@ function filterEmployeesBy(){
                 cell4.insertAdjacentHTML('beforeend', '<i class="fa-solid fa-circle-plus icons" onclick="location.href=window.location.href+\'/details/\'+\''+ employee._id+'\'">');
                 cell5.insertAdjacentHTML('beforeend', '<i class="fa-solid fa-pen icons" onclick="location.href=window.location.href+\'/edit/\'+\''+ employee._id+'\'">');
                 cell6.insertAdjacentHTML('beforeend', '<i class="fa-solid fa-trash-can icons" onclick="loadModal(\''+employee._id+'\',\''+employee.name+'\')">');
+            }
+        }
+    }
+            
+    request.send();
+}
+
+function filterPurchasesBy(){
+    searchBy = document.getElementById('filterBy');
+    searchBy = searchBy.options[searchBy.selectedIndex].value;
+    if (searchBy=="") return;
+    switch(searchBy){
+        case "name":
+            var name = document.getElementById('inputFilter').value;
+            if (name=="") name=".*";
+            var url = window.location.origin+'/purchases/filterByName/'+name;
+        break;
+        case "nif":
+            var nif = document.getElementById('inputFilter').value;
+            if (nif=="") nif=0;
+            var url = window.location.origin+'/purchases/filterByNIF/'+nif;
+        break;
+        case "date":
+            var date = document.getElementById('inputFilter').value;
+            if (date=="") date="0000-00-00";
+            date = new Date(date.substr(6,4),date.substr(3,2)-1,date.substr(0,2))
+            var url = window.location.origin+'/purchases/filterByDate/'+date;
+        break;
+    }
+    var request = new XMLHttpRequest();
+    request.open('get', url, true);
+        
+    request.onreadystatechange = function(){
+        if (this.readyState == 4 && this.status == 200){
+            var purchases = JSON.parse(request.responseText);
+            var table = document.getElementById("purchasesTable");
+            while(table.rows.length > 1) table.deleteRow(1);
+
+            for(let purchase of purchases){
+                var row = table.insertRow(-1);
+                var cell1 = row.insertCell(0);
+                var cell2 = row.insertCell(1);
+                var cell3 = row.insertCell(2);
+                var cell4 = row.insertCell(3);
+                var cell5 = row.insertCell(4);
+
+                cell1.insertAdjacentHTML('beforeend', purchase.nif);
+                cell2.insertAdjacentHTML('beforeend', purchase.name);
+                cell3.insertAdjacentHTML('beforeend', purchase.date.substr(8,2)+"/"+purchase.date.substr(5,2)+"/"+ purchase.date.substr(0,4) );
+                cell4.insertAdjacentHTML('beforeend', '<i class="fa-solid fa-circle-plus icons" onclick="location.href=window.location.href+\'/details/\'+\''+ purchase._id+'\'">');
+                cell5.insertAdjacentHTML('beforeend', '<i class="fa-solid fa-trash-can icons" onclick="loadModal(\''+purchase._id+'\',\''+purchase.name+'\')">');
             }
         }
     }

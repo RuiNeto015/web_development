@@ -62,10 +62,43 @@ const deletePurchase = function(req, res){
     })
 }
 
+//PURCHASES FILTER BY
+
+const purchaseFilterByName = function(req, res){
+    Purchase.find({ name: { $regex: req.params.name, $options: "i" } }).exec(function(err, result){
+        if(err){res.status(400)}
+        res.send(result);
+    });
+}
+
+const purchaseFilterByNIF = function(req, res){
+    Purchase.find({nif: req.params.NIF}).exec(function(err, result){
+        if(err){res.status(400)}
+        res.send(result);
+    });
+}
+
+const purchaseFilterByDate = function(req, res){
+    var date1 = new Date(req.params.date)
+    var date2 = new Date(req.params.date)
+    date2.setDate(date2.getDate()+1)
+    Purchase.find({date: {
+        $gte: date1, 
+        $lt: date2
+    }}).exec(function(err, result){
+        if(err){res.status(400)}
+        res.send(result);
+    });
+}
+
+
 module.exports = {
     getAllPurchases,
     getDetailsView,
     getCreateView,
     addPurchase,
-    deletePurchase
+    deletePurchase,
+    purchaseFilterByName,
+    purchaseFilterByNIF,
+    purchaseFilterByDate
 }

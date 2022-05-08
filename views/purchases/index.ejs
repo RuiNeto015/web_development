@@ -3,8 +3,24 @@
   <%- include("../static/layout.ejs") %>
   <h1 class="text-center">Histórico de Compras</h1>
   <div class="tableMargins">
-    <button type="button" class="btn btn-secondary float-end" onclick="location.href=window.location.href+'/create'">Adicionar Compra</button>
-    <table class="table table-dark table-striped table-hover">
+    <div class="row g-3">
+      <div class="col-md-4">
+        <div class="input-group mb-3">
+          <input type="text" class="form-control" placeholder="Filtros" id="inputFilter">
+          <select class="btn btn-outline-secondary dropdown-toggle text-start" id="filterBy">
+            <option value="" selected disabled hidden>Pesquisar por</option>
+            <option value="name">Nome</option>
+            <option value="nif">NIF</option>
+            <option value="date">Data (dd-mm-yyyy)</option>
+          </select>
+          <button class="btn btn-outline-secondary" type="button" onclick="filterPurchasesBy()"><i class="fa-solid fa-magnifying-glass"></i></button>
+        </div>
+      </div>
+    <div class="col-md-8">
+      <button type="button" class="btn btn-secondary float-end" onclick="location.href=window.location.href+'/create'">Adicionar Compra</button>
+    </div>
+    </div>
+    <table class="table table-dark table-striped table-hover" id="purchasesTable">
       <thead>
       <tr>
         <th scope="col">NIF</th>
