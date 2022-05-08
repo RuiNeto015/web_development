@@ -1,7 +1,8 @@
 var express = require('express');
 var router = express.Router();
-const {getAllCustomers, getCreateView, addCustomer, getDetailsView, getCustomerEditPage, updateCustomer, deleteCustomer,
-   customerSearchByNIF, customerFilterByName,customerFilterByNIF, customerFilterByEmail} = require("../controllers/CustomerController");
+const {getAllCustomers, getCreateView, addCustomer, getDetailsView, getCustomerEditPage, updateCustomer, 
+  deleteCustomer,customerSearchByNIF, customerFilterByName,customerFilterByNIF, customerFilterByEmail
+} = require("../controllers/CustomerController");
 
 //CUSTOMERS INDEX
 

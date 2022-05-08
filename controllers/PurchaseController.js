@@ -91,7 +91,6 @@ const purchaseFilterByDate = function(req, res){
     });
 }
 
-
 module.exports = {
     getAllPurchases,
     getDetailsView,

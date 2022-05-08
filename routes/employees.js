@@ -1,7 +1,8 @@
 var express = require('express');
 var router = express.Router();
 const {getAllEmployees, getCreateView, addEmployee, getDetailsView, deleteEmployee, getEmployeeEditPage, updateEmployee
-    ,employeeFilterByName,employeeFilterByNIF,employeeFilterByEmail} = require("../controllers/EmployeeController");
+    ,employeeFilterByName,employeeFilterByNIF,employeeFilterByEmail
+} = require("../controllers/EmployeeController");
 
 //EMPLOYEES INDEX
 

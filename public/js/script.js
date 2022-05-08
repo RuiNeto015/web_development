@@ -119,7 +119,7 @@ function getBookByISBN(){
     request.send();
 }
 
-// Função para mostrar o preco de acordo com a condição do livro
+// Função para mostrar o preço de acordo com a condição do livro
 function getPriceByCondition(element){
     var condition = element.options[element.selectedIndex].value;
     id = element.id.split("conditionInput")[1];
@@ -148,16 +148,20 @@ function removeItem(btn){
 }
 
 // Função para mostrar e esconder palavra-passe no editar dos funcionários
-function myFunction() {
+function showAndHidePassword() {
     var x = document.getElementById("passwordInput");
+    var btn = document.getElementById("showAndHidePass");
     
     if (x.type === "password") {
         x.type = "text";
+        btn.innerText  = "Esconder"
     } else {
         x.type = "password";
+        btn.innerText  = "Mostrar"
     }
 }
 
+// Função para filtrar os livros
 function filterBooksBy(){
     searchBy = document.getElementById('filterBy');
     searchBy = searchBy.options[searchBy.selectedIndex].value;
@@ -213,6 +217,7 @@ function filterBooksBy(){
     request.send();
 }
 
+// Função para filtrar os clientes
 function filterCustomersBy(){
     searchBy = document.getElementById('filterBy');
     searchBy = searchBy.options[searchBy.selectedIndex].value;
@@ -266,6 +271,7 @@ function filterCustomersBy(){
     request.send();
 }
 
+// Função para filtrar os funcionários
 function filterEmployeesBy(){
     searchBy = document.getElementById('filterBy');
     searchBy = searchBy.options[searchBy.selectedIndex].value;
@@ -319,6 +325,7 @@ function filterEmployeesBy(){
     request.send();
 }
 
+// Função para filtrar as compras
 function filterPurchasesBy(){
     searchBy = document.getElementById('filterBy');
     searchBy = searchBy.options[searchBy.selectedIndex].value;

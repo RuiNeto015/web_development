@@ -1,7 +1,9 @@
 var express = require('express');
 const req = require('express/lib/request');
 var router = express.Router();
-const {getAllPurchases, getDetailsView, getCreateView, addPurchase, deletePurchase,purchaseFilterByName,purchaseFilterByNIF,purchaseFilterByDate} = require("../controllers/PurchaseController");
+const {getAllPurchases, getDetailsView, getCreateView, addPurchase, deletePurchase,purchaseFilterByName,
+  purchaseFilterByNIF,purchaseFilterByDate
+} = require("../controllers/PurchaseController");
 
 //PURCHASES INDEX
 

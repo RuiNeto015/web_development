@@ -18,7 +18,7 @@
           <div class="input-group mb-3">
             <input type="password" placeholder="Insira a palavra-passe" class="form-control" id="passwordInput" name="password" minlength="5" maxlength="15" value="<%= employee.password %>" required>
             <div class="input-group-append">
-              <button class="btn btn-outline-secondary" type="button" onclick="myFunction()">Mostrar</button>
+              <button class="btn btn-outline-secondary" type="button" id="showAndHidePass" onclick="showAndHidePassword()">Mostrar</button>
             </div>
           </div>
           <div><small class="form-text text-muted">De 5 a 15 caracteres.</small></div>
