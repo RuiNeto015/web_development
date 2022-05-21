@@ -87,21 +87,21 @@ const deleteEmployee = function(req, res){
 const employeeFilterByName = function(req, res){
     Employee.find({ name: { $regex: req.params.name, $options: "i" } }).exec(function(err, result){
         if(err){res.status(400)}
-        res.send(result);
+        res.json(result);
     });
 }
 
 const employeeFilterByNIF = function(req, res){
     Employee.find({nif: req.params.NIF}).exec(function(err, result){
         if(err){res.status(400)}
-        res.send(result);
+        res.json(result);
     });
 }
 
 const employeeFilterByEmail = function(req, res){
     Employee.find({ email: { $regex: req.params.email, $options: "i" } }).exec(function(err, result){
         if(err){res.status(400)}
-        res.send(result);
+        res.json(result);
     });
 }
 

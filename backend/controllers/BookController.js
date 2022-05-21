@@ -88,14 +88,14 @@ const deleteBook = function(req, res){
 const bookSearchByISBN = function(req, res){
     Book.find({isbn: req.params.ISBN}).exec(function(err, result){
         if(err){res.status(400)}
-        res.send(result);
+        res.json(result);
     });
 }
 
 const bookSearchByISBNandCondition = function(req, res){
     Book.findOne({isbn: req.params.ISBN, condition: req.params.condition}).exec(function(err, result){
         if(err){res.status(400)}
-        res.send(result);
+        res.json(result);
     });
 }
 
@@ -104,14 +104,14 @@ const bookSearchByISBNandCondition = function(req, res){
 const bookFilterByTitle = function(req, res){
     Book.find({ title: { $regex: req.params.title, $options: "i" } }).exec(function(err, result){
         if(err){res.status(400)}
-        res.send(result);
+        res.json(result);
     });
 }
 
 const bookFilterByAuthor = function(req, res){
     Book.find({ author: { $regex: req.params.author, $options: "i" } }).exec(function(err, result){
         if(err){res.status(400)}
-        res.send(result);
+        res.json(result);
     });
 }
 

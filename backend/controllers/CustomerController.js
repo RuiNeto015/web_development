@@ -87,7 +87,7 @@ const deleteCustomer = function(req, res){
 const customerSearchByNIF = function(req, res){
     Customer.findOne({nif: req.params.NIF}).exec(function(err, result){
         if(err){res.status(400)}
-        res.send(result);
+        res.json(result);
     });
 }
 
@@ -96,21 +96,21 @@ const customerSearchByNIF = function(req, res){
 const customerFilterByName = function(req, res){
     Customer.find({ name: { $regex: req.params.name, $options: "i" } }).exec(function(err, result){
         if(err){res.status(400)}
-        res.send(result);
+        res.json(result);
     });
 }
 
 const customerFilterByNIF = function(req, res){
     Customer.find({nif: req.params.NIF}).exec(function(err, result){
         if(err){res.status(400)}
-        res.send(result);
+        res.json(result);
     });
 }
 
 const customerFilterByEmail = function(req, res){
     Customer.find({ email: { $regex: req.params.email, $options: "i" } }).exec(function(err, result){
         if(err){res.status(400)}
-        res.send(result);
+        res.json(result);
     });
 }
 

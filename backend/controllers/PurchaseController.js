@@ -67,14 +67,14 @@ const deletePurchase = function(req, res){
 const purchaseFilterByName = function(req, res){
     Purchase.find({ name: { $regex: req.params.name, $options: "i" } }).exec(function(err, result){
         if(err){res.status(400)}
-        res.send(result);
+        res.json(result);
     });
 }
 
 const purchaseFilterByNIF = function(req, res){
     Purchase.find({nif: req.params.NIF}).exec(function(err, result){
         if(err){res.status(400)}
-        res.send(result);
+        res.json(result);
     });
 }
 
@@ -87,7 +87,7 @@ const purchaseFilterByDate = function(req, res){
         $lt: date2
     }}).exec(function(err, result){
         if(err){res.status(400)}
-        res.send(result);
+        res.json(result);
     });
 }
 
