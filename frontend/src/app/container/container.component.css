@@ -1,0 +1,7 @@
+#bodyContainer {
+    border: 0px solid red;
+    background-color: #ffffff;
+    min-width: 90%;
+    height: 100vh;
+    padding: 2em 8em 5em 8em;
+  }
