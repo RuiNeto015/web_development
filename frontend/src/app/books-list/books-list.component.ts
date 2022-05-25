@@ -7,11 +7,16 @@ import { HttpService } from '../services/http.service';
   styleUrls: ['./books-list.component.css'],
 })
 export class BooksListComponent implements OnInit {
-  constructor(private books: HttpService) {}
+  books: any = [];
+  constructor(private rest: HttpService) {}
 
   ngOnInit(): void {
-    this.books.getBooks().subscribe((res) => {
-      console.log(res);
+    this.getBooks();
+  }
+  getBooks() {
+    this.rest.getBooks().subscribe((data:{}) => {
+      this.books = data;
+      this.books = this.rest.getBooksCover(this.books);
     });
   }
 }

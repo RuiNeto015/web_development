@@ -116,7 +116,7 @@ const bookFilterByAuthor = function(req, res){
 }
 
 const booksList = function(req, res){
-    Book.find().sort({ created_at: -1 }).limit(10).exec(function(err, result){
+    Book.find().sort({ created_at: -1 }).exec(function(err, result){
         if(err){res.status(400)}
         res.json(result);
     });
