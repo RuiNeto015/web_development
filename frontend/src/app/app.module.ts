@@ -9,16 +9,16 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { SideBarComponent } from './side-bar/side-bar.component';
 import { NavBarComponent } from './nav-bar/nav-bar.component';
-import { ContainerComponent } from './container/container.component';
 import { BooksListComponent } from './books-list/books-list.component';
+import { BookDetailsComponent } from './book-details/book-details.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     SideBarComponent,
     NavBarComponent,
-    ContainerComponent,
     BooksListComponent,
+    BookDetailsComponent,
   ],
   imports: [
     BrowserModule,
