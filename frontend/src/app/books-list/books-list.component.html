@@ -1,18 +1,7 @@
+<h2>Livros Recentes</h2>
 <div class="parent">
-  <div class="divBook">
-    <img [src]="books[0].cover" class="bookCover" />
-    <p> {{books[0].title }} </p>
-  </div>
-  <div class="divBook">
-    <img [src]="books[1].cover" class="bookCover" />
-  </div>
-  <div class="divBook">
-    <img [src]="books[2].cover" class="bookCover" />
-  </div>
-  <div class="divBook">
-    <img [src]="books[3].cover" class="bookCover" />
-  </div>
-  <div class="divBook">
-    <img [src]="books[4].cover" class="bookCover" />
+  <div class="divBook text-center" *ngFor="let book of books">
+    <img [src]="book.cover" class="bookCover" />
+    <h3> {{book.title }} </h3>
   </div>
 </div>

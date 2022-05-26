@@ -16,7 +16,6 @@ export class HttpService {
 
   getBooksCover(books: any) {
     books.forEach((book: any) => {
-      console.log(book.isbn);
       this.http.get(GOOGLE_API + book.isbn).subscribe((data: any) => {
         book.cover = data.items[0].volumeInfo.imageLinks.thumbnail;
       });
