@@ -11,7 +11,17 @@ const GOOGLE_API = 'https://www.googleapis.com/books/v1/volumes?q=isbn:';
 export class HttpService {
   constructor(private http: HttpClient) {}
 
-  getBooks() {
+  getBooks(searchBy?: string, search?: string) {
+    if (searchBy && search) {
+      switch (searchBy) {
+        case 'title':
+          return this.http.get<Book[]>(API_DOMAIN + 'books/filterByTitle/' + search);
+        case 'author':
+          return this.http.get<Book[]>(API_DOMAIN + 'books/filterByAuthor/' + search);
+        case 'isbn':
+          return this.http.get<Book[]>(API_DOMAIN + 'books/searchByISBN/' + search);
+      }
+    } 
     return this.http.get<Book[]>(API_DOMAIN + 'books/booksList');
   }
 

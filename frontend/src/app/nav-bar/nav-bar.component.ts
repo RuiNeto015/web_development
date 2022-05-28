@@ -1,4 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { NgForm } from '@angular/forms';
+import { Router } from '@angular/router';
+
+import { faShop } from '@fortawesome/free-solid-svg-icons';
+import { faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-nav-bar',
@@ -6,10 +11,15 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./nav-bar.component.css']
 })
 export class NavBarComponent implements OnInit {
-
-  constructor() { }
+  faShop = faShop;
+  faMagnifyingGlass = faMagnifyingGlass;
+  constructor(private router:Router) { }
 
   ngOnInit(): void {
+  }
+
+  onSubmit(form: NgForm) {
+    this.router.navigate(['search', form.value.searchBy, form.value.search]);
   }
 
 }

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Params, Router } from '@angular/router';
 import { HttpService } from '../services/http.service';
 
 @Component({
@@ -9,21 +9,34 @@ import { HttpService } from '../services/http.service';
 })
 export class BooksListComponent implements OnInit {
   books: any = [];
-  
-  constructor(private rest: HttpService, private router:Router) {}
+  title?: string;
+
+  constructor(
+    private rest: HttpService,
+    private router: Router,
+    private activatedRoute: ActivatedRoute
+  ) {}
 
   ngOnInit(): void {
-    this.getBooks();
+    this.activatedRoute.params.subscribe((params: Params) => {
+      if (params['search-by'] && params['book-search']) {
+        this.title = 'Resultados da pesquisa \"'+params['book-search']+'\"';
+        this.getBooks(params['search-by'], params['book-search']);
+      } else {
+        this.title = 'Livros Recentemente Adicionados';
+        this.getBooks();
+      }
+    });
   }
 
-  getBooks():void {
-    this.rest.getBooks().subscribe((data:{}) => {
+  getBooks(searchBy?: string, search?: string): void {
+    this.rest.getBooks(searchBy, search).subscribe((data: {}) => {
       this.books = data;
       this.books = this.rest.getBooksCover(this.books);
     });
   }
 
-  getBookDetails(isbn:String):void{
+  getBookDetails(isbn: String): void {
     this.router.navigate(['bookDetails', isbn]);
   }
 }

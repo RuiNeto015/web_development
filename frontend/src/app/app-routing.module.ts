@@ -11,13 +11,17 @@ const routes: Routes = [
     component: BooksListComponent,
   },
   {
+    path: 'search/:search-by/:book-search',
+    component: BooksListComponent,
+  },
+  {
     path: 'bookDetails/:isbn',
-    component: BookDetailsComponent
+    component: BookDetailsComponent,
   },
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}

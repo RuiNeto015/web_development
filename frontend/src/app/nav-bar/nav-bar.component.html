@@ -1,27 +1,28 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
-  <a class="navbar-brand" href="#"> Navbar</a>
+  <a class="navbar-brand" href="/">&nbsp; <fa-icon [icon]="faShop"></fa-icon> Home</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
     aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
 
-  <div class="collapse navbar-collapse" id="navbarSupportedContent">
-    <ul class="navbar-nav mr-auto">
-      <li class="nav-item active">
-        <a class="nav-link" href="#">Home</a>
-      </li>
-
-      <li class="nav-item">
-        <a class="nav-link" href="#">Link</a>
-      </li>
-
-      <li class="nav-item">
-        <a class="nav-link" href="#">Link</a>
-      </li>
-
-      <li class="nav-item">
-        <a class="nav-link disabled" href="#">Disabled</a>
+  <div class="collapse navbar-collapse container-fluid" id="navbarSupportedContent">
+    <ul class="navbar-nav me-auto">
+      <li class="nav-item disabled">
+        <a class="nav-link"></a>
       </li>
     </ul>
+
+      <form class="d-flex" #form="ngForm" (ngSubmit)="onSubmit(form)">
+        <div class="input-group">
+          <input type="text" class="form-control" placeholder="Insira aqui" id="inputSearch" name="search" ngModel>
+          <select class="btn btn-outline-secondary dropdown-toggle text-start" name="searchBy" ngModel>
+            <option value="" selected disabled hidden>Pesquisar por</option>
+            <option value="title">Titulo</option>
+            <option value="author">Autor</option>
+            <option value="isbn">ISBN</option>
+          </select>
+          <button class="btn btn-outline-secondary"><fa-icon [icon]="faMagnifyingGlass"></fa-icon></button>
+        </div>
+      </form>
   </div>
 </nav>
