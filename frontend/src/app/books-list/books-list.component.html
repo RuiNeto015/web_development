@@ -2,7 +2,7 @@
   <h2>Livros Recentes</h2>
   <div class="parent">
     <div class="divBook text-center" *ngFor="let book of books" (click)="getBookDetails(book.isbn)">
-      <img [src]="book.cover" class="bookCover" />
+      <img [src]="book.cover" class="bookCover"/>
       <h3> {{book.title}} </h3>
     </div>
   </div>

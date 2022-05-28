@@ -9,11 +9,13 @@ import { HttpService } from '../services/http.service';
 })
 export class BooksListComponent implements OnInit {
   books: any = [];
+  
   constructor(private rest: HttpService, private router:Router) {}
 
   ngOnInit(): void {
     this.getBooks();
   }
+
   getBooks():void {
     this.rest.getBooks().subscribe((data:{}) => {
       this.books = data;

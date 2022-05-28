@@ -24,8 +24,8 @@ export class HttpService {
     return books;
   }
 
-  getBookDetails(isbn: string) {
-    return this.http.get<Book>(API_DOMAIN + '/books/searchByISBN/'+isbn);
+  getBookDetails(isbn: String) {
+    return this.http.get<Book>(API_DOMAIN + 'books/searchByISBN/' + isbn);
   }
 
   private handleRetry<T>(source: Observable<T>): Observable<T> {
