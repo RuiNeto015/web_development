@@ -34,6 +34,12 @@ export class HttpService {
     return books;
   }
 
+  getBookCover(book: any) {
+    this.http.get(GOOGLE_API + book.isbn).pipe(this.handleRetry).subscribe((data: any) => {
+      book.cover = data.items[0].volumeInfo.imageLinks.thumbnail;
+    });
+  }
+
   getBookDetails(isbn: String) {
     return this.http.get<Book>(API_DOMAIN + 'books/searchByISBN/' + isbn);
   }
