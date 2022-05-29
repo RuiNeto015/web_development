@@ -1,5 +1,27 @@
-<div class="container" id="bodyContainer">
-    <h3> {{book.isbn}} </h3>
-    <h3> {{book.title}} </h3>
+<div style="background-image: url(https://foodtank.com/wp-content/uploads/2021/07/alfons-morales-YLSwjSy7stw-unsplash.jpg)">
+    <div class="container" id="bodyContainer">
+        <div class="container">
+            <div class="row">
+            <div class="col-sm">
+                <img [src]="book.cover" class="bookCover"/>
+            </div>
+            <div class="col-sm">
+                <br>
+                <h1 style="text-align: center;"> {{book.title}} </h1>
+                <h3 style="text-align: center;"><i> De {{book.author}} </i></h3>
+                <br>
+                <h3><i><strong>ISBN:</strong> {{book.isbn}} </i></h3>
+                <h3><i><strong>Editora:</strong> {{book.editor}} </i></h3>
+                <h3><i><strong>Linguagem:</strong> {{book.language}} </i></h3>
+                <h3><i><strong>Número de páginas:</strong> {{book.pages}}</i></h3>
+                <h3><i><strong>Estão disponíveis</strong> {{book.quantity}} Livros {{book.condition}}s.</i></h3>
+                <br>
+                <div style="text-align: right">
+                    <h1><i><strong> {{book.price}}€ </strong></i></h1> 
+                    <button type="button" class="btn btn-secondary">Adicionar ao carrinho</button>
+                </div>
+            </div>
+            </div>
+        </div>
+    </div>
 </div>
-
