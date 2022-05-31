@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 
 import { faShop } from '@fortawesome/free-solid-svg-icons';
 import { faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons';
+import { faCircleUser } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-nav-bar',
@@ -13,6 +14,7 @@ import { faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons';
 export class NavBarComponent implements OnInit {
   faShop = faShop;
   faMagnifyingGlass = faMagnifyingGlass;
+  faCircleUser = faCircleUser;
   constructor(private router:Router) { }
 
   ngOnInit(): void {

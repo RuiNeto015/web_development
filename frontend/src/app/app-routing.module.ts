@@ -3,7 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { AppComponent } from './app.component';
 import { BookDetailsComponent } from './book-details/book-details.component';
 import { BooksListComponent } from './books-list/books-list.component';
-import { SideBarComponent } from './side-bar/side-bar.component';
+import { UserProfileComponent } from './user-profile/user-profile.component';
 
 const routes: Routes = [
   {
@@ -17,6 +17,10 @@ const routes: Routes = [
   {
     path: 'bookDetails/:isbn',
     component: BookDetailsComponent,
+  },
+  {
+    path: 'profile',
+    component: UserProfileComponent,
   },
 ];
 
