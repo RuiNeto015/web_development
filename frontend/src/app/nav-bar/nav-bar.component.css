@@ -1,0 +1,46 @@
+.iconsButton {
+  border: none;
+  color: #f5f5f5;
+  padding: 5px;
+  text-align: center;
+  display: inline-block;
+  font-size: 2em;
+  margin-left: 10px;
+  cursor: pointer;
+}
+
+.iconsButton > input {
+  display: none;
+}
+
+input:checked ~ .dropdown-content {
+  display: block;
+}
+
+
+.dropbtn {
+  cursor: pointer;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f1f1f1;
+  min-width: 130px;
+  overflow: auto;
+  right: 0;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  z-index: 4;
+  font-size: .7em;
+}
+
+.dropdown a:hover {
+    background-color: #ddd;
+  }
+
+.dropdown-content a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}

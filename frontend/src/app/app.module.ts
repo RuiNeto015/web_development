@@ -13,6 +13,7 @@ import { NavBarComponent } from './nav-bar/nav-bar.component';
 import { BooksListComponent } from './books-list/books-list.component';
 import { BookDetailsComponent } from './book-details/book-details.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { UserProfileComponent } from './user-profile/user-profile.component';
 
 @NgModule({
   declarations: [
@@ -21,6 +22,7 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
     NavBarComponent,
     BooksListComponent,
     BookDetailsComponent,
+    UserProfileComponent,
   ],
   imports: [
     BrowserModule,
