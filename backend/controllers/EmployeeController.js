@@ -1,4 +1,5 @@
 var Employee = require("../models/EmployeeModel");
+var User = require("../models/UserModel");
 
 //EMPLOYEES INDEX
 
@@ -32,9 +33,27 @@ const getCreateView = function(req, res, next) {
 
 const addEmployee = function(req, res){
     var employee = Employee(req.body);
-    var query = req.body.nif;
+    var queryNif = req.body.nif;
 
-    Employee.findOne({nif:query}, function(err, dup){
+    req.body.type = 'Employee';
+    var user = User(req.body);
+    var queryEmail = req.body.email;
+
+    User.findOne({email:queryEmail}, function(err, dup){
+        if(err) console.log(err);
+        if(dup){
+            res.send("Este email já existe na base de dados!");
+            
+        }else{
+            user.save((err) => {
+                if(err){res.status(400)}
+                console.log("Successfully created a user.");
+                res.status(200);
+            })
+        }
+    })
+
+    Employee.findOne({nif:queryNif}, function(err, dup){
         if(err) console.log(err);
         if(dup){
             console.log("Este NIF já existe na base de dados!");

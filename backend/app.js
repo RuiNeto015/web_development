@@ -7,11 +7,11 @@ var cors = require('cors');
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
-var loginRouter = require('./routes/login');
 var customersRouter = require('./routes/customers');
 var booksRouter = require('./routes/books');
 var employeesRouter = require('./routes/employees');
 var purchasesRouter = require('./routes/purchases');
+var authRouter = require('./routes/auth');
 
 var mongoose = require("mongoose")
 mongoose.Promise = global.Promise;
@@ -37,11 +37,11 @@ app.use(cors())
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
-app.use('/login', loginRouter);
 app.use(customersRouter.routes);
 app.use(booksRouter.routes);
 app.use(employeesRouter.routes);
 app.use(purchasesRouter.routes);
+app.use(authRouter.routes);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
