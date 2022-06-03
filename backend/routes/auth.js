@@ -5,9 +5,9 @@ var authController = require('../controllers/AuthController');
 var userController = require('../controllers/UserController');
 
 router.post('/login', authController.login);
-router.post('/resgister', authController.register);
-router.post('/logout', authController.logout);
-router.post('/profile', authController.profile);
+router.post('/register', authController.register);
+router.get('/logout', authController.logout);
+router.get('/profile', authController.profile);
 
 router.get('/all-users', authController.verifyToken, authController.verifyRoleAdmin, userController.getAllUsers)
 

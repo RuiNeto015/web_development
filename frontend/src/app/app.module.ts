@@ -18,6 +18,7 @@ import { BooksListComponent } from './books-list/books-list.component';
 import { BookDetailsComponent } from './book-details/book-details.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { UserProfileComponent } from './user-profile/user-profile.component';
+import { LoginComponent } from './login/login.component';
 
 @NgModule({
   declarations: [
@@ -27,6 +28,7 @@ import { UserProfileComponent } from './user-profile/user-profile.component';
     BooksListComponent,
     BookDetailsComponent,
     UserProfileComponent,
+    LoginComponent,
   ],
   imports: [
     BrowserModule,

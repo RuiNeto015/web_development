@@ -5,15 +5,15 @@ import { BookDetailsComponent } from './book-details/book-details.component';
 import { BooksListComponent } from './books-list/books-list.component';
 import { AuthGuardService } from './services/auth-guard.service';
 import { UserProfileComponent } from './user-profile/user-profile.component';
-//import { LoginComponent } from './login';
+import { LoginComponent } from './login/login.component';
+
 
 const routes: Routes = [
   { path: '', component: BooksListComponent },
   { path: 'search/:search-by/:book-search', component: BooksListComponent },
   { path: 'bookDetails/:isbn', component: BookDetailsComponent, canActivate: [AuthGuardService] },
   { path: 'profile', component: UserProfileComponent },
-  { path: '', component: BooksListComponent, canActivate: [AuthGuardService] },
-  //{ path: 'login', component: LoginComponent },
+  { path: 'login', component: LoginComponent },
   { path: '**', redirectTo: '' }
 ]; 
 
