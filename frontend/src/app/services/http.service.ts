@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Book } from '../Models/Book';
 import { delay, Observable, retry, retryWhen, scan } from 'rxjs';
@@ -26,8 +26,9 @@ export class HttpService {
   }
 
   getBooksCover(books: any) {
+    const headers= new HttpHeaders().set('Authorization', ' ')
     books.forEach((book: any) => {
-      this.http.get(GOOGLE_API + book.isbn).pipe(this.handleRetry).subscribe((data: any) => {
+      this.http.get(GOOGLE_API + book.isbn, {'headers':headers}).pipe(this.handleRetry).subscribe((data: any) => {
         book.cover = data.items[0].volumeInfo.imageLinks.thumbnail;
       });
     });
