@@ -34,6 +34,24 @@ const addCustomer = function(req, res){
     var customer = Customer(req.body);
     var query = req.body.nif;
 
+    req.body.type = 'Customer';
+    var user = User(req.body);
+    var queryEmail = req.body.email;
+
+    User.findOne({email:queryEmail}, function(err, dup){
+        if(err) console.log(err);
+        if(dup){
+            res.send("Este email já existe na base de dados!");
+            
+        }else{
+            user.save((err) => {
+                if(err){res.status(400)}
+                console.log("Successfully created a user.");
+                res.status(200);
+            })
+        }
+    })
+
     Customer.findOne({nif:query}, function(err, dup){
         if(err) console.log(err);
         if(dup){
