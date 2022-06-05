@@ -26,7 +26,6 @@ export class HttpService {
   }
 
   getBooksCover(books: any) {
-    const headers= new HttpHeaders().set('Authorization', ' ')
     books.forEach((book: any) => {
       this.http.get(GOOGLE_API + book.isbn, {'headers':headers}).pipe(this.handleRetry).subscribe((data: any) => {
         book.cover = data.items[0].volumeInfo.imageLinks.thumbnail;
