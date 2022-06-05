@@ -17,7 +17,7 @@ authController.login = function(req, res){
         var token = jwt.sign({id: user._id}, config.secret, {
             expiresIn: 86400
         });
-
+        if(user.type!="Customer") return res.status(200).send({auth: true, token: token, staff:true});
         res.status(200).send({auth: true, token: token});
     });
 }
