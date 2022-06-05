@@ -24,4 +24,11 @@ export class NavBarComponent implements OnInit {
     this.router.navigate(['search', form.value.searchBy, form.value.search]);
   }
 
+  isLoggedIn():boolean{
+    if (localStorage.getItem('currentUser')){
+      return true
+    }
+    return false
+  }
+
 }
