@@ -9,7 +9,7 @@ var UserSchema = new mongoose.Schema({
     },
     password: {
         type: String,
-        maxlength: [15, 'Número máximo de caracteres é 15, foi inserido: {VALUE}'],
+        maxlength: [100, 'Número máximo de caracteres é 15, foi inserido: {VALUE}'],
         minlength: [5, 'Número mínimo de caracteres é 5, foi inserido: {VALUE}'],
         required: true
     },
