@@ -36,13 +36,13 @@ authController.register = function (req, res, next) {
         password: hashedPassword,
       },
       function (err, user) {
-        if (err)
-          return res
-            .status(500)
-            .send("There was a problem registering the user.");
+        if (err){
+            console.log(err);
+            return res.status(500).send("There was a problem registering the user.");
+        }
 
-        var token = jwt.sign({ id: user._id }, process.env.JWT_SECRET, {
-          expiresIn: 86400
+        var token = jwt.sign({id: user._id}, config.secret, {
+            expiresIn: 86400
         });
   
         res.status(200).send({ auth: true, token: token });
@@ -55,9 +55,8 @@ authController.profile = function (req, res, next) {
             return res.status(500).send("There was a problem finding the user.");
         if (!user) 
             return res.status(404).send("No user found.");
-        email = user.email;
         if(email=="Customer"){
-            Customer.findOne({email: ""}).exec(function(err, userInfo){
+            Customer.findOne({email: user.email}).exec(function(err, userInfo){
                 console.log(userInfo);
                 if (err)
                     return res.status(500).send("There was a problem finding the user.");
