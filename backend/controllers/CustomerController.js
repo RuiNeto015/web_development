@@ -48,8 +48,7 @@ const addCustomer = function(req, res){
             user.save((err) => {
                 if(err){res.status(400)}
                 console.log("Successfully created a user.");
-                res.status(200);
-            })
+            });
         }
     })
 
@@ -94,8 +93,8 @@ const updateCustomer = function(req, res){
 
 const deleteCustomer = function(req, res){
     Customer.remove({_id: req.params.id}, function(err){
-        if(err){res.status(400)}
-        console.log(err);
+        if(err){res.status(400)
+            console.log(err);}
         console.log("Successfully deleted a customer.");
         res.redirect('/customers');
     })

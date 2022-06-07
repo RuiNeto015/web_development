@@ -42,7 +42,7 @@ const addEmployee = function(req, res){
     req.body.type = 'Employee';
     var user = User(req.body);
     var queryEmail = req.body.email;
-
+    
     User.findOne({email:queryEmail}, function(err, dup){
         if(err) console.log(err);
         if(dup){
@@ -51,6 +51,7 @@ const addEmployee = function(req, res){
         }else{
             var hashedPassword = bcrypt.hashSync(req.body.password, 8);
             user.password = hashedPassword;
+            console.log(user);
             user.save((err) => {
                 if(err){res.status(400)}
                 console.log("Successfully created a user.");
@@ -99,9 +100,9 @@ const updateEmployee = function(req, res){
 //EMPLOYEES DELETE
 
 const deleteEmployee = function(req, res){
-    Employee.remove({_id: req.params.id}, function(err){
-        if(err){res.status(400)}
-        console.log(err);
+    Employee.deleteOne({_id: req.params.id}, function(err){
+        if(err){res.status(400);
+            console.log(err);}
         console.log("Successfully deleted a employee.");
         res.redirect('/employees');
     })
