@@ -27,9 +27,11 @@ authController.logout = function(req, res){
     res.status(200).send({auth: false, token: null});
 }
 
+
 authController.register = function (req, res, next) {
     var hashedPassword = bcrypt.hashSync(req.body.password, 8);
-  
+    req.body.password = hashedPassword;
+
     User.create(
       {
         email: req.body.email,
@@ -44,10 +46,53 @@ authController.register = function (req, res, next) {
         var token = jwt.sign({id: user._id}, config.secret, {
             expiresIn: 86400
         });
-  
+
         res.status(200).send({ auth: true, token: token });
     });
-};
+    
+    req.body.type = 'Customer';
+    var user = User(req.body);
+    var queryEmail = req.body.email;
+    req.body.password = hashedPassword;
+    
+    User.findOne({email:queryEmail}, function(err, dup){
+        if(err) console.log(err);
+        if(dup){
+            res.send("Este email já existe na base de dados!");
+            
+        }else{
+            user.save((err) => {
+                if(err){res.status(400)}
+                console.log("Successfully created a user.");
+                res.status(200);
+            })
+        }
+    })
+
+    var customer = Customer(req.body);
+    var query = req.body.nif;
+    req.body.password = hashedPassword;
+
+    Customer.findOne({nif:query}, function(err, dup){
+        if(err) console.log(err);
+        if(dup){
+            console.log("Este NIF já existe na base de dados!");
+            
+        }else{
+            customer.save((err) => {
+                if(err){res.status(400)}
+                console.log("Successfully created a customer.");
+            })
+        }
+    })
+
+    var token = jwt.sign({id: user._id}, config.secret, {
+        expiresIn: 86400
+    });
+
+    res.status(200).send({ auth: true, token: token });
+}
+
   
 authController.profile = function (req, res, next) {
     User.findById(req.userId, function (err, user) {
