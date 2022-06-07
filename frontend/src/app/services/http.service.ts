@@ -45,7 +45,7 @@ export class HttpService {
   }
 
   getUserInfo() {
-    return this.http.get<Book>(API_DOMAIN + 'profile');
+    return this.http.get(API_DOMAIN + 'profile');
   }
 
   private handleRetry<T>(source: Observable<T>): Observable<T> {

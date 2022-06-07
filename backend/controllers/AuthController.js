@@ -30,50 +30,18 @@ authController.logout = function(req, res){
 
 authController.register = function (req, res, next) {
     var hashedPassword = bcrypt.hashSync(req.body.password, 8);
-    req.body.password = hashedPassword;
-
-    User.create(
-      {
-        email: req.body.email,
-        password: hashedPassword,
-      },
-      function (err, user) {
+    User.create({email: req.body.email,password: hashedPassword, },function (err, user) {
+        console.log(req.body);
         if (err){
             console.log(err);
             return res.status(500).send("There was a problem registering the user.");
         }
 
-        var token = jwt.sign({id: user._id}, config.secret, {
-            expiresIn: 86400
-        });
-
-        res.status(200).send({ auth: true, token: token });
-    });
-    
-    req.body.type = 'Customer';
-    var user = User(req.body);
-    var queryEmail = req.body.email;
-    req.body.password = hashedPassword;
-    
-    User.findOne({email:queryEmail}, function(err, dup){
-        if(err) console.log(err);
-        if(dup){
-            res.send("Este email já existe na base de dados!");
-            
-        }else{
-            user.save((err) => {
-                if(err){res.status(400)}
-                console.log("Successfully created a user.");
-                res.status(200);
-            })
-        }
-    })
-
-    var customer = Customer(req.body);
-    var query = req.body.nif;
-    req.body.password = hashedPassword;
-
-    Customer.findOne({nif:query}, function(err, dup){
+        var customer = Customer(req.body);
+        var query = req.body.nif;
+        console.log(customer);
+        
+        Customer.findOne({nif:query}, function(err, dup){
         if(err) console.log(err);
         if(dup){
             console.log("Este NIF já existe na base de dados!");
@@ -84,16 +52,19 @@ authController.register = function (req, res, next) {
                 console.log("Successfully created a customer.");
             })
         }
-    })
-
-    var token = jwt.sign({id: user._id}, config.secret, {
-        expiresIn: 86400
+        
+        var token = jwt.sign({id: user._id}, config.secret, {
+            expiresIn: 86400
+        });
+        
+        res.status(200).send({ auth: true, token: token });
+        
     });
+});
 
-    res.status(200).send({ auth: true, token: token });
 }
 
-  
+
 authController.profile = function (req, res, next) {
     User.findById(req.userId, function (err, user) {
         if (err)

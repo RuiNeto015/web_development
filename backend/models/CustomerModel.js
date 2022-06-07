@@ -18,7 +18,7 @@ var CustomerSchema = new mongoose.Schema({
     },
     birth_date: {
         type: Date,
-        required: true,
+        required: false,
     },
     address: {
         type: String,
