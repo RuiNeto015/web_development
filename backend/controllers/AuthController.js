@@ -100,14 +100,13 @@ authController.profile = function (req, res, next) {
             return res.status(500).send("There was a problem finding the user.");
         if (!user) 
             return res.status(404).send("No user found.");
-        if(email=="Customer"){
+        if(user.type=="Customer"){
             Customer.findOne({email: user.email}).exec(function(err, userInfo){
-                console.log(userInfo);
                 if (err)
                     return res.status(500).send("There was a problem finding the user.");
                 if (!userInfo)
                     return res.status(404).send("No user found.");
-                res.status(200).json(user);
+                res.status(200).json(userInfo);
             });
         }
     });
