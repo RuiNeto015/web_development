@@ -9,7 +9,6 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { routing } from './app-routing.module';
 import { JwtInterceptor } from './services/jwt-interceptor.service';
-//import { LoginComponent } from './login';
 
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { SideBarComponent } from './side-bar/side-bar.component';
@@ -19,6 +18,7 @@ import { BookDetailsComponent } from './book-details/book-details.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { UserProfileComponent } from './user-profile/user-profile.component';
 import { LoginComponent } from './login/login.component';
+import { RegisterComponent } from './register/register.component';
 
 @NgModule({
   declarations: [
@@ -29,6 +29,7 @@ import { LoginComponent } from './login/login.component';
     BookDetailsComponent,
     UserProfileComponent,
     LoginComponent,
+    RegisterComponent,
   ],
   imports: [
     BrowserModule,

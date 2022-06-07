@@ -19,7 +19,9 @@ export class AuthenticationService {
     localStorage.removeItem('currentUser');
   }
 
-  register(email: string, password: string): Observable<any>{
-    return this.http.post<any>(API_DOMAIN+'register', { email, password });
+  register(name: string, email: string, gender: string, 
+      birth_date: Date, address: string, phoneNumber: number, nif: number, password: string): Observable<any>{
+    return this.http.post<any>(API_DOMAIN+'register', { name, email, gender, birth_date, 
+      address, phoneNumber, nif, password });    
   }
 }
