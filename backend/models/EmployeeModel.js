@@ -8,6 +8,7 @@ var EmployeeSchema = new mongoose.Schema({
     },
     email: {
         type: String,
+        unique: true,
         maxlength: [75, 'Número máximo de caracteres é 75, foi inserido: {VALUE}'],
         required: true
     },

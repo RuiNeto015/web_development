@@ -8,6 +8,7 @@ var CustomerSchema = new mongoose.Schema({
     },
     email: {
         type: String,
+        unique: true,
         maxlength: [75, 'Número máximo de caracteres é 75, foi inserido: {VALUE}'],
         required: true
     },
@@ -36,12 +37,6 @@ var CustomerSchema = new mongoose.Schema({
         maxlength: [9, 'Número máximo de dígitos é 9, foi inserido: {VALUE}'],
         minlength: [9, 'Número mínimo de dígitos é 9, foi inserido: {VALUE}'],
         pattern: "[0-9]{9}",
-        required: true
-    },
-    password: {
-        type: String,
-        maxlength: [15, 'Número máximo de caracteres é 15, foi inserido: {VALUE}'],
-        minlength: [5, 'Número mínimo de caracteres é 5, foi inserido: {VALUE}'],
         required: true
     },
     points: {
