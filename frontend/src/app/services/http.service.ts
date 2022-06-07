@@ -44,6 +44,10 @@ export class HttpService {
     return this.http.get<Book>(API_DOMAIN + 'books/searchByISBN/' + isbn);
   }
 
+  getUserInfo() {
+    return this.http.get<Book>(API_DOMAIN + 'profile');
+  }
+
   private handleRetry<T>(source: Observable<T>): Observable<T> {
     return source.pipe(retryWhen(e => e.pipe(scan((errorCount, error) => {
         if (errorCount >= 3) {

@@ -7,7 +7,7 @@ var userController = require('../controllers/UserController');
 router.post('/login', authController.login);
 router.post('/register', authController.register);
 router.get('/logout', authController.logout);
-router.get('/profile', authController.profile);
+router.get('/profile',authController.verifyToken, authController.profile);
 
 router.get('/all-users', authController.verifyToken, authController.verifyRoleAdmin, userController.getAllUsers)
 

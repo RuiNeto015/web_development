@@ -1,6 +1,10 @@
 var Employee = require("../models/EmployeeModel");
 var User = require("../models/UserModel");
 
+var jwt = require('jsonwebtoken');
+var bcrypt = require('bcryptjs');
+var config = require("../public/js/authconfig");
+
 //EMPLOYEES INDEX
 
 const getAllEmployees = function(req, res){
@@ -45,6 +49,8 @@ const addEmployee = function(req, res){
             res.send("Este email já existe na base de dados!");
             
         }else{
+            var hashedPassword = bcrypt.hashSync(req.body.password, 8);
+            user.password = hashedPassword;
             user.save((err) => {
                 if(err){res.status(400)}
                 console.log("Successfully created a user.");

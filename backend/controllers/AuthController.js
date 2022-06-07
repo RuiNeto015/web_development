@@ -1,4 +1,5 @@
 var User = require('../models/UserModel');
+var Customer = require('../models/CustomerModel');
 
 var jwt = require('jsonwebtoken');
 var bcrypt = require('bcryptjs');
@@ -54,23 +55,31 @@ authController.profile = function (req, res, next) {
             return res.status(500).send("There was a problem finding the user.");
         if (!user) 
             return res.status(404).send("No user found.");
-
-        res.status(200).send(user);
+        email = user.email;
+        if(email=="Customer"){
+            Customer.findOne({email: ""}).exec(function(err, userInfo){
+                console.log(userInfo);
+                if (err)
+                    return res.status(500).send("There was a problem finding the user.");
+                if (!userInfo)
+                    return res.status(404).send("No user found.");
+                res.status(200).json(user);
+            });
+        }
     });
 };
 
-//middleware
+
 authController.verifyToken = function (req, res, next) {
-    // check header or url parameters or post parameters for token
     var token = req.headers["x-access-token"];
+    if(!token && req.headers["authorization"]) 
+        token = req.headers["authorization"].slice(7);
     if(!token)
         return res.status(500).send({ auth: false, message: 'No token provided.' });
     
-    // verifies secret and checks exp
     jwt.verify(token, config.secret, function(err, decoded) {
         if (err)
             return res.status(500).send({ auth: false, message: 'Failed to authenticate token.' });
-        // if everything is good, save to request for use in other routes
         req.userId = decoded.id;
         next();
     });

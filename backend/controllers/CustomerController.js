@@ -1,4 +1,5 @@
 var Customer = require("../models/CustomerModel");
+var User = require("../models/UserModel");
 
 //CUSTOMERS INDEX
 
