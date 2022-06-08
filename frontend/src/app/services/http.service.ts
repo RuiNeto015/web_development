@@ -40,6 +40,10 @@ export class HttpService {
     });
   }
 
+  getBookById(id: string) {
+    return this.http.get<Book>(API_DOMAIN + 'books/bookById/' + id);
+  }
+
   getBookDetails(isbn: String) {
     return this.http.get<Book>(API_DOMAIN + 'books/searchByISBN/' + isbn);
   }

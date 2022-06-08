@@ -24,6 +24,10 @@
           <button class="btn btn-outline-secondary"><fa-icon [icon]="faMagnifyingGlass"></fa-icon></button>
         </div>
       </form>
+      <div class="iconsButton">
+        <a href="/shoppingCart" class="text-white"><fa-icon [icon]="faCartShopping"></fa-icon></a>
+        <div *ngIf="itemsInCart()" class="itensInCart">{{itemsInCart()}}</div>
+      </div>
       <div class="iconsButton dropdown">
         <input id="check01" type="checkbox" class="dropbtn"/>
           <label for="check01" class="dropbtn"><fa-icon [icon]="faCircleUser"></fa-icon></label>

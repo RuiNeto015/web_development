@@ -1,8 +1,8 @@
 var Book = require("../models/BookModel");
-
+var bookController = {}
 //BOOKS INDEX
 
-const getAllBooks = function(req, res){
+bookController.getAllBooks = function(req, res){
     Book.find().exec(function(err, result){
         if(err){res.status(400)}
         res.render('books/index', {
@@ -14,9 +14,10 @@ const getAllBooks = function(req, res){
 
 //BOOKS DETAILS
 
-const getDetailsView = function(req, res){
+bookController.getDetailsView = function(req, res){
     Book.findById(req.params.id).exec(function(err, result){
         if(err){res.status(400)}
+        if(req.origin == "http://localhost:4200") return res.status(200).json(result);
         res.render('books/details', {
             book: result,
             title: "Livros"
@@ -26,11 +27,11 @@ const getDetailsView = function(req, res){
 
 //BOOKS CREATE
 
-const getCreateView = function(req, res, next) {
+bookController.getCreateView = function(req, res, next) {
     res.render('books/create', {title: "Livros"});
 }
 
-const addBook = function(req, res){
+bookController.addBook = function(req, res){
 
     var book = Book(req.body);
     var query = req.body.isbn;
@@ -54,7 +55,7 @@ const addBook = function(req, res){
 
 //BOOKS EDIT
 
-const getBookEditPage = function(req, res){
+bookController.getBookEditPage = function(req, res){
     Book.findOne({_id: req.params.id}).exec(function(err, book){
         if(err){res.status(400)}
         res.render('books/edit', {
@@ -64,7 +65,7 @@ const getBookEditPage = function(req, res){
     });
 }
 
-const updateBook = function(req, res){
+bookController.updateBook = function(req, res){
     Book.findByIdAndUpdate(req.params.id, req.body, {runValidators:true},  function(err, book){
         if(err){
             console.log(err);
@@ -75,7 +76,7 @@ const updateBook = function(req, res){
 
 //BOOKS DELETE
 
-const deleteBook = function(req, res){
+bookController.deleteBook = function(req, res){
     Book.remove({_id: req.params.id}, function(err){
         if(err){res.status(400)}
         console.log("Successfully deleted a book.");
@@ -85,14 +86,14 @@ const deleteBook = function(req, res){
 
 //BOOKS SEARCH BY
 
-const bookSearchByISBN = function(req, res){
+bookController.bookSearchByISBN = function(req, res){
     Book.find({isbn: req.params.ISBN}).exec(function(err, result){
         if(err){res.status(400)}
         res.json(result);
     });
 }
 
-const bookSearchByISBNandCondition = function(req, res){
+bookController.bookSearchByISBNandCondition = function(req, res){
     Book.findOne({isbn: req.params.ISBN, condition: req.params.condition}).exec(function(err, result){
         if(err){res.status(400)}
         res.json(result);
@@ -101,38 +102,32 @@ const bookSearchByISBNandCondition = function(req, res){
 
 //BOOKS FILTER BY
 
-const bookFilterByTitle = function(req, res){
+bookController.bookFilterByTitle = function(req, res){
     Book.find({ title: { $regex: req.params.title, $options: "i" } }).exec(function(err, result){
         if(err){res.status(400)}
         res.json(result);
     });
 }
 
-const bookFilterByAuthor = function(req, res){
+bookController.bookFilterByAuthor = function(req, res){
     Book.find({ author: { $regex: req.params.author, $options: "i" } }).exec(function(err, result){
         if(err){res.status(400)}
         res.json(result);
     });
 }
 
-const booksList = function(req, res){
+bookController.booksList = function(req, res){
     Book.find({condition: "Novo"}).sort({ created_at: -1 }).limit(5).exec(function(err, result){
         if(err){res.status(400)}
         res.json(result);
     });
 }
 
-module.exports = {
-    getAllBooks,
-    getDetailsView,
-    getCreateView,
-    addBook,
-    deleteBook,
-    getBookEditPage,
-    updateBook,
-    bookSearchByISBN,
-    bookSearchByISBNandCondition,
-    bookFilterByTitle,
-    bookFilterByAuthor,
-    booksList
+bookController.bookById = function(req, res){
+    Book.find({_id: req.params.id}).exec(function(err, result){
+        if(err){res.status(400)}
+        res.status(200).json(result);
+    });
 }
+
+module.exports = bookController

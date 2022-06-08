@@ -44,3 +44,16 @@ input:checked ~ .dropdown-content {
   text-decoration: none;
   display: block;
 }
+
+
+.itensInCart{
+  position: absolute;
+  display: flex;
+  border-radius: 1em;
+  background-color: red;
+  color: white;
+  font-size: .7em;
+  padding: 3px;
+  top: 30px;
+  right: 55px;
+}

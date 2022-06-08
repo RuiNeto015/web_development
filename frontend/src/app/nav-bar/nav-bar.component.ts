@@ -5,6 +5,7 @@ import { Router } from '@angular/router';
 import { faShop } from '@fortawesome/free-solid-svg-icons';
 import { faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons';
 import { faCircleUser } from '@fortawesome/free-solid-svg-icons';
+import { faCartShopping } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-nav-bar',
@@ -15,9 +16,12 @@ export class NavBarComponent implements OnInit {
   faShop = faShop;
   faMagnifyingGlass = faMagnifyingGlass;
   faCircleUser = faCircleUser;
+  faCartShopping = faCartShopping;
+
   constructor(private router:Router) { }
 
   ngOnInit(): void {
+    console.log(this.itemsInCart())
   }
 
   onSubmit(form: NgForm) {
@@ -29,6 +33,13 @@ export class NavBarComponent implements OnInit {
       return true
     }
     return false
+  }
+
+  itemsInCart():number{
+    if (localStorage.getItem('shoppingCart')){
+      return JSON.parse(localStorage.getItem('shoppingCart')!).length
+    }
+    return 0
   }
 
 }

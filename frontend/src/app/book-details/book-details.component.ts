@@ -27,4 +27,10 @@ export class BookDetailsComponent implements OnInit {
       this.book.cover = this.rest.getBookCover(this.book);
     });
   }
+
+  addToCart(id:String): void {
+    var cart = JSON.parse(localStorage.getItem("shoppingCart") || "[]");
+    cart.push(id);
+    localStorage.setItem("shoppingCart", JSON.stringify(cart));
+  }
 }

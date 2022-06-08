@@ -11,60 +11,42 @@
       <div class="col-md-7">
         <div class="p-3 py-5">
           <div class="d-flex justify-content-between align-items-center mb-3">
-            <h4 class="text-right">Dados Utilizador</h4>
+            <h2 class="text-right">Dados Utilizador</h2>
           </div>
-          <div class="row mt-2">
-            <div class="col-md-12">
-              <label class="labels">Name</label>
-              <input type="text" class="form-control" placeholder="first name"/>
+          <div class="row">
+            <div class="col-md-12 mt-3">
+              <label class="labels">Nome</label>
+              <input type="text" class="form-control" value="{{ user.name }}" readonly/>
+            <div class="col-md-12 mt-3">
+              <label class="labels">Género</label>
+              <input type="text" class="form-control" *ngIf="user.gender == 'M'" value="Masculino" readonly/>
+              <input type="text" class="form-control" *ngIf="user.gender == 'F'" value="Feminino" readonly/>
+              <input type="text" class="form-control" *ngIf="user.gender == 'O'" value="Outro" readonly/>
             </div>
-          <div class="row mt-3">
-            <div class="col-md-12">
-              <label class="labels">Mobile Number</label>
-              <input type="text" class="form-control" placeholder="enter phone number" value=""/>
+            <div class="col-md-12 mt-3">
+              <label class="labels">Data de Nascimento</label>
+              <input type="date" class="form-control" value="{{ user.birth_date | date : 'yyyy-MM-dd'}}" readonly/>
             </div>
-            <div class="col-md-12">
-              <label class="labels">Address Line 1</label>
-              <input type="text" class="form-control" placeholder="enter address line 1" value=""/>
+            <div class="col-md-12 mt-3">
+              <label class="labels">Morada</label>
+              <input type="text" class="form-control" value="{{ user.address }}" readonly/>
             </div>
-            <div class="col-md-12">
-              <label class="labels">Address Line 2</label>
-              <input type="text" class="form-control" placeholder="enter address line 2" value=""/>
+            <div class="col-md-12 mt-3">
+              <label class="labels">Telefone</label>
+              <input type="text" class="form-control" value="{{ user.phoneNumber }}" readonly/>
             </div>
-            <div class="col-md-12">
-              <label class="labels">Postcode</label>
-              <input type="text" class="form-control" placeholder="enter address line 2" value=""/>
+            <div class="col-md-12 mt-3">
+              <label class="labels">NIF</label>
+              <input type="text" class="form-control" value="{{ user.nif }}" readonly/>
             </div>
-            <div class="col-md-12">
-              <label class="labels">State</label>
-              <input type="text" class="form-control" placeholder="enter address line 2" value=""/>
-            </div>
-            <div class="col-md-12">
-              <label class="labels">Area</label>
-              <input type="text" class="form-control" placeholder="enter address line 2" value=""/>
-            </div>
-            <div class="col-md-12">
-              <label class="labels">Email ID</label>
-              <input type="text" class="form-control" placeholder="enter email id" />
-            </div>
-            <div class="col-md-12">
-              <label class="labels">Education</label>
-              <input type="text" class="form-control" placeholder="education" value=""/>
-            </div>
-          </div>
-          <div class="row mt-3">
-            <div class="col-md-6">
-              <label class="labels">Country</label>
-              <input type="text" class="form-control" placeholder="country" value=""  />
-            </div>
-            <div class="col-md-6">
-              <label class="labels">State/Region</label>
-              <input type="text" class="form-control" value="" placeholder="state"/>
+            <div class="col-md-12 mt-3">
+              <label class="labels">Pontos</label>
+              <input type="text" class="form-control" value="{{ user.points }}" readonly/>
             </div>
           </div>
           <div class="mt-5 text-center">
             <button class="btn btn-primary profile-button" type="button">
-              Save Profile
+              Editar Perfil
             </button>
           </div>
         </div>

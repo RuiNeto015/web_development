@@ -19,6 +19,7 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { UserProfileComponent } from './user-profile/user-profile.component';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
+import { ShoppingCartComponent } from './shopping-cart/shopping-cart.component';
 
 @NgModule({
   declarations: [
@@ -30,6 +31,7 @@ import { RegisterComponent } from './register/register.component';
     UserProfileComponent,
     LoginComponent,
     RegisterComponent,
+    ShoppingCartComponent,
   ],
   imports: [
     BrowserModule,

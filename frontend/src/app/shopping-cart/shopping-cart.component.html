@@ -1,0 +1,30 @@
+<div style="background-image: url(https://foodtank.com/wp-content/uploads/2021/07/alfons-morales-YLSwjSy7stw-unsplash.jpg);">
+  <div class="container" id="bodyContainer">
+    <table class="table mt-5" *ngIf="booksInCart.length>0;else emptyCart">
+      <thead>
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">ISBN</th>
+          <th scope="col">Título</th>
+          <th scope="col">Condição</th>
+          <th scope="col">Quantidade</th>
+          <th scope="col">Preço</th>
+          <th scope="col">Remover</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let book of booksInCart;index as i">
+          <th scope="row">{{i+1}}</th>
+          <td>{{book.isbn}}</td>
+          <td>{{book.title}}</td>
+          <td>{{book.condition}}</td>
+          <td>1</td>
+          <td>{{book.price}}</td>
+          <td><div class="iconsButton" (click)="removeFromCart(book._id)"><fa-icon [icon]="faTrash"></fa-icon></div></td>
+        </tr>
+    </table>
+    <ng-template class="dropdown-content" #emptyCart>
+      <h2 class="text-center mt-5">O carrinho está vazio</h2>
+    </ng-template>
+  </div>
+</div>
