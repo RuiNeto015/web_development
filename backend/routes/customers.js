@@ -1,44 +1,42 @@
 var express = require('express');
 var router = express.Router();
-const {getAllCustomers, getCreateView, addCustomer, getDetailsView, getCustomerEditPage, updateCustomer, 
-  deleteCustomer,customerSearchByNIF, customerFilterByName,customerFilterByNIF, customerFilterByEmail
-} = require("../controllers/CustomerController");
+const customerController = require("../controllers/CustomerController");
 
 //CUSTOMERS INDEX
 
-router.get('/customers', getAllCustomers);
+router.get('/customers', customerController.getAllCustomers);
 
 //CUSTOMERS DETAILS
 
-router.get('/customers/details/:id', getDetailsView);
+router.get('/customers/details/:id', customerController.getDetailsView);
 
 //CUSTOMERS CREATE
 
-router.get('/customers/create', getCreateView);
+router.get('/customers/create', customerController.getCreateView);
 
-router.post('/customers/create', addCustomer);
+router.post('/customers/create', customerController.addCustomer);
 
 //CUSTOMERS EDIT
 
-router.get('/customers/edit/:id', getCustomerEditPage);
+router.get('/customers/edit/:id', customerController.getCustomerEditPage);
 
-router.post('/customers/edit/:id', updateCustomer);
+router.post('/customers/edit/:id', customerController.updateCustomer);
 
 //CUSTOMERS DELETE
 
-router.get('/customers/delete/:id', deleteCustomer);
+router.get('/customers/delete/:id', customerController.deleteCustomer);
 
 //CUSTOMERS SEARCH BY
 
-router.get('/customers/searchByNIF/:NIF', customerSearchByNIF);
+router.get('/customers/searchByNIF/:NIF', customerController.customerSearchByNIF);
 
 //CUSTOMERS FILTER BY
 
-router.get('/customers/filterByName/:name', customerFilterByName);
+router.get('/customers/filterByName/:name', customerController.customerFilterByName);
 
-router.get('/customers/filterByNIF/:NIF', customerFilterByNIF);
+router.get('/customers/filterByNIF/:NIF', customerController.customerFilterByNIF);
 
-router.get('/customers/filterByEmail/:email', customerFilterByEmail);
+router.get('/customers/filterByEmail/:email', customerController.customerFilterByEmail);
 
 module.exports = {
   routes: router

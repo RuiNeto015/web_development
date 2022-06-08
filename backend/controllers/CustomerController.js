@@ -1,9 +1,10 @@
 var Customer = require("../models/CustomerModel");
 var User = require("../models/UserModel");
+var customerController = {}
 
 //CUSTOMERS INDEX
 
-const getAllCustomers = function(req, res){
+customerController.getAllCustomers = function(req, res){
     Customer.find().exec(function(err, result){
         if(err){res.status(400)}
         res.render('customers/index', {
@@ -15,7 +16,7 @@ const getAllCustomers = function(req, res){
 
 //CUSTOMERS DETAILS
 
-const getDetailsView = function(req, res){
+customerController.getDetailsView = function(req, res){
     Customer.findById(req.params.id).exec(function(err, result){
         if(err){res.status(400)}
         res.render('customers/details', {
@@ -27,11 +28,11 @@ const getDetailsView = function(req, res){
 
 //CUSTOMERS CREATE
 
-const getCreateView = function(req, res, next) {
+customerController.getCreateView = function(req, res, next) {
     res.render('customers/create', {title: "Clientes"});
 }
 
-const addCustomer = function(req, res){
+customerController.addCustomer = function(req, res){
     var customer = Customer(req.body);
     var query = req.body.nif;
 
@@ -70,7 +71,7 @@ const addCustomer = function(req, res){
 
 //CUSTOMERS EDIT
 
-const getCustomerEditPage = function(req, res){
+customerController.getCustomerEditPage = function(req, res){
     Customer.findOne({_id: req.params.id}).exec(function(err, customer){
         if(err){res.status(400)}
         res.render('customers/edit', {
@@ -80,7 +81,7 @@ const getCustomerEditPage = function(req, res){
     });
 }
 
-const updateCustomer = function(req, res){
+customerController.updateCustomer = function(req, res){
     Customer.findByIdAndUpdate(req.params.id, req.body, {runValidators:true},  function(err, customer){
         if(err){
             console.log(err);
@@ -91,7 +92,7 @@ const updateCustomer = function(req, res){
 
 //CUSTOMERS DELETE
 
-const deleteCustomer = function(req, res){
+customerController.deleteCustomer = function(req, res){
     Customer.remove({_id: req.params.id}, function(err){
         if(err){res.status(400)
             console.log(err);}
@@ -102,7 +103,7 @@ const deleteCustomer = function(req, res){
 
 //CUSTOMERS SEARCH BY
 
-const customerSearchByNIF = function(req, res){
+customerController.customerSearchByNIF = function(req, res){
     Customer.findOne({nif: req.params.NIF}).exec(function(err, result){
         if(err){res.status(400)}
         res.json(result);
@@ -111,37 +112,25 @@ const customerSearchByNIF = function(req, res){
 
 //CUSTOMERS FILTER BY
 
-const customerFilterByName = function(req, res){
+customerController.customerFilterByName = function(req, res){
     Customer.find({ name: { $regex: req.params.name, $options: "i" } }).exec(function(err, result){
         if(err){res.status(400)}
         res.json(result);
     });
 }
 
-const customerFilterByNIF = function(req, res){
+customerController.customerFilterByNIF = function(req, res){
     Customer.find({nif: req.params.NIF}).exec(function(err, result){
         if(err){res.status(400)}
         res.json(result);
     });
 }
 
-const customerFilterByEmail = function(req, res){
+customerController.customerFilterByEmail = function(req, res){
     Customer.find({ email: { $regex: req.params.email, $options: "i" } }).exec(function(err, result){
         if(err){res.status(400)}
         res.json(result);
     });
 }
 
-module.exports = {
-    getAllCustomers,
-    getCreateView,
-    addCustomer,
-    getDetailsView,
-    getCustomerEditPage,
-    updateCustomer,
-    deleteCustomer,
-    customerSearchByNIF,
-    customerFilterByName,
-    customerFilterByNIF,
-    customerFilterByEmail
-}
+module.exports = customerController;

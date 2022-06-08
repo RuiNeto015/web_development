@@ -1,10 +1,10 @@
 var Purchase = require("../models/PurchaseModel");
 var Customer = require("../models/CustomerModel");
-var util = require("util");
+var purchaseController = {}
 
 //PURCHASES INDEX
 
-const getAllPurchases = function(req, res){
+purchaseController.getAllPurchases = function(req, res){
     Purchase.find().exec(function(err, result){
         if(err){res.status(400)}
         res.render('purchases/index', {
@@ -16,7 +16,7 @@ const getAllPurchases = function(req, res){
 
 //PURCHASES DETAILS
 
-const getDetailsView = function(req, res){
+purchaseController.getDetailsView = function(req, res){
     Purchase.findById(req.params.id).exec(function(err, result){
         if(err){res.status(400)}
         res.render('purchases/details', {
@@ -28,11 +28,11 @@ const getDetailsView = function(req, res){
 
 //PURCHASES CREATE
 
-const getCreateView = function(req, res, next) {
+purchaseController.getCreateView = function(req, res, next) {
     res.render('purchases/create', {title: "Histórico de Compras"});
 }
 
-const addPurchase = function(req, res){
+purchaseController.addPurchase = function(req, res){
     var purchase = Purchase(req.body);
     purchase.save((err) => {
         if(err){res.status(400)}
@@ -54,7 +54,7 @@ const addPurchase = function(req, res){
 
 //PURCHASES DELETE
 
-const deletePurchase = function(req, res){
+purchaseController.deletePurchase = function(req, res){
     Purchase.remove({_id: req.params.id}, function(err){
         if(err){res.status(400)}
         console.log("Successfully deleted a purchase.");
@@ -64,21 +64,21 @@ const deletePurchase = function(req, res){
 
 //PURCHASES FILTER BY
 
-const purchaseFilterByName = function(req, res){
+purchaseController.purchaseFilterByName = function(req, res){
     Purchase.find({ name: { $regex: req.params.name, $options: "i" } }).exec(function(err, result){
         if(err){res.status(400)}
         res.json(result);
     });
 }
 
-const purchaseFilterByNIF = function(req, res){
+purchaseController.purchaseFilterByNIF = function(req, res){
     Purchase.find({nif: req.params.NIF}).exec(function(err, result){
         if(err){res.status(400)}
         res.json(result);
     });
 }
 
-const purchaseFilterByDate = function(req, res){
+purchaseController.purchaseFilterByDate = function(req, res){
     var date1 = new Date(req.params.date)
     var date2 = new Date(req.params.date)
     date2.setDate(date2.getDate()+1)
@@ -91,13 +91,4 @@ const purchaseFilterByDate = function(req, res){
     });
 }
 
-module.exports = {
-    getAllPurchases,
-    getDetailsView,
-    getCreateView,
-    addPurchase,
-    deletePurchase,
-    purchaseFilterByName,
-    purchaseFilterByNIF,
-    purchaseFilterByDate
-}
+module.exports = purchaseController;

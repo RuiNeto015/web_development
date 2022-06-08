@@ -1,13 +1,13 @@
 var Employee = require("../models/EmployeeModel");
 var User = require("../models/UserModel");
-
+var employeeController = {}
 var jwt = require('jsonwebtoken');
 var bcrypt = require('bcryptjs');
 var config = require("../public/js/authconfig");
 
 //EMPLOYEES INDEX
 
-const getAllEmployees = function(req, res){
+employeeController.getAllEmployees = function(req, res){
     Employee.find().exec(function(err, result){
         if(err){res.status(400)}
         res.render('employees/index', {
@@ -19,7 +19,7 @@ const getAllEmployees = function(req, res){
 
 //EMPLOYEES DETAILS
 
-const getDetailsView = function(req, res){
+employeeController.getDetailsView = function(req, res){
     Employee.findById(req.params.id).exec(function(err, result){
         if(err){res.status(400)}
         res.render('employees/details', {
@@ -31,11 +31,11 @@ const getDetailsView = function(req, res){
 
 //EMPLOYEES CREATE
 
-const getCreateView = function(req, res, next) {
+employeeController.getCreateView = function(req, res, next) {
     res.render('employees/create', {title: "Funcionários"});
 }
 
-const addEmployee = function(req, res){
+employeeController.addEmployee = function(req, res){
     var employee = Employee(req.body);
     var queryNif = req.body.nif;
 
@@ -78,7 +78,7 @@ const addEmployee = function(req, res){
 
 //EMPLOYEES EDIT
 
-const getEmployeeEditPage = function(req, res){
+employeeController.getEmployeeEditPage = function(req, res){
     Employee.findOne({_id: req.params.id}).exec(function(err, employee){
         if(err){res.status(400)}
         res.render('employees/edit', {
@@ -88,7 +88,7 @@ const getEmployeeEditPage = function(req, res){
     });
 }
 
-const updateEmployee = function(req, res){
+employeeController.updateEmployee = function(req, res){
     Employee.findByIdAndUpdate(req.params.id, req.body, {runValidators:true},  function(err, employee){
         if(err){
             console.log(err);
@@ -99,7 +99,7 @@ const updateEmployee = function(req, res){
 
 //EMPLOYEES DELETE
 
-const deleteEmployee = function(req, res){
+employeeController.deleteEmployee = function(req, res){
     Employee.deleteOne({_id: req.params.id}, function(err){
         if(err){res.status(400);
             console.log(err);}
@@ -110,21 +110,21 @@ const deleteEmployee = function(req, res){
 
 //EMPLOYEES FILTER BY
 
-const employeeFilterByName = function(req, res){
+employeeController.employeeFilterByName = function(req, res){
     Employee.find({ name: { $regex: req.params.name, $options: "i" } }).exec(function(err, result){
         if(err){res.status(400)}
         res.json(result);
     });
 }
 
-const employeeFilterByNIF = function(req, res){
+employeeController.employeeFilterByNIF = function(req, res){
     Employee.find({nif: req.params.NIF}).exec(function(err, result){
         if(err){res.status(400)}
         res.json(result);
     });
 }
 
-const employeeFilterByEmail = function(req, res){
+employeeController.employeeFilterByEmail = function(req, res){
     Employee.find({ email: { $regex: req.params.email, $options: "i" } }).exec(function(err, result){
         if(err){res.status(400)}
         res.json(result);
@@ -132,15 +132,4 @@ const employeeFilterByEmail = function(req, res){
 }
 
 
-module.exports = {
-    getAllEmployees,
-    getCreateView,
-    addEmployee,
-    getDetailsView,
-    getEmployeeEditPage,
-    updateEmployee,
-    deleteEmployee,
-    employeeFilterByName,
-    employeeFilterByNIF,
-    employeeFilterByEmail
-}
+module.exports = employeeController;

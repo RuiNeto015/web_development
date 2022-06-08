@@ -1,40 +1,38 @@
 var express = require('express');
 var router = express.Router();
-const {getAllEmployees, getCreateView, addEmployee, getDetailsView, deleteEmployee, getEmployeeEditPage, updateEmployee
-    ,employeeFilterByName,employeeFilterByNIF,employeeFilterByEmail
-} = require("../controllers/EmployeeController");
+const employeeController = require("../controllers/EmployeeController");
 
 //EMPLOYEES INDEX
 
-router.get('/employees', getAllEmployees);
+router.get('/employees', employeeController.getAllEmployees);
 
 //EMPLOYEES DETAILS
 
-router.get('/employees/details/:id', getDetailsView);
+router.get('/employees/details/:id', employeeController.getDetailsView);
 
 //EMPLOYEES CREATE
 
-router.get('/employees/create', getCreateView);
+router.get('/employees/create', employeeController.getCreateView);
   
-router.post('/employees/create', addEmployee);
+router.post('/employees/create', employeeController.addEmployee);
 
 //EMPLOYEES EDIT
 
-router.get('/employees/edit/:id', getEmployeeEditPage);
+router.get('/employees/edit/:id', employeeController.getEmployeeEditPage);
 
-router.post('/employees/edit/:id', updateEmployee);
+router.post('/employees/edit/:id', employeeController.updateEmployee);
 
 //EMPLOYEES DELETE
 
-router.get('/employees/delete/:id', deleteEmployee);
+router.get('/employees/delete/:id', employeeController.deleteEmployee);
 
 //EMPLOYEES FILTER BY
 
-router.get('/employees/filterByName/:name', employeeFilterByName);
+router.get('/employees/filterByName/:name', employeeController.employeeFilterByName);
 
-router.get('/employees/filterByNIF/:NIF', employeeFilterByNIF);
+router.get('/employees/filterByNIF/:NIF', employeeController.employeeFilterByNIF);
 
-router.get('/employees/filterByEmail/:email', employeeFilterByEmail);
+router.get('/employees/filterByEmail/:email', employeeController.employeeFilterByEmail);
 
 module.exports = {
     routes: router

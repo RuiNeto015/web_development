@@ -1,35 +1,33 @@
 var express = require('express');
 const req = require('express/lib/request');
 var router = express.Router();
-const {getAllPurchases, getDetailsView, getCreateView, addPurchase, deletePurchase,purchaseFilterByName,
-  purchaseFilterByNIF,purchaseFilterByDate
-} = require("../controllers/PurchaseController");
+const purchaseController = require("../controllers/PurchaseController");
 
 //PURCHASES INDEX
 
-router.get('/purchases', getAllPurchases);
+router.get('/purchases', purchaseController.getAllPurchases);
 
 //PURCHASES DETAILS
 
-router.get('/purchases/details/:id', getDetailsView);
+router.get('/purchases/details/:id', purchaseController.getDetailsView);
 
 //PURCHASES CREATE
 
-router.get('/purchases/create', getCreateView);
+router.get('/purchases/create', purchaseController.getCreateView);
 
-router.post('/purchases/create', addPurchase);
+router.post('/purchases/create', purchaseController.addPurchase);
 
 //PURCHASES DELETE
 
-router.get('/purchases/delete/:id', deletePurchase);
+router.get('/purchases/delete/:id', purchaseController.deletePurchase);
 
 //EMPLOYEES FILTER BY
 
-router.get('/purchases/filterByName/:name', purchaseFilterByName);
+router.get('/purchases/filterByName/:name', purchaseController.purchaseFilterByName);
 
-router.get('/purchases/filterByNIF/:NIF', purchaseFilterByNIF);
+router.get('/purchases/filterByNIF/:NIF', purchaseController.purchaseFilterByNIF);
 
-router.get('/purchases/filterByDate/:date', purchaseFilterByDate);
+router.get('/purchases/filterByDate/:date', purchaseController.purchaseFilterByDate);
 
 module.exports = {
   routes: router
