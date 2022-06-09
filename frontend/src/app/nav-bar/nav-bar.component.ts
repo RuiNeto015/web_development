@@ -20,9 +20,7 @@ export class NavBarComponent implements OnInit {
 
   constructor(private router:Router) { }
 
-  ngOnInit(): void {
-    console.log(this.itemsInCart())
-  }
+  ngOnInit(): void {}
 
   onSubmit(form: NgForm) {
     this.router.navigate(['search', form.value.searchBy, form.value.search]);
@@ -37,7 +35,7 @@ export class NavBarComponent implements OnInit {
 
   itemsInCart():number{
     if (localStorage.getItem('shoppingCart')){
-      return JSON.parse(localStorage.getItem('shoppingCart')!).length
+      return Object.keys(JSON.parse(localStorage.getItem('shoppingCart')!)).length
     }
     return 0
   }

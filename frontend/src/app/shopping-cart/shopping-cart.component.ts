@@ -12,6 +12,7 @@ import { faTrash } from '@fortawesome/free-solid-svg-icons';
 export class ShoppingCartComponent implements OnInit {
   faTrash = faTrash;
   booksInCart: any = [];
+  cart: any = {};
   constructor(private rest: HttpService) {}
 
   ngOnInit(): void {
@@ -19,9 +20,10 @@ export class ShoppingCartComponent implements OnInit {
   }
 
   getBooksInCart(): void {
-    var cart = JSON.parse(localStorage.getItem('shoppingCart') || '[]');
-    if (cart.length > 0) {
-      for (let id of cart) {
+    this.cart = JSON.parse(localStorage.getItem('shoppingCart') || '[]');
+    console.log(this.cart);
+    if (Object.keys(JSON.parse(localStorage.getItem('shoppingCart')!)).length > 0) {
+      for (let id in this.cart) {
         this.rest.getBookById(id).subscribe((book: any) => {
           this.booksInCart.push(book[0]);
         });
@@ -30,10 +32,28 @@ export class ShoppingCartComponent implements OnInit {
   }
 
   removeFromCart(id: string): void {
-    var cart = JSON.parse(localStorage.getItem('shoppingCart') || '[]');
-    cart = cart.filter((item: string) => item !== id);
-    localStorage.setItem('shoppingCart', JSON.stringify(cart));
+    this.cart = JSON.parse(localStorage.getItem('shoppingCart') || '[]');
+    delete this.cart[id];
+    localStorage.setItem('shoppingCart', JSON.stringify(this.cart));
     this.booksInCart = [];
     this.getBooksInCart();
+  }
+
+  addItem(id: string, max:number): void {
+    this.cart = JSON.parse(localStorage.getItem('shoppingCart') || '[]');
+    if(this.cart[id] + 1 <= max){
+      this.cart[id] = this.cart[id] + 1;
+      localStorage.setItem('shoppingCart', JSON.stringify(this.cart));
+    }
+
+  }
+
+  subtractItem(id: string): void {
+    this.cart = JSON.parse(localStorage.getItem('shoppingCart') || '[]');
+    if(this.cart[id] - 1 > 0){
+      this.cart[id] = this.cart[id] - 1;
+      localStorage.setItem('shoppingCart', JSON.stringify(this.cart));
+    }
+
   }
 }

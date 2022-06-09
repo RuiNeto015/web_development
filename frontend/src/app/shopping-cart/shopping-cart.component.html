@@ -18,7 +18,11 @@
           <td>{{book.isbn}}</td>
           <td>{{book.title}}</td>
           <td>{{book.condition}}</td>
-          <td>1</td>
+          <td><div>
+            <div class="incrementButtons" (click)="subtractItem(book._id)">-</div>
+            <div class="qntInput">{{ cart[book._id] }}</div>
+            <div class="incrementButtons" (click)="addItem(book._id, book.quantity)">+</div>
+          </div></td>
           <td>{{book.price}}</td>
           <td><div class="iconsButton" (click)="removeFromCart(book._id)"><fa-icon [icon]="faTrash"></fa-icon></div></td>
         </tr>
