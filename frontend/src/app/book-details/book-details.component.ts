@@ -30,7 +30,9 @@ export class BookDetailsComponent implements OnInit {
 
   addToCart(id:String): void {
     var cart = JSON.parse(localStorage.getItem("shoppingCart") || "[]");
-    cart.push(id);
-    localStorage.setItem("shoppingCart", JSON.stringify(cart));
+    if(cart.indexOf(id) == -1) {
+      cart.push(id);
+      localStorage.setItem("shoppingCart", JSON.stringify(cart));
+    }
   }
 }
