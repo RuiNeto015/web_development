@@ -28,11 +28,9 @@ export class BookDetailsComponent implements OnInit {
     });
   }
 
-  addToCart(id:String): void {
-    var cart = JSON.parse(localStorage.getItem("shoppingCart") || "[]");
-    if(cart.indexOf(id) == -1) {
-      cart.push(id);
-      localStorage.setItem("shoppingCart", JSON.stringify(cart));
-    }
+  addToCart(id:string): void {
+    var cart = JSON.parse(localStorage.getItem("shoppingCart") || "{}");
+    cart[id] = 1;
+    localStorage.setItem("shoppingCart", JSON.stringify(cart));
   }
 }

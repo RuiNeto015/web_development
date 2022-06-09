@@ -1,18 +1,40 @@
 #bodyContainer {
-    border: 0px solid red;
-    background-color: #ffffff;
-    max-width: 75%;
-    min-height: 100vh;
-    margin-top: 3.6em;
-    padding: 2em 8em 5em 8em;
+  border: 0px solid red;
+  background-color: #ffffff;
+  max-width: 75%;
+  min-height: 100vh;
+  margin-top: 3.6em;
+  padding: 2em 8em 5em 8em;
 }
 
 .iconsButton {
-    border: none;
-    padding-left: 1.5em;
-    text-align: center;
-    align-items: center;
-    display: inline-block;
-    font-size: 1.2em;
-    cursor: pointer
+  border: none;
+  padding-left: 1.5em;
+  text-align: center;
+  align-items: center;
+  display: inline-block;
+  font-size: 1.2em;
+  cursor: pointer;
+}
+
+.qntInput {
+  width: 3em;
+  text-align: center;
+  border: none;
+  border-bottom: 1px solid #000000;
+  padding: 0.5em;
+  font-size: 1.2em;
+  margin-left: 0.5em;
+  display: inline-block;
+}
+
+.incrementButtons {
+  display: inline-block;
+  cursor: pointer;
+  font-size: 1.5em;
+  user-select: none;
+  -moz-user-select: none;
+  -khtml-user-select: none;
+  -webkit-user-select: none;
+  -o-user-select: none;
 }
