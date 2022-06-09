@@ -1,0 +1,84 @@
+.centerDiv {
+    border: 10%;
+    width: 50%;
+    min-height: 50vh;
+    border-radius: 2em;
+    padding: 3%;
+    background-color: #15172b;
+    color: white;
+    text-align: center;
+  }
+  
+  .Input > input[type="text"], input[type="password"] {
+    background-color: #303245;
+    border-radius: .5em;
+    border: 0;
+    box-sizing: border-box;
+    color: #eee;
+    font-size: 15px;
+    font-family: Arial, Helvetica, sans-serif;
+    outline: 0;
+    padding: 2%;
+    width: 50%;
+    height: 5%;
+  }
+  
+  .c1 {
+    margin-top: 10%;
+  }
+  
+  .c2 {
+    margin-top: 3%;
+  }
+  
+  
+  .title {
+    color: #eee;
+    font-family: sans-serif;
+    font-size: 35px;
+    font-weight: 500;
+    margin-top: 2%;
+    text-align: center;
+  }
+  
+  .subtitle {
+    color: #eee;
+    font-family: sans-serif;
+    font-size: 25px;
+    font-weight: 500;
+    margin-top: 7%;
+    text-align: center;
+  }
+  
+  .submit{
+    margin-top: 5%;
+    margin-bottom: 3%;
+    width: 50%;
+    height: 3em;
+    background-color: #08d;
+    border-radius: .5em;
+    border: 0;
+    box-sizing: border-box;
+    color: #eee;
+    font-size: 15px;
+    font-family: Arial, Helvetica, sans-serif;
+    cursor: pointer;
+  }
+
+  .register{
+    color: #eee;
+    font-size: 15px;
+    font-family: Arial, Helvetica, sans-serif;
+    cursor: pointer;
+  }
+  
+  .simpleBG {
+    align-items: center;
+    background-image: url(https://foodtank.com/wp-content/uploads/2021/07/alfons-morales-YLSwjSy7stw-unsplash.jpg);
+    background-repeat: repeat;
+    display: flex;
+    justify-content: center;
+    position: relative;
+    height: 175%;
+    z-index: 100;
+  }

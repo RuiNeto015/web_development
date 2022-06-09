@@ -1,13 +1,16 @@
-<div style="margin-left: 100px; margin-top: 60px">
-    <form method="POST">
-    <div class="mb-3 row">
-        <div class="mb-3 row"><h5>Nome:</h5>
+<div class="simpleBG">
+    <div class="centerDiv">
+        <form>
+        <div class="title">Register</div>
+        <br>
+        <br>
+        <div class="mb-3 row"><h5>Nome</h5>
             <input type="text" placeholder="Insira o nome" class="form-control" id="nameInput" name="name" [(ngModel)]="name" maxlength="75" required></div>
         
-        <div class="mb-3 row"><h5>Email:</h5>
+        <div class="mb-3 row"><h5>Email</h5>
             <input type="email" placeholder="Insira o email" class="form-control" id="emailInput" name="email" [(ngModel)]="email" maxlength="75" required></div>
         
-        <div class="mb-3 row"><h5>Género:</h5>
+        <div class="mb-3 row"><h5>Género</h5>
             <select class="form-control" id="gender" name="gender" [(ngModel)]="gender" required>
             <option value="" selected disabled hidden>Insira o género</option>
             <option value="M">Masculino</option>
@@ -15,25 +18,26 @@
             <option value="O">Outro</option>
             </select></div>
         
-        <div class="mb-3 row"><h5>Data de Nascimento:</h5>
+        <div class="mb-3 row"><h5>Data de Nascimento</h5>
             <input type="date" class="form-control" id="birthDateInput" name="birth_date" [(ngModel)]="birth_date" required></div>
         
-        <div class="mb-3 row"><h5>Morada:</h5>
+        <div class="mb-3 row"><h5>Morada</h5>
             <input type="text" placeholder="Insira a morada" class="form-control" id="addressInput" name="address" [(ngModel)]="address" maxlength="100" required></div>
         
-        <div class="mb-3 row"><h5>Número de telefone:</h5>
+        <div class="mb-3 row"><h5>Número de telefone</h5>
             <input type="tel" placeholder="Insira o número de telefone" class="form-control" id="phoneNumberInput" name="phoneNumber" [(ngModel)]="phoneNumber" pattern="[0-9]{9}" minlength="9" maxlength="9" required></div>
         
-        <div class="mb-3 row"><h5>NIF:</h5>
+        <div class="mb-3 row"><h5>NIF</h5>
             <input type="text" placeholder="Insira o NIF" class="form-control" id="nifInput" name="nif" [(ngModel)]="nif" pattern="[0-9]{9}" minlength="9" maxlength="9" required></div>
         
-        <div class="mb-3 row"><h5>Palavra-passe:</h5>
-            <input type="password" placeholder="Insira a palavra-passe" class="form-control" id="passwordInput" name="password" [(ngModel)]="password" minlength="5" maxlength="15" required>
-            <small class="form-text text-muted">De 5 a 15 caracteres.</small></div>
+        <div class="mb-3 row"><h5>Palavra-passe</h5>
+            <input type="password" placeholder="Insira a palavra-passe" class="form-control" id="passwordInput" name="password" [(ngModel)]="password" minlength="5" maxlength="15" required></div>
+            <small class="form-text text-muted">De 5 a 15 caracteres.</small>
 
-        <div style="text-align: center;"><input type="button" id="btnSubmit" class="submit" (click)="register()" value="Submeter" /></div>
+        <div><input type="button" id="btnSubmit" class="submit" (click)="register()" value="Submeter" /></div>
+        </form>
     </div>
-    </form>
 </div>
+
 
 

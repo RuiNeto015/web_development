@@ -1,0 +1,8 @@
+#bodyContainer {
+    border: 0px solid red;
+    background-color: #ffffff;
+    max-width: 75%;
+    min-height: 100vh;
+    margin-top: 3.6em;
+    padding: 2em 8em 5em 8em;
+}
