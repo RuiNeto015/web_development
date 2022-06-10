@@ -23,10 +23,18 @@
             <div class="qntInput">{{ cart[book._id] }}</div>
             <div class="incrementButtons" (click)="addItem(book._id, book.quantity)">+</div>
           </div></td>
-          <td>{{book.price}}</td>
+          <td>{{book.price}}€</td>
           <td><div class="iconsButton" (click)="removeFromCart(book._id)"><fa-icon [icon]="faTrash"></fa-icon></div></td>
         </tr>
-    </table>
+      </table>
+      <div class="paymentDiv">
+        <button class="btn btn-danger float-left">Avançar para pagamento</button>
+        <span class="totalPrice mb-3" *ngIf="booksInCart.length>0">
+          Preço Total: {{ getTotalPrice() }}€
+        </span>
+      </div>
+
+        
     <ng-template class="dropdown-content" #emptyCart>
       <h2 class="text-center mt-5">O carrinho está vazio</h2>
     </ng-template>

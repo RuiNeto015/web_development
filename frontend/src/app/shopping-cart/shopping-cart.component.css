@@ -38,3 +38,14 @@
   -webkit-user-select: none;
   -o-user-select: none;
 }
+.paymentDiv{
+  margin-top: 2em;
+}
+
+.totalPrice{
+  border-bottom: 1px solid #000000;
+  max-width: 200px;
+  padding-bottom: 0.5em;
+  font-size: 1.2em;
+  float: right;
+}

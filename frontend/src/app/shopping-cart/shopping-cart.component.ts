@@ -21,7 +21,6 @@ export class ShoppingCartComponent implements OnInit {
 
   getBooksInCart(): void {
     this.cart = JSON.parse(localStorage.getItem('shoppingCart') || '[]');
-    console.log(this.cart);
     if (Object.keys(JSON.parse(localStorage.getItem('shoppingCart')!)).length > 0) {
       for (let id in this.cart) {
         this.rest.getBookById(id).subscribe((book: any) => {
@@ -55,5 +54,22 @@ export class ShoppingCartComponent implements OnInit {
       localStorage.setItem('shoppingCart', JSON.stringify(this.cart));
     }
 
+  }
+
+  getTotalPrice(): number {
+    let total = 0;
+    this.cart = JSON.parse(localStorage.getItem('shoppingCart') || '[]');
+    try{
+      if (Object.keys(this.cart).length > 0 && this.booksInCart.length > 0) {
+        for (let id in this.cart) {
+          total += this.cart[id] * this.booksInCart.find((book: { _id: string; }) => book._id === id).price;
+        }
+      }
+    }
+    catch(e){
+      return 0;
+    }
+    console.log(total);
+    return total;
   }
 }
