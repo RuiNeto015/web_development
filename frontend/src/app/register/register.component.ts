@@ -26,8 +26,9 @@ export class RegisterComponent implements OnInit {
   }
 
   register():void {
-    console.log(this.name, this.email, this.gender, this.birth_date, 
-      this.address, this.phoneNumber, this.nif, this.password);
-    this.authService.register(this.name, this.email, this.gender, this.birth_date, this.address, this.phoneNumber, this.nif, this.password)
+    console.log(this.name, this.email, this.gender, this.birth_date, this.address, this.phoneNumber, this.nif, this.password);
+    this.authService.register(this.name, this.email, this.gender, this.birth_date, this.address, this.phoneNumber, this.nif, this.password).subscribe((response)=>{
+      console.log("Register response ",response);
+    })
   }
 }
