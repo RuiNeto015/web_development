@@ -17,6 +17,7 @@ import { BooksListComponent } from './books-list/books-list.component';
 import { BookDetailsComponent } from './book-details/book-details.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { UserProfileComponent } from './user-profile/user-profile.component';
+import { PointsTradingComponent } from './points-trading/points-trading.component';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { ShoppingCartComponent } from './shopping-cart/shopping-cart.component';
@@ -31,6 +32,7 @@ import { CheckoutComponent } from './checkout/checkout.component';
     BooksListComponent,
     BookDetailsComponent,
     UserProfileComponent,
+    PointsTradingComponent,
     LoginComponent,
     RegisterComponent,
     ShoppingCartComponent,
