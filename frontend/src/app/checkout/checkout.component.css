@@ -1,0 +1,40 @@
+#bodyContainer {
+    border: 0px solid red;
+    background-color: #ffffff;
+    max-width: 75%;
+    min-height: 100vh;
+    margin-top: 3.6em;
+    padding: 2em 8em 5em 8em;
+}
+
+#bodyContainer {
+    border: 0px solid red;
+    background-color: #ffffff;
+    max-width: 75%;
+    min-height: 100vh;
+    margin-top: 3.6em;
+    padding: 2em 8em 5em 8em;
+  }
+  
+  .iconsButton {
+    border: none;
+    padding-left: 1.5em;
+    text-align: center;
+    align-items: center;
+    display: inline-block;
+    font-size: 1.2em;
+    cursor: pointer;
+  }
+
+  .paymentDiv{
+    margin-top: 2em;
+  }
+  
+  .totalPrice{
+    border-bottom: 1px solid #000000;
+    max-width: 200px;
+    padding-bottom: 0.5em;
+    font-size: 1.2em;
+    float: right;
+  }
+  

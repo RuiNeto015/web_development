@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { HttpService } from '../services/http.service';
 
 import { faTrash } from '@fortawesome/free-solid-svg-icons';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -13,7 +14,8 @@ export class ShoppingCartComponent implements OnInit {
   faTrash = faTrash;
   booksInCart: any = [];
   cart: any = {};
-  constructor(private rest: HttpService) {}
+
+  constructor(private rest: HttpService, private router: Router,) {}
 
   ngOnInit(): void {
     this.getBooksInCart();
@@ -72,5 +74,9 @@ export class ShoppingCartComponent implements OnInit {
       return 0;
     }
     return finalTotal;
+  }
+
+  goToCheckout(){
+    this.router.navigate(['checkout']);
   }
 }

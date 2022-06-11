@@ -28,7 +28,7 @@
         </tr>
       </table>
       <div class="paymentDiv" *ngIf="booksInCart.length>0">
-        <button class="btn btn-danger float-left">Avançar para pagamento</button>
+        <button class="btn btn-danger float-left" (click)="goToCheckout()">Avançar para pagamento</button>
         <span class="totalPrice mb-3">
           Preço Total: {{ getTotalPrice() }}€
         </span>

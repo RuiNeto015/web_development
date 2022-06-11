@@ -9,6 +9,7 @@ import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { AboutUsComponent } from './about-us/about-us.component';
 import { PointsTradingComponent } from './points-trading/points-trading.component';
+import { CheckoutComponent } from './checkout/checkout.component';
 
 
 const routes: Routes = [
@@ -21,6 +22,7 @@ const routes: Routes = [
   { path: 'register', component: RegisterComponent },
   { path: 'about', component: AboutUsComponent },
   { path: 'points', component: PointsTradingComponent, canActivate: [AuthGuardService] },
+  { path: 'checkout', component: CheckoutComponent },
   { path: '**', redirectTo: '' }
 ]; 
 
