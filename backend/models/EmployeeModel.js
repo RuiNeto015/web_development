@@ -12,12 +12,6 @@ var EmployeeSchema = new mongoose.Schema({
         maxlength: [75, 'Número máximo de caracteres é 75, foi inserido: {VALUE}'],
         required: true
     },
-    password: {
-        type: String,
-        maxlength: [100, 'Número máximo de caracteres é 15, foi inserido: {VALUE}'],
-        minlength: [5, 'Número mínimo de caracteres é 5, foi inserido: {VALUE}'],
-        required: true
-    },
     gender: {
         type: String,
         required: true,

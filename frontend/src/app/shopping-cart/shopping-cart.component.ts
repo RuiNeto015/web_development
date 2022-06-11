@@ -58,18 +58,19 @@ export class ShoppingCartComponent implements OnInit {
 
   getTotalPrice(): number {
     let total = 0;
+    let finalTotal = 0;
     this.cart = JSON.parse(localStorage.getItem('shoppingCart') || '[]');
     try{
       if (Object.keys(this.cart).length > 0 && this.booksInCart.length > 0) {
         for (let id in this.cart) {
           total += this.cart[id] * this.booksInCart.find((book: { _id: string; }) => book._id === id).price;
+          finalTotal = parseFloat(total.toFixed(2));
         }
       }
     }
     catch(e){
       return 0;
     }
-    console.log(total);
-    return total;
+    return finalTotal;
   }
 }
