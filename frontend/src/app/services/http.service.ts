@@ -52,6 +52,10 @@ export class HttpService {
     return this.http.get(API_DOMAIN + 'profile');
   }
 
+  getAgeDiscount(search: string) {
+    return this.http.get(API_DOMAIN + 'getAgeDiscount/' + search);
+  }
+
   private handleRetry<T>(source: Observable<T>): Observable<T> {
     return source.pipe(retryWhen(e => e.pipe(scan((errorCount, error) => {
         if (errorCount >= 3) {

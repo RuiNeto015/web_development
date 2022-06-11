@@ -10,6 +10,7 @@ import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
 export class PointsTradingComponent implements OnInit {
   user: any;
   displayModal = "none";
+  discount: any;
   constructor(private rest: HttpService, private modalService: NgbModal) { }
 
   ngOnInit(): void {
@@ -28,6 +29,16 @@ export class PointsTradingComponent implements OnInit {
   
   closePopup() {
     this.displayModal = "none";
+  }
+
+  getAgeDiscount(search: string){
+    this.rest.getAgeDiscount(search).subscribe((data: {}) => {
+      this.discount = data;
+      if(!this.discount.uses){
+        this.discount.uses = "Ilimitado";
+      }
+      this.openPopup();
+    });
   }
 
 }

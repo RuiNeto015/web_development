@@ -15,25 +15,25 @@
             <th>Infantil (20%)</th>
             <td>0 pontos (Menores de 12 anos)</td>
             <td>Ilimitado</td>
-            <td><button type="button" class="btn btn-primary btn-sm" (click)="openPopup()">Revelar</button></td>
+            <td><button type="button" class="btn btn-primary btn-sm" (click)='getAgeDiscount("Infantil")'>Revelar</button></td>
           </tr>
           <tr>
             <th>Juvenil (15%)</th>
             <td>0 pontos (12 aos 18 anos)</td>
             <td>Ilimitado</td>
-            <td><button type="button" class="btn btn-primary btn-sm" (click)="openPopup()">Revelar</button></td>
+            <td><button type="button" class="btn btn-primary btn-sm" (click)='getAgeDiscount("Juvenil")'>Revelar</button></td>
           </tr>
           <tr>
             <th>Adulto (10%)</th>
             <td>0 pontos (19 aos 30 anos)</td>
             <td>Ilimitado</td>
-            <td><button type="button" class="btn btn-primary btn-sm" (click)="openPopup()">Revelar</button></td>
+            <td><button type="button" class="btn btn-primary btn-sm" (click)='getAgeDiscount("Adulto")'>Revelar</button></td>
           </tr>
           <tr>
             <th>Sénior (20%)</th>
             <td>0 pontos (Maiores de 60 anos)</td>
             <td>Ilimitado</td>
-            <td><button type="button" class="btn btn-primary btn-sm" (click)="openPopup()">Revelar</button></td>
+            <td><button type="button" class="btn btn-primary btn-sm" (click)='getAgeDiscount("Senior")'>Revelar</button></td>
           </tr>
         </tbody>
       </table>
@@ -45,7 +45,24 @@
               <h4 class="modal-title">Desconto</h4>
             </div>
             <div class="modal-body">
-              <p>One Stop Solution for all CS problems</p>
+              <div class="row mb-6">
+                <label for="code" class="col-sm-3 col-form-label">Codigo: </label>
+                <div class="col-sm-6">
+                  <input type="email" class="form-control" id="code" value="{{ discount.code }}" readonly>
+                </div>
+              </div>
+              <div class="row mb-6">
+                <label for="code" class="col-sm-3 col-form-label">Percentagem: </label>
+                <div class="col-sm-6">
+                  <input type="email" class="form-control" id="code" value="{{ discount.percentage }}%" readonly>
+                </div>
+              </div>
+              <div class="row mb-6">
+                <label for="code" class="col-sm-3 col-form-label">Usos: </label>
+                <div class="col-sm-6">
+                  <input type="email" class="form-control" id="code" value="{{ discount.uses }}" readonly>
+                </div>
+              </div>
             </div>
             <div class="modal-footer">
               <button type="button" class="btn btn-danger" (click)="closePopup()">Close</button>
