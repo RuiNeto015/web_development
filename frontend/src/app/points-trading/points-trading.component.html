@@ -1,0 +1,57 @@
+<div style="background-image: url(https://foodtank.com/wp-content/uploads/2021/07/alfons-morales-YLSwjSy7stw-unsplash.jpg);" [ngStyle]="{'background-color': 'red' }">
+  <div class="container" id="bodyContainer">
+    <div class="totalPoints">Pontos: {{user.points}}</div> 
+    <table class="table mt-5">
+        <thead>
+          <tr>
+            <th scope="col">Desconto</th>
+            <th scope="col">Custo</th>
+            <th scope="col">Usos</th>
+            <th scope="col">Adquirir</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th>Infantil (20%)</th>
+            <td>0 pontos (Menores de 12 anos)</td>
+            <td>Ilimitado</td>
+            <td><button type="button" class="btn btn-primary btn-sm" (click)="openPopup()">Revelar</button></td>
+          </tr>
+          <tr>
+            <th>Juvenil (15%)</th>
+            <td>0 pontos (12 aos 18 anos)</td>
+            <td>Ilimitado</td>
+            <td><button type="button" class="btn btn-primary btn-sm" (click)="openPopup()">Revelar</button></td>
+          </tr>
+          <tr>
+            <th>Adulto (10%)</th>
+            <td>0 pontos (19 aos 30 anos)</td>
+            <td>Ilimitado</td>
+            <td><button type="button" class="btn btn-primary btn-sm" (click)="openPopup()">Revelar</button></td>
+          </tr>
+          <tr>
+            <th>Sénior (20%)</th>
+            <td>0 pontos (Maiores de 60 anos)</td>
+            <td>Ilimitado</td>
+            <td><button type="button" class="btn btn-primary btn-sm" (click)="openPopup()">Revelar</button></td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="modal" tabindex="-1" role="dialog" [ngStyle]="{'display':displayModal}">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h4 class="modal-title">Desconto</h4>
+            </div>
+            <div class="modal-body">
+              <p>One Stop Solution for all CS problems</p>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-danger" (click)="closePopup()">Close</button>
+            </div>
+          </div>
+        </div>
+      </div>
+  </div>
+</div>

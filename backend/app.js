@@ -12,6 +12,7 @@ var booksRouter = require('./routes/books');
 var employeesRouter = require('./routes/employees');
 var purchasesRouter = require('./routes/purchases');
 var authRouter = require('./routes/auth');
+var discountsRouter = require('./routes/discounts');
 
 var mongoose = require("mongoose")
 mongoose.Promise = global.Promise;
@@ -42,6 +43,7 @@ app.use(booksRouter.routes);
 app.use(employeesRouter.routes);
 app.use(purchasesRouter.routes);
 app.use(authRouter.routes);
+app.use(discountsRouter.routes);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

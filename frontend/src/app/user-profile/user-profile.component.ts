@@ -13,11 +13,10 @@ export class UserProfileComponent implements OnInit {
   ngOnInit(): void {
     this.getUserInfo();
   }
-
+  
   getUserInfo(){
     this.rest.getUserInfo().subscribe((data: {}) => {
       this.user = data;
-      console.log(this.user)
     });
   }
 }
