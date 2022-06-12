@@ -138,6 +138,7 @@ export class CheckoutComponent implements OnInit {
     }
     this.rest.validateDiscountCode(discountCode).subscribe((response: any)=>{
       this.discountedPrice = this.getTotalPrice() - (this.getTotalPrice() / response.percentage);
+      this.discountedPrice = Math.round(this.discountedPrice * 100) / 100;
       console.log(this.discountedPrice);
     }, (error) => {
       this.errorMessage = error.error;

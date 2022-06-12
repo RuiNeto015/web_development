@@ -35,6 +35,17 @@
     max-width: 200px;
     padding-bottom: 0.5em;
     font-size: 1.2em;
-    float: right;
+  }  
+  
+  .totalPriceDiscount{
+    border-bottom: 1px solid #000000;
+    max-width: 200px;
+    padding-bottom: 0.5em;
+    font-size: 1.2em;
+
+  }
+  
+  .lineThrough{
+    text-decoration: line-through;
   }
   

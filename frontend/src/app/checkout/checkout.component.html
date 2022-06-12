@@ -28,20 +28,18 @@
 
             <div class="paymentDiv" *ngIf="booksInCart.length>0">
               <div *ngIf="discountedPrice==0;else discount">
-                <span class="totalPrice mb-3">
+                <span class="totalPrice float-end">
                   Preço Total: {{ getTotalPrice() }}€
                 </span>
               </div>
               <ng-template #discount>
-                <div>
-                  <span class="totalPrice mb-3">
+                <div class="float-end" >
+                  <p><span class="totalPrice lineThrough">
                     Preço Total: {{ getTotalPrice() }}€
-                  </span>
-                </div>
-                <div>
-                  <span class="totalPrice mb-3">
+                  </span></p>
+                  <p><span class="totalPriceDiscount">
                     Preço com desconto: {{ discountedPrice }}€
-                  </span>
+                  </span></p>
                 </div>
               </ng-template>
             </div>&nbsp;
