@@ -14,6 +14,30 @@ const emailValidation = (email) => {
     }
 }
 
+const genderValidation = (gender) => {
+    if(gender != null && gender != "" && gender.length <= 1 && (gender == "M" || gender =="F")){
+        return true;
+    }
+}
+
+const addressValidation = (address) => {
+    if(address != null && address != "" && address.length <= 100){
+        return true;
+    }
+}
+
+const phoneNumberValidation = (phoneNumber) => {
+    if(phoneNumber != null && phoneNumber != "" && phoneNumber.length == 9){
+        return true;
+    }
+}
+
+const nifValidation = (nif) => {
+    if(nif != null && nif != "" && nif.length == 9){
+        return true;
+    }
+}
+
 var CustomerSchema = new mongoose.Schema({
     name: {
         type: String,
@@ -31,6 +55,7 @@ var CustomerSchema = new mongoose.Schema({
     gender: {
         type: String,
         required: true,
+        validate: [genderValidation]
     },
     birth_date: {
         type: Date,
@@ -39,21 +64,24 @@ var CustomerSchema = new mongoose.Schema({
     address: {
         type: String,
         maxlength: [100, 'Número máximo de caracteres é 100, foi inserido: {VALUE}'],
-        required: true
+        required: true,
+        validate: [addressValidation]
     },
     phoneNumber: {
         type: Number,
         maxlength: [9, 'Número máximo de dígitos é 9, foi inserido: {VALUE}'],
         minlength: [9, 'Número mínimo de dígitos é 9, foi inserido: {VALUE}'],
         pattern: "[0-9]{9}",
-        required: true
+        required: true,
+        validate: [phoneNumberValidation]
     },
     nif: {
         type: Number,
         maxlength: [9, 'Número máximo de dígitos é 9, foi inserido: {VALUE}'],
         minlength: [9, 'Número mínimo de dígitos é 9, foi inserido: {VALUE}'],
         pattern: "[0-9]{9}",
-        required: true
+        required: true,
+        validate: [nifValidation]
     },
     points: {
         type: Number,

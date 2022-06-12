@@ -1,5 +1,11 @@
 var mongoose = require('mongoose');
 
+const typeValidation = (type) => {
+    if(type != null && type != "" && (type == "Age" || type == "Purchases" || type == "Value")){
+        return true;
+    }
+}
+
 var DiscountSchema = new mongoose.Schema({
     code: {
         type: String,
@@ -13,7 +19,8 @@ var DiscountSchema = new mongoose.Schema({
     type: {
         type: String,
         enum: ['Age', 'Purchases','Value'],
-        required: true
+        required: true,
+        validate: [typeValidation]
     },
     uses: {
         type: Number,
