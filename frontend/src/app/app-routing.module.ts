@@ -16,15 +16,15 @@ import { UserPurchasesComponent } from './user-purchases/user-purchases.componen
 const routes: Routes = [
   { path: '', component: BooksListComponent },
   { path: 'search/:search-by/:book-search', component: BooksListComponent },
-  { path: 'bookDetails/:isbn', component: BookDetailsComponent, canActivate: [AuthGuardService] },
+  { path: 'bookDetails/:isbn', component: BookDetailsComponent },
   { path: 'profile', component: UserProfileComponent, canActivate: [AuthGuardService] },
   { path: 'shoppingCart', component: ShoppingCartComponent },
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
   { path: 'about', component: AboutUsComponent },
   { path: 'points', component: PointsTradingComponent, canActivate: [AuthGuardService] },
-  { path: 'checkout', component: CheckoutComponent },
-  { path: 'purchases', component: UserPurchasesComponent },
+  { path: 'checkout', component: CheckoutComponent, canActivate: [AuthGuardService] },
+  { path: 'purchases', component: UserPurchasesComponent, canActivate: [AuthGuardService]},
   { path: '**', redirectTo: '' }
 ]; 
 
