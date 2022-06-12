@@ -64,6 +64,17 @@ export class HttpService {
     return this.http.post(API_DOMAIN + 'createPurchaseDiscount', {percentage});
   }
 
+  createPurchase(nif: string, date: Date, name: string, email: string, phoneNumber: number, 
+    address: string, isbn: [number], title: [string], condition: [string], quantity: [number], price: [string], 
+    onlinePayment: Object): Observable<any>{
+  return this.http.post<any>(API_DOMAIN+'purchases/create', {nif, date, name, email, phoneNumber, 
+    address, isbn, title, condition, quantity, price, onlinePayment});
+  }
+  
+  getUserPurchases(nif: number) {
+    return this.http.get(API_DOMAIN + 'purchases/' + nif);
+  }
+
   private handleRetry<T>(source: Observable<T>): Observable<T> {
     return source.pipe(retryWhen(e => e.pipe(scan((errorCount, error) => {
         if (errorCount >= 3) {
@@ -73,5 +84,5 @@ export class HttpService {
     }, 0),
         delay(1000)
     )));
-}
+  }
 }
