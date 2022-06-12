@@ -1,7 +1,7 @@
 <div style="background-image: url(https://foodtank.com/wp-content/uploads/2021/07/alfons-morales-YLSwjSy7stw-unsplash.jpg)">
     <div class="container" id="bodyContainer">
         <div class="container">
-            <table class="table mt-5" *ngIf="booksInCart.length>0">
+            <table class="table mt-5" *ngIf="booksInCart.length>0;else emptyCart">
                 <thead>
                   <tr>
                     <th scope="col">#</th>
@@ -31,16 +31,21 @@
                     Preço Total: {{ getTotalPrice() }}€
                 </span>
             </div>
-            <div class="input-group mb-3" style="padding-top: 30px;">
+            <div class="input-group mb-3" style="padding-top: 30px;" *ngIf="booksInCart.length>0">
                 <input type="text" class="form-control" placeholder="Insira o código de desconto, caso possua" aria-describedby="button-addon2">
                 <div class="input-group-append">
                   <button class="btn btn-success" type="button" id="button-addon2">Verificar</button>
                 </div>
             </div>
 
-            <div style="text-align: center; padding-top: 30px;">
+            <div style="text-align: center; padding-top: 30px;" *ngIf="booksInCart.length>0">
                 <button class="btn btn-danger float-left" (click)="makePayment()">Pagar</button>
             </div>
         </div>
+
+        <ng-template class="dropdown-content" #emptyCart>
+          <h2 class="text-center mt-5">Não há livros para pagar.</h2>
+        </ng-template>
+
     </div>
 </div>

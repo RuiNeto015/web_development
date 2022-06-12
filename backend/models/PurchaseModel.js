@@ -45,6 +45,10 @@ var PurchaseSchema = new mongoose.Schema({
         type: [String],
         required: true,
     },
+    onlinePayment:{
+        type: Object,
+        required: false
+    },
     created_at: {
         type: Date,
         default: Date.now,

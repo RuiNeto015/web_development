@@ -14,6 +14,14 @@ purchaseController.getAllPurchases = function(req, res){
     });
 }
 
+purchaseController.getUserPurchases= function(req, res){
+
+    Purchase.find({nif: req.params.nif}).exec(function(err, result){
+        if(err){res.status(400)}
+        res.json(result);
+    });
+} 
+
 //PURCHASES DETAILS
 
 purchaseController.getDetailsView = function(req, res){

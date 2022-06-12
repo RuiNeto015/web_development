@@ -6,6 +6,8 @@ const purchaseController = require("../controllers/PurchaseController");
 //PURCHASES INDEX
 
 router.get('/purchases', purchaseController.getAllPurchases);
+router.get('/purchases/:nif', purchaseController.getUserPurchases);
+
 
 //PURCHASES DETAILS
 

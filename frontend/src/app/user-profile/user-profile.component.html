@@ -1,5 +1,5 @@
 <div style="background-image: url(https://foodtank.com/wp-content/uploads/2021/07/alfons-morales-YLSwjSy7stw-unsplash.jpg);">
-    <div class="container" id="bodyContainer">
+  <div class="container" id="bodyContainer" *ngIf="user">
     <div class="row">
       <div class="col-md-4">
         <div class="d-flex flex-column align-items-center text-center p-3 py-5">
@@ -11,7 +11,7 @@
       <div class="col-md-7">
         <div class="p-3 py-5">
           <div class="d-flex justify-content-between align-items-center mb-3">
-            <h2 class="text-right">Dados Utilizador</h2>
+            <h2 class="text-right">Dados do Utilizador</h2>
           </div>
           <div class="row">
             <div class="col-md-12 mt-3">
@@ -44,13 +44,35 @@
               <input type="text" class="form-control" value="{{ user.points }}" readonly/>
             </div>
           </div>
-          <div class="mt-5 text-center">
-            <button class="btn btn-primary profile-button" type="button">
-              Editar Perfil
-            </button>
-          </div>
         </div>
       </div>
     </div>
+
+    <table class="table mt-5" *ngIf="purchases.length>0; else emptyPurchases">
+      <thead>
+        <tr>
+          <th scope="col">Data</th>
+          <th scope="col">ISBN</th>
+          <th scope="col">Título</th>
+          <th scope="col">Condição</th>
+          <th scope="col">Quantidade</th>
+          <th scope="col">Preço</th>
+        </tr>
+      </thead>
+      <tbody *ngFor="let purchase of purchases">
+        <tr>
+          <td>{{purchase.date}}</td>
+          <td><tr *ngFor="let a of purchase.isbn">{{a}}</tr></td>
+          <td><tr *ngFor="let b of purchase.title">{{b}}</tr></td>
+          <td><tr *ngFor="let c of purchase.condition">{{c}}</tr></td>
+          <td><tr *ngFor="let d of purchase.quantity">{{d}}</tr></td>
+          <td><tr *ngFor="let e of purchase.price">{{e}}</tr></td>
+        </tr>
+      </table>
+    <div style="padding-bottom: 100px;">
+    <ng-template class="dropdown-content" #emptyPurchases>
+      <h2 class="text-center mt-5">Não existem compras efetuadas.</h2>
+    </ng-template>
+  </div>
   </div>
 </div>
