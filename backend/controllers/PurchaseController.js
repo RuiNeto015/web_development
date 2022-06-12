@@ -1,6 +1,7 @@
 var Purchase = require("../models/PurchaseModel");
 var Customer = require("../models/CustomerModel");
 var Book = require("../models/BookModel");
+var Discount = require("../models/DiscountModel");
 var purchaseController = {}
 
 //PURCHASES INDEX
@@ -56,15 +57,24 @@ purchaseController.addPurchase = function(req, res){
         points = Math.floor(points/10)*200;
         Customer.findOneAndUpdate({nif:req.body.nif}, {$inc:{ points: points }},function(err){
             console.log("Successfully created a purchase.");
-            res.redirect('/purchases');
         })
 
         for(let i = 0; i < req.body.isbn.length; i++){
             Book.findOneAndUpdate({isbn:req.body.isbn[i], condition: req.body.condition[i]}, 
                 {$inc:{ quantity: -req.body.quantity[i] }},function(err){
-                    console.log("Successfully created a purchase.");
-                    res.redirect('/purchases');
+                    console.log("Successfully updated book quantity.");
             })
+        }
+
+        if(req.body.discountCode){
+            Discount.findOne({code: req.body.discountCode}, function(err, result){
+                if(err){res.status(400)}
+                if(result.uses){
+                    Discount.updateOne({code: req.body.discountCode}, {$inc:{ uses: -1 }},function(err){
+                        console.log("Successfully updated discount uses.");
+                    });
+                }
+            });
         }
     })
 }

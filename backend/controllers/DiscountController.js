@@ -152,6 +152,9 @@ discountController.validateDiscount = function(req, res) {
                     case "Purchases":
                         if (!validatePurchaseDiscount(user.email, discount)) return res.status(400).send("Não tem os requesitos necessarios!");
                         return res.status(200).json(discount);
+                    case "Value":
+                        if(discount.uses <= 0) return res.status(400).send("Não tem os requesitos necessarios!");
+                        return res.status(200).json(discount);
                     default:
                         return res.status(400).json("Desconto inválido!");
                 }

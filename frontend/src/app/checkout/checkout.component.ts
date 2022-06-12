@@ -18,6 +18,7 @@ export class CheckoutComponent implements OnInit {
   stripeToken: any;
   displayAlert = "none";
   errorMessage: any;
+  discount:any;
   discountedPrice: number = 0;
   constructor(private rest: HttpService) { }
 
@@ -77,11 +78,12 @@ export class CheckoutComponent implements OnInit {
         this.createPurchase();
       }
     });
-
+    if(this.discountedPrice!=0) var price=this.discountedPrice;
+    else price=this.getTotalPrice();
     paymentHandler.open({
       name: 'Efetua Pagamento',
       description: 'Preencha os seguintes campos',
-      amount: this.getTotalPrice() * 100
+      amount: price * 100
     })  
   }
 
@@ -114,7 +116,7 @@ export class CheckoutComponent implements OnInit {
 
       this.rest.createPurchase(this.user.nif, now, this.user.name, this.user.email, this.user.phoneNumber,
         this.user.address, iisbn, ttitle,ccondition,
-        qquantity, pprice, this.stripeToken).subscribe((response: any)=>{
+        qquantity, pprice, this.discount.code, this.stripeToken).subscribe((response: any)=>{
           console.log("Response: ", response);
         });
   }
@@ -137,7 +139,8 @@ export class CheckoutComponent implements OnInit {
       return;
     }
     this.rest.validateDiscountCode(discountCode).subscribe((response: any)=>{
-      this.discountedPrice = this.getTotalPrice() - (this.getTotalPrice() / response.percentage);
+      this.discount = response;
+      this.discountedPrice = this.getTotalPrice() - (this.getTotalPrice() * (this.discount.percentage/100));
       this.discountedPrice = Math.round(this.discountedPrice * 100) / 100;
       console.log(this.discountedPrice);
     }, (error) => {
