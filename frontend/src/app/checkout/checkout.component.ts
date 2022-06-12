@@ -16,13 +16,19 @@ export class CheckoutComponent implements OnInit {
   paymentHanlder: any = null;
   user: any;
   stripeToken: any;
-
+  displayAlert = "none";
+  errorMessage: any;
+  discountedPrice: number = 0;
   constructor(private rest: HttpService) { }
 
   ngOnInit(): void {
     this.getUserInformation();
     this.getBooksInCart();
     this.invokeStripe();
+  }
+
+  closeAlert(){
+    this.displayAlert = "none";
   }
 
   getUserInformation(): void{
@@ -124,8 +130,18 @@ export class CheckoutComponent implements OnInit {
   }
 
   validateDiscountCode(){
-    this.rest.validateDiscountCode(this.user.discountCode).subscribe((response: any)=>{
-      console.log("Response: ", response);
+    var discountCode = (<HTMLInputElement>document.getElementById("discountCode")).value;
+    if (!discountCode){
+      this.errorMessage = "Por favor, insira um código de desconto.";
+      this.displayAlert = "block";
+      return;
+    }
+    this.rest.validateDiscountCode(discountCode).subscribe((response: any)=>{
+      this.discountedPrice = this.getTotalPrice() - (this.getTotalPrice() / response.percentage);
+      console.log(this.discountedPrice);
+    }, (error) => {
+      this.errorMessage = error.error;
+      this.displayAlert = "block";
     });
   }
 

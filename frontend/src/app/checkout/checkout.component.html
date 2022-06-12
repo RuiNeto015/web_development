@@ -27,14 +27,32 @@
             </table>
 
             <div class="paymentDiv" *ngIf="booksInCart.length>0">
+              <div *ngIf="discountedPrice==0;else discount">
                 <span class="totalPrice mb-3">
-                    Preço Total: {{ getTotalPrice() }}€
+                  Preço Total: {{ getTotalPrice() }}€
                 </span>
+              </div>
+              <ng-template #discount>
+                <div>
+                  <span class="totalPrice mb-3">
+                    Preço Total: {{ getTotalPrice() }}€
+                  </span>
+                </div>
+                <div>
+                  <span class="totalPrice mb-3">
+                    Preço com desconto: {{ discountedPrice }}€
+                  </span>
+                </div>
+              </ng-template>
+            </div>&nbsp;
+            <div class="alert alert-warning alert-dismissible fade show" role="alert" [ngStyle]="{'display':displayAlert}">
+              {{ errorMessage }}
+              <button type="button" class="btn-close" (click)="closeAlert()"></button>
             </div>
             <div class="input-group mb-3" style="padding-top: 30px;" *ngIf="booksInCart.length>0">
-                <input type="text" class="form-control" placeholder="Insira o código de desconto, caso possua" aria-describedby="button-addon2">
+                <input type="text" id="discountCode" class="form-control" placeholder="Insira o código de desconto, caso possua" aria-describedby="button-addon2">
                 <div class="input-group-append">
-                  <button class="btn btn-success" type="button" id="button-addon2">Verificar</button>
+                  <button class="btn btn-success" type="button" id="button-addon2" (click)="validateDiscountCode()">Verificar</button>
                 </div>
             </div>
 
