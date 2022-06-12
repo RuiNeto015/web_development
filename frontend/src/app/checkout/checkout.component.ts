@@ -122,4 +122,11 @@ export class CheckoutComponent implements OnInit {
       window.document.body.appendChild(script);
     }
   }
+
+  validateDiscountCode(){
+    this.rest.validateDiscountCode(this.user.discountCode).subscribe((response: any)=>{
+      console.log("Response: ", response);
+    });
+  }
+
 }

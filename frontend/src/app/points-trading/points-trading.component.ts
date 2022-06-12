@@ -67,6 +67,25 @@ export class PointsTradingComponent implements OnInit {
     });
   }
 
+  getValueDiscount(value: number){
+    this.rest.getValueDiscount(value).subscribe((data: {}) => {
+      this.discount = data;
+      if(!this.discount){
+        this.createValueDiscount(value);
+      }
+      this.openPopup();
+    });
+  }
+
+  createValueDiscount(value: number){
+    this.rest.createValueDiscount(value).subscribe((data: {}) => {
+      this.discount = data;
+      this.openPopup();
+    }, (error) => {
+      this.errorMessage = error.error;
+      this.displayAlert = "block";
+    });
+  }
 }
 
 
