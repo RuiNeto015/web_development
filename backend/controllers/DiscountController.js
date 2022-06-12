@@ -145,14 +145,16 @@ discountController.validateDiscount = function(req, res) {
             if (err) return res.status(500).send(err);
             Customer.findOne({ email:user.email }, function(err, customer) {
                 if (err) return res.status(500).send(err);
-                if (discount.type == "Age") {
-                     return res.status(200).json(validateAge(customer, discount.code));
-                }
                 switch (discount.type) {
                     case "Age":
-                        return res.status(200).json(validateAge(customer, discount.code));
+                        if (!validateAge(customer, discount.code)) return res.status(400).send("Não tem os requesitos necessarios!");
+                        return res.status(200).json(discount);
                     case "Purchases":
-                        return res.status(200).json(validatePurchaseDiscount(req.userId, discount));
+                        if (!validatePurchaseDiscount(user.email, discount)) return res.status(400).send("Não tem os requesitos necessarios!");
+                        return res.status(200).json(discount);
+                    case "Value":
+                        if(discount.uses <= 0) return res.status(400).send("Não tem os requesitos necessarios!");
+                        return res.status(200).json(discount);
                     default:
                         return res.status(400).json("Desconto inválido!");
                 }

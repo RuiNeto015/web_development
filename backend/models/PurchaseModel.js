@@ -117,6 +117,10 @@ var PurchaseSchema = new mongoose.Schema({
         required: true,
         validate: [priceValidation]
     },
+    discountCode: {
+        type: String,
+        nullable: true
+    },
     onlinePayment:{
         type: Object,
         required: false

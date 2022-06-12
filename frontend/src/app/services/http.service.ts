@@ -74,9 +74,9 @@ export class HttpService {
 
   createPurchase(nif: string, date: Date, name: string, email: string, phoneNumber: number, 
     address: string, isbn: [number], title: [string], condition: [string], quantity: [number], price: [string], 
-    onlinePayment: Object): Observable<any>{
+    discountCode:string,onlinePayment: Object): Observable<any>{
   return this.http.post<any>(API_DOMAIN+'purchases/create', {nif, date, name, email, phoneNumber, 
-    address, isbn, title, condition, quantity, price, onlinePayment});
+    address, isbn, title, condition, quantity, price,discountCode, onlinePayment});
   }
   
   getUserPurchases(nif: number) {
