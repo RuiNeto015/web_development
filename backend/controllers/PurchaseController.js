@@ -1,5 +1,6 @@
 var Purchase = require("../models/PurchaseModel");
 var Customer = require("../models/CustomerModel");
+var Book = require("../models/BookModel");
 var purchaseController = {}
 
 //PURCHASES INDEX
@@ -57,6 +58,14 @@ purchaseController.addPurchase = function(req, res){
             console.log("Successfully created a purchase.");
             res.redirect('/purchases');
         })
+
+        for(let i = 0; i < req.body.isbn.length; i++){
+            Book.findOneAndUpdate({isbn:req.body.isbn[i], condition: req.body.condition[i]}, 
+                {$inc:{ quantity: -req.body.quantity[i] }},function(err){
+                    console.log("Successfully created a purchase.");
+                    res.redirect('/purchases');
+            })
+        }
     })
 }
 

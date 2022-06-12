@@ -1,0 +1,32 @@
+<div style="background-image: url(https://foodtank.com/wp-content/uploads/2021/07/alfons-morales-YLSwjSy7stw-unsplash.jpg);">
+    <div class="container" id="bodyContainer" *ngIf="user">
+        <h1 style="text-align: center;"><i> As minhas compras</i></h1>
+        <table class="table mt-5" *ngIf="purchases.length>0; else emptyPurchases">
+            <thead>
+            <tr>
+                <th scope="col">Data</th>
+                <th scope="col">ISBN</th>
+                <th scope="col">Título</th>
+                <th scope="col">Condição</th>
+                <th scope="col">Quantidade</th>
+                <th scope="col">Preço</th>
+            </tr>
+            </thead>
+            <tbody *ngFor="let purchase of purchases">
+            <tr>
+                <td>{{purchase.date}}</td>
+                <td><tr *ngFor="let a of purchase.isbn">{{a}}</tr></td>
+                <td><tr *ngFor="let b of purchase.title">{{b}}</tr></td>
+                <td><tr *ngFor="let c of purchase.condition">{{c}}</tr></td>
+                <td><tr *ngFor="let d of purchase.quantity">{{d}}</tr></td>
+                <td><tr *ngFor="let e of purchase.price">{{e}}</tr></td>
+            </tr>
+            </table>
+        <div style="padding-bottom: 100px;">
+        <ng-template class="dropdown-content" #emptyPurchases>
+            <h2 class="text-center mt-5">Não existem compras efetuadas.</h2>
+        </ng-template>
+        </div>
+
+    </div>
+</div>

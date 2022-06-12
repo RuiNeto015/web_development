@@ -1,16 +1,32 @@
 var mongoose = require('mongoose');
 
+const nameValidation = (name) => {
+    if(name != null && name != "" && name.length <= 75){
+        return true;
+    }
+}
+
+const emailValidation = (email) => {
+    emailRegexp = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/;
+
+    if(email != null && email != "" && email.length <= 75 && emailRegexp.test(email)){
+        return true;
+    }
+}
+
 var CustomerSchema = new mongoose.Schema({
     name: {
         type: String,
         maxlength: [75, 'Número máximo de caracteres é 75, foi inserido: {VALUE}'],
-        required: true
+        required: true,
+        validate: [nameValidation]
     },
     email: {
         type: String,
         unique: true,
         maxlength: [75, 'Número máximo de caracteres é 75, foi inserido: {VALUE}'],
-        required: true
+        required: true,
+        validate: [emailValidation]
     },
     gender: {
         type: String,

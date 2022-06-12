@@ -5,6 +5,9 @@
       <div class="divBook text-center" *ngFor="let book of books" (click)="getBookDetails(book.isbn)">
         <img [src]="book.cover" class="bookCover"/>
         <h3> {{book.title}} </h3>
+        <div class="divPrice">
+          <h4 style="color: red"><i>{{book.price}}€</i></h4>
+        </div>
       </div>
     </div>
   </div>

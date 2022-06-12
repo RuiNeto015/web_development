@@ -8,7 +8,6 @@ import { HttpService } from '../services/http.service';
 })
 export class UserProfileComponent implements OnInit {
   user: any;
-  purchases: any = [];
 
   constructor(private rest: HttpService) { }
 
@@ -19,14 +18,7 @@ export class UserProfileComponent implements OnInit {
   getUserInfo(){
     this.rest.getUserInfo().subscribe((data: {}) => {
       this.user = data;
-      this.getUserPurchases();
     });
     
-  }
-  
-  getUserPurchases(){
-    this.rest.getUserPurchases(this.user.nif).subscribe((data: {}) => {
-      this.purchases = data;
-    })
   }
 }

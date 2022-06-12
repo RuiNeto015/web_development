@@ -23,6 +23,7 @@ import { RegisterComponent } from './register/register.component';
 import { ShoppingCartComponent } from './shopping-cart/shopping-cart.component';
 import { AboutUsComponent } from './about-us/about-us.component';
 import { CheckoutComponent } from './checkout/checkout.component';
+import { UserPurchasesComponent } from './user-purchases/user-purchases.component';
 
 @NgModule({
   declarations: [
@@ -38,6 +39,7 @@ import { CheckoutComponent } from './checkout/checkout.component';
     ShoppingCartComponent,
     AboutUsComponent,
     CheckoutComponent,
+    UserPurchasesComponent,
   ],
   imports: [
     BrowserModule,

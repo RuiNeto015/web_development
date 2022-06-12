@@ -10,6 +10,7 @@ import { RegisterComponent } from './register/register.component';
 import { AboutUsComponent } from './about-us/about-us.component';
 import { PointsTradingComponent } from './points-trading/points-trading.component';
 import { CheckoutComponent } from './checkout/checkout.component';
+import { UserPurchasesComponent } from './user-purchases/user-purchases.component';
 
 
 const routes: Routes = [
@@ -23,6 +24,7 @@ const routes: Routes = [
   { path: 'about', component: AboutUsComponent },
   { path: 'points', component: PointsTradingComponent, canActivate: [AuthGuardService] },
   { path: 'checkout', component: CheckoutComponent },
+  { path: 'purchases', component: UserPurchasesComponent },
   { path: '**', redirectTo: '' }
 ]; 
 

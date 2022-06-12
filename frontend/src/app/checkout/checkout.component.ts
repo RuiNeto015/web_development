@@ -86,6 +86,9 @@ export class CheckoutComponent implements OnInit {
       const ccondition: any = [];
       const qquantity: any = [];
       const pprice: any = [];
+      const cart  = JSON.parse(localStorage.getItem('shoppingCart') || '[]')
+
+      this.rest.getBooks
 
       for(let i = 0; i < this.booksInCart.length; i ++){
         iisbn.push(this.booksInCart[i].isbn)
@@ -97,7 +100,7 @@ export class CheckoutComponent implements OnInit {
         ccondition.push(this.booksInCart[i].condition)
       }
       for(let i = 0; i < this.booksInCart.length; i ++){
-        qquantity.push(this.booksInCart[i].quantity)
+        qquantity.push(cart[this.booksInCart[i]._id])
       }
       for(let i = 0; i < this.booksInCart.length; i ++){
         pprice.push(this.booksInCart[i].price)
@@ -119,5 +122,4 @@ export class CheckoutComponent implements OnInit {
       window.document.body.appendChild(script);
     }
   }
-
 }
