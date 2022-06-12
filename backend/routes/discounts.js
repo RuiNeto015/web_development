@@ -5,8 +5,9 @@ var authController = require('../controllers/AuthController');
 
 router.get('/getDiscount/:code', discountController.getDiscount);
 router.get('/getAgeDiscount/:search', discountController.getAgeDiscount);
-router.post('/create-discount', authController.verifyToken, discountController.createDiscount);
-router.post('/validate-discount', authController.verifyToken, discountController.validateDiscount);
+router.get('/getPurchaseDiscount/:search', authController.verifyToken, discountController.getPurchaseDiscount);
+router.post('/createPurchaseDiscount', authController.verifyToken, discountController.createPurchaseDiscount);
+router.post('/validateAgeDiscount', authController.verifyToken, discountController.validateAgeDiscount);
 
 module.exports = {
     routes: router

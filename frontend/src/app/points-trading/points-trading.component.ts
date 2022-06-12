@@ -10,7 +10,9 @@ import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
 export class PointsTradingComponent implements OnInit {
   user: any;
   displayModal = "none";
+  displayAlert = "none";
   discount: any;
+  errorMessage: any;
   constructor(private rest: HttpService, private modalService: NgbModal) { }
 
   ngOnInit(): void {
@@ -31,6 +33,10 @@ export class PointsTradingComponent implements OnInit {
     this.displayModal = "none";
   }
 
+  closeAlert(){
+    this.displayAlert = "none";
+  }
+
   getAgeDiscount(search: string){
     this.rest.getAgeDiscount(search).subscribe((data: {}) => {
       this.discount = data;
@@ -38,6 +44,26 @@ export class PointsTradingComponent implements OnInit {
         this.discount.uses = "Ilimitado";
       }
       this.openPopup();
+    });
+  }
+
+  getPurchaseDiscount(search: number){
+    this.rest.getPurchaseDiscount(search).subscribe((data: {}) => {
+      this.discount = data;
+      if(!this.discount){
+        this.createPurchaseDiscount(search);
+      }
+      this.openPopup();
+    });
+  }
+  
+  createPurchaseDiscount(percentage: number){
+    this.rest.createPurchaseDiscount(percentage).subscribe((data: {}) => {
+      this.discount = data;
+      this.openPopup();
+    }, (error) => {
+      this.errorMessage = error.error;
+      this.displayAlert = "block";
     });
   }
 

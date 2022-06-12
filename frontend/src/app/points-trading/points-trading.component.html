@@ -1,6 +1,10 @@
 <div style="background-image: url(https://foodtank.com/wp-content/uploads/2021/07/alfons-morales-YLSwjSy7stw-unsplash.jpg);" [ngStyle]="{'background-color': 'red' }">
   <div class="container" id="bodyContainer">
-    <div class="totalPoints">Pontos: {{user.points}}</div> 
+    <div class="alert alert-warning alert-dismissible fade show" role="alert" [ngStyle]="{'display':displayAlert}">
+      {{ errorMessage }}
+      <button type="button" class="btn-close" (click)="closeAlert()"></button>
+    </div>
+    <div class="totalPoints" *ngIf="user">Pontos: {{user.points}}</div> 
     <table class="table mt-5">
         <thead>
           <tr>
@@ -35,6 +39,24 @@
             <td>Ilimitado</td>
             <td><button type="button" class="btn btn-primary btn-sm" (click)='getAgeDiscount("Senior")'>Revelar</button></td>
           </tr>
+          <tr>
+            <th>Mais de 5 compras (10%)</th>
+            <td>0 pontos </td>
+            <td>3</td>
+            <td><button type="button" class="btn btn-primary btn-sm" (click)='getPurchaseDiscount(10)'>Revelar</button></td>
+          </tr>
+          <tr>
+            <th>Mais de 10 compras (15%)</th>
+            <td>0 pontos </td>
+            <td>3</td>
+            <td><button type="button" class="btn btn-primary btn-sm" (click)='getPurchaseDiscount(15)'>Revelar</button></td>
+          </tr>
+          <tr>
+            <th>Mais de 20 compras (20%)</th>
+            <td>0 pontos </td>
+            <td>3</td>
+            <td><button type="button" class="btn btn-primary btn-sm" (click)='getPurchaseDiscount(20)'>Revelar</button></td>
+          </tr>
         </tbody>
       </table>
 
@@ -45,6 +67,7 @@
               <h4 class="modal-title">Desconto</h4>
             </div>
             <div class="modal-body">
+              <div *ngIf="discount;else notFound">
               <div class="row mb-6">
                 <label for="code" class="col-sm-3 col-form-label">Codigo: </label>
                 <div class="col-sm-6">
@@ -63,6 +86,10 @@
                   <input type="email" class="form-control" id="code" value="{{ discount.uses }}" readonly>
                 </div>
               </div>
+              </div>
+              <ng-template class="dropdown-content" #notFound>
+                <h2 class="text-center mt-5">Nenhum desconto encontrado!</h2>
+              </ng-template>
             </div>
             <div class="modal-footer">
               <button type="button" class="btn btn-danger" (click)="closePopup()">Close</button>

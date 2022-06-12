@@ -12,7 +12,7 @@ var DiscountSchema = new mongoose.Schema({
     },
     type: {
         type: String,
-        enum: ['Age', 'Value'],
+        enum: ['Age', 'Purchases','Value'],
         required: true
     },
     uses: {

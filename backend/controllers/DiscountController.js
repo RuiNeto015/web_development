@@ -1,29 +1,67 @@
 var Discount = require("../models/DiscountModel");
 var Customer = require("../models/CustomerModel");
 var User = require("../models/UserModel");
+var Purchase = require("../models/PurchaseModel");
 
 var discountController = {}
 
 discountController.getDiscount = function(req, res) {
     Discount.findOne({ code: req.params.code }, function(err, discount) {
-        if (err) res.status(500).send(err);
+        if (err) return res.status(500).send(err);
         res.json(discount);
     });
 }
 
 discountController.getAgeDiscount = function(req, res) {
     Discount.findOne({ code: { $regex: req.params.search, $options: "i" } }, function(err, discount) {
-        if (err) res.status(500).send(err);
+        if (err) return res.status(500).send(err);
         res.json(discount);
     });
 }
 
-discountController.createDiscount = function(req, res) {
-
-    discount.save(function(err, discount) {
-        if (err) res.status(500).send(err);
+discountController.getPurchaseDiscount = function(req, res) {
+    Discount.findOne({ user: req.userId, percentage: req.params.search, type: "Purchases" }, function(err, discount) {
+        if (err) return res.status(500).send(err);
         res.json(discount);
     });
+}
+
+discountController.createPurchaseDiscount = function(req, res) {
+    req.body.code = Math.random().toString(36).substring(2,12);
+    req.body.type = "Purchases";
+    req.body.uses = 3;
+    req.body.user = req.userId;
+
+    Discount.findOne({ user: req.body.user, type: req.body.type, percentage: req.body.percentage}, function(err, discount) {
+        if (err) return res.status(500).send(err);
+        if (discount) return res.status(400).json("Desconto já resgatado!");
+
+        User.findOne({ _id: req.userId }, function(err, user) {
+            if (err) res.status(500).send(err);
+            Purchase.find({ user: user.email }, function(err, purchases) {
+                if (err) res.status(500).send(err);
+                switch (req.body.percentage) {
+                    case 10:
+                        if (purchases.length < 5) return res.status(400).json("Não tem os requesitos necessarios!")
+                        break;
+                    case 15:
+                        if (purchases.length < 10) return res.status(400).json("Não tem os requesitos necessarios!")
+                        break;
+                    case 20:
+                        if (purchases.length < 20) return res.status(400).json("Não tem os requesitos necessarios!")
+                        break;
+                    default:
+                        return res.status(400).json("Não tem os requesitos necessarios 4!")
+                }
+                var discount = new Discount(req.body);
+                discount.save(function(err, discount) {
+                    if (err) res.status(500).send(err);
+                    res.json(discount);
+                });
+            });
+        });
+    });
+
 }
 
 function validateAge(customer, discountCode) {
@@ -43,15 +81,15 @@ function validateAge(customer, discountCode) {
 
 }
 
-discountController.validateDiscount = function(req, res) {
+discountController.validateAgeDiscount = function(req, res) {
     var discountCode = req.body.code;
     Discount.findOne({ code: discountCode }, function(err, discount) {
-        if (err) res.status(500).send(err);
-        if (!discount) res.status(400).send("Código de desconto inválido!");
+        if (err) return res.status(500).send(err);
+        if (!discount) return res.status(400).send("Código de desconto inválido!");
         User.findOne({ _id: req.userId }, function(err, user) {
-            if (err) res.status(500).send(err);
+            if (err) return res.status(500).send(err);
             Customer.findOne({ email:user.email }, function(err, customer) {
-                if (err) res.status(500).send(err);
+                if (err) return res.status(500).send(err);
                 if (discount.type == "Age") {
                     res.status(200).json(validateAge(customer, discount.code));
                 }
@@ -59,8 +97,5 @@ discountController.validateDiscount = function(req, res) {
         });
     });
 }
-
-
-
 
 module.exports = discountController;
