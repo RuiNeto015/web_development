@@ -8,21 +8,21 @@ var discountController = {}
 discountController.getDiscount = function(req, res) {
     Discount.findOne({ code: req.params.code }, function(err, discount) {
         if (err) return res.status(500).send(err);
-        res.json(discount);
+        return res.status(200).json(discount);
     });
 }
 
 discountController.getAgeDiscount = function(req, res) {
     Discount.findOne({ code: { $regex: req.params.search, $options: "i" } }, function(err, discount) {
         if (err) return res.status(500).send(err);
-        res.json(discount);
+        return res.status(200).json(discount);
     });
 }
 
 discountController.getPurchaseDiscount = function(req, res) {
     Discount.findOne({ user: req.userId, percentage: req.params.search, type: "Purchases" }, function(err, discount) {
         if (err) return res.status(500).send(err);
-        res.json(discount);
+        return res.status(200).json(discount);
     });
 }
 
@@ -65,10 +65,9 @@ discountController.createPurchaseDiscount = function(req, res) {
 }
 
 discountController.getValueDiscount = function(req, res) {
-    Discount.findOne({ user: req.userId, percentage: req.params.search, type: "Value" }, function(err, discount) {
+    Discount.findOne({ user: req.userId, percentage: req.params.search, type: "Value", uses:{$ne:0}}, function(err, discount) {
         if (err) return res.status(500).send(err);
-        if(discount && discount.uses > 0) return res.status(200).json(discount);
-        else return res.status(400).json("Desconto inválido!");
+        return res.status(200).json(discount);
     });
 }
 
@@ -78,7 +77,7 @@ discountController.createValueDiscount = function(req, res) {
     req.body.uses = 1;
     req.body.user = req.userId;
 
-    Discount.findOne({ user: req.body.user, type: req.body.type, percentage: req.body.percentage}, function(err, discount) {
+    Discount.findOne({ user: req.body.user, type: req.body.type, percentage: req.body.percentage, uses:{$ne:0}}, function(err, discount) {
         if (err) return res.status(500).send(err);
         if (discount) return res.status(400).json("Desconto já resgatado!");
         User.findOne({ _id: req.userId }, function(err, user) {

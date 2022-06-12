@@ -68,8 +68,8 @@ export class HttpService {
     return this.http.get(API_DOMAIN + 'getValueDiscount/' + value);
   }
   
-  createValueDiscount(value: number) {
-    return this.http.post(API_DOMAIN + 'createValueDiscount', {value});
+  createValueDiscount(percentage: number) {
+    return this.http.post(API_DOMAIN + 'createValueDiscount', {percentage});
   }
 
   createPurchase(nif: string, date: Date, name: string, email: string, phoneNumber: number, 
