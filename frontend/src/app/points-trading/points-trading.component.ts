@@ -70,7 +70,7 @@ export class PointsTradingComponent implements OnInit {
   getValueDiscount(value: number){
     this.rest.getValueDiscount(value).subscribe((data: {}) => {
       this.discount = data;
-      if(!this.discount){
+      if(!this.discount || this.discount.uses == 0){
         this.createValueDiscount(value);
       }
       this.openPopup();
