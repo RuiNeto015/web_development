@@ -1,7 +1,7 @@
 .centerDiv {
     border: 10%;
     width: 50%;
-    min-height: 50vh;
+    min-height: 70vh;
     border-radius: 2em;
     padding: 3%;
     background-color: #15172b;
@@ -9,7 +9,7 @@
     text-align: center;
   }
   
-  .Input > input[type="text"], input[type="password"] {
+  .Input {
     background-color: #303245;
     border-radius: .5em;
     border: 0;
@@ -73,12 +73,12 @@
   }
   
   .simpleBG {
-    align-items: center;
+    padding-top: 5em;
     background-image: url(https://foodtank.com/wp-content/uploads/2021/07/alfons-morales-YLSwjSy7stw-unsplash.jpg);
     background-repeat: repeat;
     display: flex;
     justify-content: center;
     position: relative;
-    height: 175%;
-    z-index: 100;
+    height: 110%;
+
   }
