@@ -18,8 +18,9 @@ export class CheckoutComponent implements OnInit {
   stripeToken: any;
   displayAlert = "none";
   errorMessage: any;
-  discount:any;
+  discount:any = "null";
   discountedPrice: number = 0;
+
   constructor(private rest: HttpService) { }
 
   ngOnInit(): void {
@@ -35,7 +36,7 @@ export class CheckoutComponent implements OnInit {
   getUserInformation(): void{
     this.rest.getUserInfo().subscribe((data: {}) => {
       this.user = data;
-      console.log(this.user.nif)
+      console.log(this.user)
     });
   }
 
@@ -79,7 +80,7 @@ export class CheckoutComponent implements OnInit {
       }
     });
     if(this.discountedPrice!=0) var price=this.discountedPrice;
-    else price=this.getTotalPrice();
+    else var price=this.getTotalPrice();
     paymentHandler.open({
       name: 'Efetua Pagamento',
       description: 'Preencha os seguintes campos',
